@@ -1,4 +1,4 @@
-# eiz-dev.github.io
+# eizdev.github.io
 
 Developer website for all studio apps: privacy policies, terms, support pages,
 legal notice and `app-ads.txt`. Plain GitHub Pages + Jekyll — no CI, no plugins, $0.
@@ -71,10 +71,10 @@ features both versions support.
 ## One-time setup (plan §7)
 
 - [ ] **Org + repo.** Create the free GitHub Organization **eiz-dev** (no
-      company registration needed). Push this repo as **`eiz-dev/eiz-dev.github.io`**
+      company registration needed). Push this repo as **`eiz-dev/eizdev.github.io`**
       and keep it **public** (free Pages requires that).
 - [ ] **Pages.** Settings → Pages → _Deploy from a branch_ → `main` / root.
-      Check `https://eiz-dev.github.io/app-ads.txt`.
+      Check `https://eizdev.github.io/app-ads.txt`.
 - [ ] **Real texts.** Port the reviewed drafts from `drum-app/docs/legal/` into
       `_includes/docs/*.md`, keeping the `{% if app.* %}` switches. Do not indent
       lines (Markdown would turn them into code blocks). Then set `mock_content: false`.
@@ -96,7 +96,7 @@ features both versions support.
 - [ ] **App config.** Paste the `scripts/legal_config.rb` output into each app's
       `legal_config.dart`.
 - [ ] **Consoles.** Enter the privacy, support and marketing URLs in App Store
-      Connect, Play Console and AdMob, using `https://eiz-dev.github.io/` as the
+      Connect, Play Console and AdMob, using `https://eizdev.github.io/` as the
       developer website. In AdMob, open Apps → _app-ads.txt_ and verify.
 - [ ] **Optional custom domain** (~$10/yr). Add a `CNAME` file, update `url`, and
       re-verify app-ads.txt on the new domain.
