@@ -4,14 +4,15 @@ Developer website for all studio apps: privacy policies, terms, support pages,
 legal notice and `app-ads.txt`. Plain GitHub Pages + Jekyll — no CI, no plugins, $0.
 Implements `drum-app/LEGAL_HOSTING_PLAN.md`.
 
-> **Status: mock content.** The document texts (governing law and the review of the wording) are still
-> mock; owner name, support email and AdMob publisher ID are real. A "Draft" banner shows
-> on every page until `mock_content: false`.
+> **Status: live texts** (`mock_content: false`, no "Draft" banner). The documents cover the GDPR
+> basics (legal bases, transfers, retention, rights) and the EU consumer points for in-app purchases.
+> They were written without a lawyer; have them reviewed when the studio grows, and set
+> `mock_content: true` again if you want the banner back while texts are reworked.
 
 ## Layout
 
 ```
-_config.yml              site URL, languages (en/uk/de), mock banner switch
+_config.yml              site URL, languages (en/uk/de/fr/es), mock banner switch
 _data/studio.yml         developer facts: owner, support email, AdMob pub ID
 _data/apps.yml           one entry per app + flags (ads, iap, sdks, local data, FAQ)
 _data/i18n.yml           UI strings per language
@@ -26,14 +27,14 @@ gmail/mailFilters.xml    Gmail filters to import (generated)
 
 URLs (default language has no prefix):
 
-| Page               | URL                                                           |
-| ------------------ | ------------------------------------------------------------- |
-| App list + contact | `/`                                                           |
-| AdMob              | `/app-ads.txt`                                                |
-| Legal notice       | `/legal-notice/`                                              |
-| Privacy            | `/<app>/privacy/`, `/<app>/uk/privacy/`, `/<app>/de/privacy/` |
-| Terms              | `/<app>/terms/` (+ `/uk/`, `/de/`)                            |
-| Support            | `/<app>/support/` (+ `/uk/`, `/de/`)                          |
+| Page               | URL                                                                    |
+| ------------------ | ---------------------------------------------------------------------- |
+| App list + contact | `/`                                                                    |
+| AdMob              | `/app-ads.txt`                                                         |
+| Legal notice       | `/legal-notice/`                                                       |
+| Privacy            | `/<app>/privacy/`, `/<app>/<lang>/privacy/` for `uk`, `de`, `fr`, `es` |
+| Terms              | `/<app>/terms/` (+ `/uk/`, `/de/`, `/fr/`, `/es/`)                     |
+| Support            | `/<app>/support/` (+ `/uk/`, `/de/`, `/fr/`, `/es/`)                   |
 
 ## How the per-app documents work
 
@@ -48,10 +49,17 @@ which is what the stores check, and nothing is copy-pasted.
 Keep the flags true to what the shipped build actually does. If you add an SDK
 to an app, add it to `sdks` in the same change.
 
+## Adding a language
+
+1. Add the code to `languages` in `_config.yml` and a block to `_data/i18n.yml`.
+2. Translate `_includes/docs/{privacy,terms,support}.en.md` to `<doc>.<lang>.md`.
+3. Add the language to every per-language value in `_data/apps.yml`.
+4. Run `ruby scripts/new_app.rb <slug>` for each app (it only adds the missing stubs).
+
 ## Adding an app
 
 1. Add an entry to `_data/apps.yml`. Copy `stick-and-kick` and adjust it.
-2. `ruby scripts/new_app.rb <slug>`: creates the 9 page stubs.
+2. `ruby scripts/new_app.rb <slug>`: creates the 15 page stubs (3 documents × 5 languages).
 3. `ruby scripts/gmail_filters.rb`, then re-import `gmail/mailFilters.xml` (only if
    the support inbox is read in Gmail).
 4. `ruby scripts/legal_config.rb <slug>`: paste the output into the app's
@@ -74,10 +82,14 @@ features both versions support.
       company registration needed). Push this repo as **`eiz-dev/eizdev.github.io`**
       and keep it **public** (free Pages requires that).
 - [ ] **Pages.** Settings → Pages → _Deploy from a branch_ → `main` / root.
-      Check `https://eizdev.github.io/app-ads.txt`.
+      Check ``.
 - [ ] **Real texts.** Port the reviewed drafts from `drum-app/docs/legal/` into
       `_includes/docs/*.md`, keeping the `{% if app.* %}` switches. Do not indent
       lines (Markdown would turn them into code blocks). Then set `mock_content: false`.
+      Check `https://eizdev.github.io/app-ads.txt`.
+- [x] **Texts.** `_includes/docs/*.md` hold the live texts in five languages; `mock_content: false`.
+      Keep the `{% if app.* %}` switches and don't indent lines (Markdown would turn
+      them into code blocks).
 - [x] **Studio facts.** `owner_name`, `support.email` and `admob_publisher_id`
       are set.
 - [ ] **Support inbox.** Every page uses `support.email` (`support@eizdev.com`).
