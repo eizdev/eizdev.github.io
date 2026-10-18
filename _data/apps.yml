@@ -109,7 +109,7 @@ stickerzzz:
     fr: "Transformez vos photos en packs de stickers Telegram."
     es: "Convierte tus fotos en packs de stickers para Telegram."
   email_tag: stickerzzz              # plus-alias tag, used only if studio.support.plus_aliases
-  effective_date: 2026-10-17
+  effective_date: 2026-10-18
   stores:
     ios: ""                          # Android only
     android: https://play.google.com/store/apps/details?id=com.eizdev.stickerzzz
@@ -126,13 +126,13 @@ stickerzzz:
     fr: "Réglages → Confidentialité des annonces"
     es: "Ajustes → Privacidad de los anuncios"
   ad_formats:
-    en: full-screen ads at some moments, and rewarded videos you can choose to watch for an extra sticker slot
-    uk: повноекранну рекламу в окремі моменти та відео з винагородою, які ви можете переглянути за додаткове місце для стікера
-    de: Vollbildanzeigen an manchen Stellen und Videos mit Belohnung, die du freiwillig für einen zusätzlichen Sticker-Platz ansehen kannst
-    fr: "des publicités plein écran à certains moments, et des vidéos avec récompense que vous pouvez choisir de regarder pour obtenir une place de sticker en plus"
-    es: "anuncios a pantalla completa en algunos momentos y vídeos con recompensa que puedes elegir ver para conseguir un hueco más para stickers"
-  # Unlimited keeps ads; Ads Free/Premium turn off interstitials (LimitsService.showsAds).
-  # The optional rewarded video for +1 slot stays available to everyone.
+    en: full-screen ads at some moments, and rewarded videos you can choose to watch for 5 more stickers in a pack
+    uk: повноекранну рекламу в окремі моменти та відео з винагородою, які ви можете переглянути, щоб отримати ще 5 стікерів у паку
+    de: Vollbildanzeigen an manchen Stellen und Videos mit Belohnung, die du freiwillig für 5 weitere Sticker in einem Pack ansehen kannst
+    fr: "des publicités plein écran à certains moments, et des vidéos avec récompense que vous pouvez choisir de regarder pour 5 stickers de plus dans un pack"
+    es: "anuncios a pantalla completa en algunos momentos y vídeos con recompensa que puedes elegir ver para tener 5 stickers más en un pack"
+  # Plus keeps ads; Ads Free/Premium turn off interstitials (LimitsService.showsAds).
+  # The optional rewarded video (+5 stickers) stays available to everyone who still needs it.
   ads_paid_note:
     en: Ads Free and Premium turn off the full-screen ads; rewarded videos only play when you choose to watch one.
     uk: Ads Free і Premium вимикають повноекранну рекламу; відео з винагородою відтворюються лише тоді, коли ви самі вирішите його переглянути.
@@ -140,18 +140,25 @@ stickerzzz:
     fr: "Ads Free et Premium désactivent les publicités plein écran ; les vidéos avec récompense ne se lancent que si vous choisissez d’en regarder une."
     es: "Ads Free y Premium desactivan los anuncios a pantalla completa; los vídeos con recompensa solo se reproducen cuando eliges ver uno."
 
-  # Google Play Billing one-time products ads_free / unlimited / premium,
-  # verified by our server (api-worker /api/validatePurchase → Google Play Developer API).
+  # Google Play Billing one-time products ads_free / unlimited (shown as "Plus") / premium,
+  # verified by our server (api-worker POST /v1/purchases → Google Play Developer API).
   iap: true
   iap_kind: one_time
   premium_name: Premium
   iap_plans:
-    en: Ads Free, Unlimited and Premium
-    uk: Ads Free, Unlimited і Premium
-    de: Ads Free, Unlimited und Premium
-    fr: "Ads Free, Unlimited et Premium"
-    es: "Ads Free, Unlimited y Premium"
+    en: Ads Free, Plus and Premium
+    uk: Ads Free, Plus і Premium
+    de: Ads Free, Plus und Premium
+    fr: "Ads Free, Plus et Premium"
+    es: "Ads Free, Plus y Premium"
   iap_server_check: true
+  # Fair use (round 2, D-B4/D-B5): the cap every account has, paid plans included.
+  fair_use:
+    en: An account can have up to 100 sticker packs.
+    uk: В одному обліковому записі може бути до 100 наборів стікерів.
+    de: Ein Konto kann bis zu 100 Sticker-Packs haben.
+    fr: "Un compte peut avoir jusqu’à 100 packs de stickers."
+    es: "Una cuenta puede tener hasta 100 packs de stickers."
 
   # Firebase Anonymous Auth + own server (Cloudflare Worker + D1). No sign-in with
   # name/email. Firebase Crashlytics for crashes and errors (lib/core/logging/app_log.dart);
@@ -172,21 +179,26 @@ stickerzzz:
         de: Eine zufällige App-ID aus Firebase Anonymous Authentication und wann sie zuerst gesehen wurde
         fr: "Un identifiant d’app aléatoire issu de Firebase Anonymous Authentication, et la date à laquelle il a été vu pour la première fois"
         es: "Un identificador de app aleatorio de Firebase Anonymous Authentication y cuándo se vio por primera vez"
-      - en: Which plans you own (Ads Free, Unlimited, Premium). The purchase token the app sends is only used to check the purchase with Google Play and is not stored
-        uk: Які тарифи у вас є (Ads Free, Unlimited, Premium). Токен покупки, який надсилає застосунок, використовується лише для перевірки в Google Play і не зберігається
-        de: Welche Pläne du besitzt (Ads Free, Unlimited, Premium). Das Kauf-Token, das die App sendet, wird nur zur Prüfung bei Google Play verwendet und nicht gespeichert
-        fr: "Les offres que vous possédez (Ads Free, Unlimited, Premium). Le jeton d’achat envoyé par l’app sert uniquement à vérifier l’achat auprès de Google Play et n’est pas conservé"
-        es: "Qué planes tienes (Ads Free, Unlimited, Premium). El token de compra que envía la app solo se usa para comprobar la compra con Google Play y no se guarda"
+      - en: Which plans you own (Ads Free, Plus, Premium). The purchase token the app sends is used to check the purchase with Google Play; we keep only a one-way hash of it, to limit how many accounts one purchase unlocks
+        uk: Які тарифи у вас є (Ads Free, Plus, Premium). Токен покупки, який надсилає застосунок, використовується для перевірки в Google Play; ми зберігаємо лише його односторонній хеш, щоб обмежити кількість облікових записів для однієї покупки
+        de: Welche Pläne du besitzt (Ads Free, Plus, Premium). Das Kauf-Token, das die App sendet, wird zur Prüfung bei Google Play verwendet; wir speichern nur einen Einweg-Hash davon, um zu begrenzen, wie viele Konten ein Kauf freischaltet
+        fr: "Les offres que vous possédez (Ads Free, Plus, Premium). Le jeton d’achat envoyé par l’app sert à vérifier l’achat auprès de Google Play ; nous n’en gardons qu’une empreinte irréversible, pour limiter le nombre de comptes qu’un achat débloque"
+        es: "Qué planes tienes (Ads Free, Plus, Premium). El token de compra que envía la app se usa para comprobar la compra con Google Play; solo guardamos un hash irreversible de él, para limitar cuántas cuentas desbloquea una compra"
       - en: "If you connect Telegram: your Telegram user ID, username and first name, and the one-time connect code"
         uk: "Якщо ви підключили Telegram: ваш ідентифікатор користувача Telegram, ім’я користувача (username) та ім’я, а також одноразовий код підключення"
         de: "Wenn du Telegram verbindest: deine Telegram-Nutzer-ID, deinen Benutzernamen und Vornamen sowie den einmaligen Verbindungscode"
         fr: "Si vous connectez Telegram : votre identifiant d’utilisateur Telegram, votre nom d’utilisateur et votre prénom, ainsi que le code de connexion à usage unique"
         es: "Si conectas Telegram: tu ID de usuario de Telegram, tu nombre de usuario y tu nombre, y el código de conexión de un solo uso"
-      - en: "For each pack you published: its title, link name, creation time and number of extra slots (the stickers themselves are stored by Telegram)"
-        uk: "Для кожного опублікованого паку: назва, назва посилання, час створення і кількість додаткових місць (самі стікери зберігає Telegram)"
-        de: "Für jedes veröffentlichte Pack: Titel, Link-Name, Erstellungszeit und Anzahl zusätzlicher Plätze (die Sticker selbst speichert Telegram)"
-        fr: "Pour chaque pack publié : son titre, son nom de lien, sa date de création et son nombre de places supplémentaires (les stickers eux-mêmes sont stockés par Telegram)"
-        es: "Para cada pack publicado: su título, el nombre del enlace, la fecha de creación y el número de huecos extra (los stickers en sí los guarda Telegram)"
+      - en: "For each pack you published: its title, link name, creation time and a list of its stickers' Telegram IDs (the stickers themselves are stored by Telegram)"
+        uk: "Для кожного опублікованого паку: назва, назва посилання, час створення і перелік ідентифікаторів його стікерів у Telegram (самі стікери зберігає Telegram)"
+        de: "Für jedes veröffentlichte Pack: Titel, Link-Name, Erstellungszeit und eine Liste der Telegram-IDs seiner Sticker (die Sticker selbst speichert Telegram)"
+        fr: "Pour chaque pack publié : son titre, son nom de lien, sa date de création et la liste des identifiants Telegram de ses stickers (les stickers eux-mêmes sont stockés par Telegram)"
+        es: "Para cada pack publicado: su título, el nombre del enlace, la fecha de creación y una lista de los ID de Telegram de sus stickers (los stickers en sí los guarda Telegram)"
+      - en: "Rewarded videos: when you finish one, Google AdMob tells our server so, with your anonymous app ID and a pack ID (no personal data). We keep each reward (time, pack ID, AdMob's transaction ID) to add the stickers and to count 5 videos per 24 hours"
+        uk: "Відео з винагородою: коли ви додивилися відео, Google AdMob повідомляє про це наш сервер, передаючи ваш анонімний ідентифікатор застосунку та ідентифікатор паку (без персональних даних). Ми зберігаємо кожну винагороду (час, ідентифікатор паку, ідентифікатор транзакції AdMob), щоб додати стікери й рахувати 5 відео за 24 години"
+        de: "Belohnungsvideos: Wenn du eins zu Ende ansiehst, teilt Google AdMob das unserem Server mit, mit deiner anonymen App-ID und einer Pack-ID (keine personenbezogenen Daten). Wir speichern jede Belohnung (Zeit, Pack-ID, Transaktions-ID von AdMob), um die Sticker hinzuzufügen und 5 Videos pro 24 Stunden zu zählen"
+        fr: "Vidéos avec récompense : quand vous en terminez une, Google AdMob le signale à notre serveur, avec votre identifiant d’app anonyme et un identifiant de pack (aucune donnée personnelle). Nous conservons chaque récompense (heure, identifiant du pack, identifiant de transaction AdMob) pour ajouter les stickers et compter 5 vidéos par 24 heures"
+        es: "Vídeos con recompensa: cuando terminas uno, Google AdMob se lo comunica a nuestro servidor, con tu identificador de app anónimo y un identificador de pack (sin datos personales). Guardamos cada recompensa (hora, identificador del pack, identificador de transacción de AdMob) para añadir los stickers y contar 5 vídeos cada 24 horas"
   server_delete:
     en: Clear app data (see above) disconnects Telegram and starts a new anonymous ID on this phone, but the old record stays on our server. To have it deleted, email us and tell us your Telegram username if you connected one. We delete the record within 30 days. Packs you published stay on Telegram until you delete them in the app (do it before clearing app data), or ask us in the same email to delete them.
     uk: «Очистити дані застосунку» (див. вище) відключає Telegram і створює новий анонімний ідентифікатор на цьому телефоні, але старий запис залишається на нашому сервері. Щоб його видалити, напишіть нам і вкажіть ваш username у Telegram, якщо ви його підключали. Ми видалимо запис протягом 30 днів. Опубліковані паки залишаються в Telegram, доки ви не видалите їх у застосунку (зробіть це до очищення даних) або не попросите нас видалити їх у тому самому листі.
@@ -242,7 +254,7 @@ stickerzzz:
       privacy_url: https://firebase.google.com/support/privacy
     - name: Firebase Remote Config
       provider: Google LLC
-      purpose: { en: App settings and limits, uk: Налаштування й обмеження застосунку, de: App-Einstellungen und Limits, fr: "Réglages et limites de l’app", es: "Ajustes y límites de la app" }
+      purpose: { en: App settings, uk: Налаштування застосунку, de: App-Einstellungen, fr: "Réglages de l’app", es: "Ajustes de la app" }
       privacy_url: https://firebase.google.com/support/privacy
     - name: Google AdMob
       provider: Google Ireland Limited (EEA/UK/CH), Google LLC (elsewhere)
@@ -286,11 +298,11 @@ stickerzzz:
       de: Zwischengespeicherte Bilder deiner veröffentlichten Sticker
       fr: "Les images en cache de vos stickers publiés"
       es: "Imágenes en caché de tus stickers publicados"
-    - en: Settings (theme, language), recently used emojis, whether you accepted the terms, and a daily counter for rewarded videos
-      uk: Налаштування (тема, мова), нещодавні емодзі, чи прийняли ви умови, і щоденний лічильник відео з винагородою
-      de: Einstellungen (Design, Sprache), zuletzt genutzte Emojis, ob du die Bedingungen akzeptiert hast, und ein Tageszähler für Belohnungsvideos
-      fr: "Réglages (thème, langue), emoji récents, acceptation des conditions, et un compteur quotidien des vidéos avec récompense"
-      es: "Ajustes (tema, idioma), emoji recientes, si aceptaste las condiciones y un contador diario de vídeos con recompensa"
+    - en: Settings (theme, language), recently used emojis and whether you accepted the terms
+      uk: Налаштування (тема, мова), нещодавні емодзі та чи прийняли ви умови
+      de: Einstellungen (Design, Sprache), zuletzt genutzte Emojis und ob du die Bedingungen akzeptiert hast
+      fr: "Réglages (thème, langue), emoji récents et acceptation des conditions"
+      es: "Ajustes (tema, idioma), emoji recientes y si aceptaste las condiciones"
 
   faq:
     - q:
