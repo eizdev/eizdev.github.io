@@ -78,8 +78,8 @@ features both versions support.
 
 ## One-time setup (plan §7)
 
-- [ ] **Org + repo.** Create the free GitHub Organization **eiz-dev** (no
-      company registration needed). Push this repo as **`eiz-dev/eizdev.github.io`**
+- [ ] **Org + repo.** Create the free GitHub Organization **eizdev** (no
+      company registration needed). Push this repo as **`eizdev/eizdev.github.io`**
       and keep it **public** (free Pages requires that).
 - [ ] **Pages.** Settings → Pages → _Deploy from a branch_ → `main` / root.
       Check ``.

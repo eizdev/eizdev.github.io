@@ -4,7 +4,7 @@
 
 title: EizDev
 description: Mobile apps by EizDev, an independent developer.
-url: https://eizdev.github.io # repo eiz-dev/eizdev.github.io (Pages URLs are lowercase)
+url: https://eizdev.github.io # repo eizdev/eizdev.github.io (the Pages host is the owner name)
 baseurl: ""
 
 permalink: pretty
