@@ -1,7 +1,8 @@
 # eizdev.github.io
 
 Developer website for all studio apps: privacy policies, terms, support pages,
-legal notice and `app-ads.txt`. Plain GitHub Pages + Jekyll — no CI, no plugins, $0.
+legal notice and `app-ads.txt`, served at **https://eizdev.com** (custom domain). Plain GitHub
+Pages + Jekyll — no CI, no plugins, $0 (the domain is ~$10/yr).
 Implements `drum-app/LEGAL_HOSTING_PLAN.md`.
 
 > **Status: live texts** (`mock_content: false`, no "Draft" banner). The documents cover the GDPR
@@ -82,11 +83,11 @@ features both versions support.
       company registration needed). Push this repo as **`eiz-dev/eizdev.github.io`**
       and keep it **public** (free Pages requires that).
 - [ ] **Pages.** Settings → Pages → _Deploy from a branch_ → `main` / root.
-      Check ``.
+      Check `https://eizdev.com/`.
 - [ ] **Real texts.** Port the reviewed drafts from `drum-app/docs/legal/` into
       `_includes/docs/*.md`, keeping the `{% if app.* %}` switches. Do not indent
       lines (Markdown would turn them into code blocks). Then set `mock_content: false`.
-      Check `https://eizdev.github.io/app-ads.txt`.
+      Check `https://eizdev.com/app-ads.txt`.
 - [x] **Texts.** `_includes/docs/*.md` hold the live texts in five languages; `mock_content: false`.
       Keep the `{% if app.* %}` switches and don't indent lines (Markdown would turn
       them into code blocks).
@@ -108,10 +109,12 @@ features both versions support.
 - [ ] **App config.** Paste the `scripts/legal_config.rb` output into each app's
       `legal_config.dart`.
 - [ ] **Consoles.** Enter the privacy, support and marketing URLs in App Store
-      Connect, Play Console and AdMob, using `https://eizdev.github.io/` as the
+      Connect, Play Console and AdMob, using `https://eizdev.com/` as the
       developer website. In AdMob, open Apps → _app-ads.txt_ and verify.
-- [ ] **Optional custom domain** (~$10/yr). Add a `CNAME` file, update `url`, and
-      re-verify app-ads.txt on the new domain.
+- [x] **Custom domain** `eizdev.com` (Cloudflare Registrar, DNS on Cloudflare): `CNAME`
+      file and `url` in `_config.yml` are set; `eizdev.github.io` URLs redirect to it.
+      Keep HTTPS forced (Pages → _Enforce HTTPS_, or Cloudflare → SSL/TLS → _Always Use
+      HTTPS_ when the record is proxied) and re-verify app-ads.txt in AdMob after a change.
 
 ## EizDev is a brand, not a company
 
