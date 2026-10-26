@@ -58,7 +58,7 @@ La versión gratuita muestra anuncios servidos por Google AdMob{% if app.ad_form
 
 {% if app.iap %}## Compras
 
-{% if app.iap_kind == "subscription" %}Las suscripciones las gestiona{% elsif app.iap_plans %}{{ app.iap_plans[lang] }} son compras únicas que gestiona{% else %}{{ app.premium_name }} es una compra única que gestiona{% endif %} por completo la App Store de Apple o Google Play. La app solo recibe la confirmación de que la compra se ha hecho o restaurado.{% if app.iap_server_check %} Para desbloquearla, la app envía esta confirmación (producto y token de compra) a nuestro servidor, que la comprueba con Google Play y registra qué planes tienes.{% endif %}
+{% if app.iap_kind == "subscription" %}Las suscripciones las gestiona{% elsif app.iap_plans %}{{ app.iap_plans[lang] }} son compras únicas que gestiona{% else %}{{ app.premium_name }} es una compra única que gestiona{% endif %} por completo la App Store de Apple o Google Play. La app solo recibe la confirmación de que la compra se ha hecho o restaurado.{% if app.iap_server_check %} Para desbloquearla, la app envía esta confirmación (producto y token de compra) a nuestro servidor, que la comprueba con Google Play y registra qué planes tienes.{% endif %}{% if app.iap_note %} {{ app.iap_note[lang] }}{% endif %}
 {% endif %}
 
 {% if app.analytics %}## Analítica e informes de errores

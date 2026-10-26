@@ -16,7 +16,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 
 {% if app.iap %}{% if app.iap_plans %}**Я купив(-ла) тариф, але його не розблоковано.**<br>
 Відкрийте в застосунку екран тарифів або Налаштування і натисніть **Відновити покупки**, увійшовши в той самий обліковий запис Google, з якого купували.{% else %}**Я купив(-ла) {{ app.premium_name }}, але його не розблоковано.**<br>
-Відкрийте екран {{ app.premium_name }} у застосунку і натисніть **Відновити покупку**, увійшовши в той самий обліковий запис Apple або Google, з якого купували.{% endif %}
+{% if app.restore_note %}{{ app.restore_note[lang] }}{% else %}Відкрийте екран {{ app.premium_name }} у застосунку і натисніть **Відновити покупку**, увійшовши в той самий обліковий запис Apple або Google, з якого купували.{% endif %}{% endif %}
 
 **Як повернути кошти?**<br>
 Повернення коштів здійснює магазин: [Apple](https://reportaproblem.apple.com) · [Google Play](https://support.google.com/googleplay/answer/2479637).

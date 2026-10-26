@@ -16,7 +16,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 
 {% if app.iap %}{% if app.iap_plans %}**He comprado un plan, pero no se ha desbloqueado.**<br>
 Abre la pantalla de planes de la app o los Ajustes y toca **Restaurar compras**, con la misma cuenta de Google con la que lo compraste.{% else %}**He comprado {{ app.premium_name }}, pero no se ha desbloqueado.**<br>
-Abre la pantalla {{ app.premium_name }} de la app y toca **Restaurar compra**, con la misma cuenta de Apple o Google con la que lo compraste.{% endif %}
+{% if app.restore_note %}{{ app.restore_note[lang] }}{% else %}Abre la pantalla {{ app.premium_name }} de la app y toca **Restaurar compra**, con la misma cuenta de Apple o Google con la que lo compraste.{% endif %}{% endif %}
 
 **¿Cómo consigo un reembolso?**<br>
 Los reembolsos los gestiona la tienda: [Apple](https://reportaproblem.apple.com) · [Google Play](https://support.google.com/googleplay/answer/2479637).

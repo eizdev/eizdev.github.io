@@ -58,7 +58,7 @@ The free version shows ads served by Google AdMob{% if app.ad_formats %}: {{ app
 
 {% if app.iap %}## Purchases
 
-{% if app.iap_kind == "subscription" %}Subscriptions are{% elsif app.iap_plans %}{{ app.iap_plans[lang] }} are one-time purchases{% else %}{{ app.premium_name }} is a one-time purchase{% endif %} processed entirely by the Apple App Store or Google Play. The app only receives a confirmation that the purchase was made or restored.{% if app.iap_server_check %} To unlock it, the app sends this confirmation (product and purchase token) to our server, which checks it with Google Play and records which plan you own.{% endif %}
+{% if app.iap_kind == "subscription" %}Subscriptions are{% elsif app.iap_plans %}{{ app.iap_plans[lang] }} are one-time purchases{% else %}{{ app.premium_name }} is a one-time purchase{% endif %} processed entirely by the Apple App Store or Google Play. The app only receives a confirmation that the purchase was made or restored.{% if app.iap_server_check %} To unlock it, the app sends this confirmation (product and purchase token) to our server, which checks it with Google Play and records which plan you own.{% endif %}{% if app.iap_note %} {{ app.iap_note[lang] }}{% endif %}
 {% endif %}
 
 {% if app.analytics %}## Analytics and crash reporting

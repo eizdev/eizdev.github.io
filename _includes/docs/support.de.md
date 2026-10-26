@@ -16,7 +16,7 @@ Fragen, Fehler, Ideen? Schreib an **[{{ email }}]({{ mailto }})** — wir antwor
 
 {% if app.iap %}{% if app.iap_plans %}**Ich habe einen Plan gekauft, aber er ist nicht freigeschaltet.**<br>
 Öffne in der App den Plan-Bildschirm oder die Settings und tippe auf **Restore purchases** — angemeldet mit demselben Google-Konto wie beim Kauf.{% else %}**Ich habe {{ app.premium_name }} gekauft, aber es ist nicht freigeschaltet.**<br>
-Öffne in der App den {{ app.premium_name }}-Bildschirm und tippe auf **Kauf wiederherstellen** — angemeldet mit demselben Apple- bzw. Google-Konto wie beim Kauf.{% endif %}
+{% if app.restore_note %}{{ app.restore_note[lang] }}{% else %}Öffne in der App den {{ app.premium_name }}-Bildschirm und tippe auf **Kauf wiederherstellen** — angemeldet mit demselben Apple- bzw. Google-Konto wie beim Kauf.{% endif %}{% endif %}
 
 **Wie bekomme ich eine Erstattung?**<br>
 Erstattungen laufen über den Store: [Apple](https://reportaproblem.apple.com) · [Google Play](https://support.google.com/googleplay/answer/2479637).

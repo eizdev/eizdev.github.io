@@ -16,7 +16,7 @@ Questions, bugs, ideas? Email **[{{ email }}]({{ mailto }})** — we usually rep
 
 {% if app.iap %}{% if app.iap_plans %}**I bought a plan but it isn't unlocked.**<br>
 Open the app's plans screen or Settings and tap **Restore purchases**, signed in to the same Google account you bought it with.{% else %}**I bought {{ app.premium_name }} but it isn't unlocked.**<br>
-Open the app's {{ app.premium_name }} screen and tap **Restore purchase**, signed in to the same Apple or Google account you bought it with.{% endif %}
+{% if app.restore_note %}{{ app.restore_note[lang] }}{% else %}Open the app's {{ app.premium_name }} screen and tap **Restore purchase**, signed in to the same Apple or Google account you bought it with.{% endif %}{% endif %}
 
 **How do I get a refund?**<br>
 Refunds are handled by the store: [Apple](https://reportaproblem.apple.com) · [Google Play](https://support.google.com/googleplay/answer/2479637).

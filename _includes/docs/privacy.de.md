@@ -58,7 +58,7 @@ Die kostenlose Version zeigt Werbung über Google AdMob{% if app.ad_formats %}: 
 
 {% if app.iap %}## Käufe
 
-{% if app.iap_kind == "subscription" %}Abonnements werden{% elsif app.iap_plans %}{{ app.iap_plans[lang] }} sind Einmalkäufe und werden{% else %}{{ app.premium_name }} ist ein Einmalkauf und wird{% endif %} vollständig über den Apple App Store oder Google Play abgewickelt. Die App erhält nur eine Bestätigung, dass der Kauf erfolgt oder wiederhergestellt ist.{% if app.iap_server_check %} Zum Freischalten sendet die App diese Bestätigung (Produkt und Kauf-Token) an unseren Server, der sie bei Google Play prüft und speichert, welchen Plan du besitzt.{% endif %}
+{% if app.iap_kind == "subscription" %}Abonnements werden{% elsif app.iap_plans %}{{ app.iap_plans[lang] }} sind Einmalkäufe und werden{% else %}{{ app.premium_name }} ist ein Einmalkauf und wird{% endif %} vollständig über den Apple App Store oder Google Play abgewickelt. Die App erhält nur eine Bestätigung, dass der Kauf erfolgt oder wiederhergestellt ist.{% if app.iap_server_check %} Zum Freischalten sendet die App diese Bestätigung (Produkt und Kauf-Token) an unseren Server, der sie bei Google Play prüft und speichert, welchen Plan du besitzt.{% endif %}{% if app.iap_note %} {{ app.iap_note[lang] }}{% endif %}
 {% endif %}
 
 {% if app.analytics %}## Analyse und Absturzberichte

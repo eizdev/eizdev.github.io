@@ -58,7 +58,7 @@ La version gratuite affiche des publicités diffusées par Google AdMob{% if app
 
 {% if app.iap %}## Achats
 
-{% if app.iap_kind == "subscription" %}Les abonnements sont traités{% elsif app.iap_plans %}{{ app.iap_plans[lang] }} sont des achats uniques traités{% else %}{{ app.premium_name }} est un achat unique traité{% endif %} entièrement par l’App Store d’Apple ou Google Play. L’app reçoit seulement la confirmation que l’achat a été effectué ou restauré.{% if app.iap_server_check %} Pour le débloquer, l’app envoie cette confirmation (produit et jeton d’achat) à notre serveur, qui la vérifie auprès de Google Play et enregistre les offres que vous possédez.{% endif %}
+{% if app.iap_kind == "subscription" %}Les abonnements sont traités{% elsif app.iap_plans %}{{ app.iap_plans[lang] }} sont des achats uniques traités{% else %}{{ app.premium_name }} est un achat unique traité{% endif %} entièrement par l’App Store d’Apple ou Google Play. L’app reçoit seulement la confirmation que l’achat a été effectué ou restauré.{% if app.iap_server_check %} Pour le débloquer, l’app envoie cette confirmation (produit et jeton d’achat) à notre serveur, qui la vérifie auprès de Google Play et enregistre les offres que vous possédez.{% endif %}{% if app.iap_note %} {{ app.iap_note[lang] }}{% endif %}
 {% endif %}
 
 {% if app.analytics %}## Analyse et rapports de plantage

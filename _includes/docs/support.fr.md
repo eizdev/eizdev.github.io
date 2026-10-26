@@ -16,7 +16,7 @@ Des questions, des bugs, des idées ? Écrivez à **[{{ email }}]({{ mailto }})*
 
 {% if app.iap %}{% if app.iap_plans %}**J’ai acheté une offre, mais elle n’est pas débloquée.**<br>
 Ouvrez l’écran des offres de l’app ou les Réglages et touchez **Restaurer les achats**, en étant connecté au même compte Google que lors de l’achat.{% else %}**J’ai acheté {{ app.premium_name }}, mais ce n’est pas débloqué.**<br>
-Ouvrez l’écran {{ app.premium_name }} de l’app et touchez **Restaurer l’achat**, en étant connecté au même compte Apple ou Google que lors de l’achat.{% endif %}
+{% if app.restore_note %}{{ app.restore_note[lang] }}{% else %}Ouvrez l’écran {{ app.premium_name }} de l’app et touchez **Restaurer l’achat**, en étant connecté au même compte Apple ou Google que lors de l’achat.{% endif %}{% endif %}
 
 **Comment obtenir un remboursement ?**<br>
 Les remboursements sont gérés par la boutique : [Apple](https://reportaproblem.apple.com) · [Google Play](https://support.google.com/googleplay/answer/2479637).
