@@ -54,6 +54,9 @@ Telegram trata estos datos según su propia [política de privacidad](https://te
 La versión gratuita muestra anuncios servidos por Google AdMob{% if app.ad_formats %}: {{ app.ad_formats[lang] }}{% endif %}. El software de Google en tu dispositivo puede recoger identificadores del dispositivo (como el ID de publicidad de Android), tu dirección IP, información del dispositivo y de la app e interacciones con los anuncios, para mostrar, limitar, medir y —solo con tu consentimiento— personalizar los anuncios. Google actúa como responsable independiente.
 
 {% if app.ads_consent == false %}La app no muestra su propio mensaje de consentimiento. Donde la ley exige consentimiento para los anuncios personalizados (por ejemplo, en el EEE, el Reino Unido y Suiza), Google no sirve anuncios personalizados sin él y puede mostrar en su lugar anuncios no personalizados o limitados. Puedes restablecer tu ID de publicidad o desactivar los anuncios personalizados en los ajustes del dispositivo (Android: Ajustes → Google → Anuncios, o Ajustes → Privacidad → Anuncios).{% if app.iap and app.ads_paid_note %} {{ app.ads_paid_note[lang] }}{% endif %}{% else %}En el EEE, el Reino Unido y Suiza, la app muestra primero el mensaje de consentimiento de Google (Google User Messaging Platform) y no solicita ningún anuncio antes de que respondas. Si no das tu consentimiento, Google solo muestra anuncios no personalizados o limitados. Tu elección se guarda en tu dispositivo; puedes cambiarla en cualquier momento en {% if app.ads_privacy_path[lang] %}**{{ app.ads_privacy_path[lang] }}**{% else %}los ajustes de la app{% endif %}.{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}Si compras {{ app.premium_name }}, el software publicitario deja de iniciarse.{% endif %}{% endif %}{% endif %}
+{% if app.ads_note %}
+{{ app.ads_note[lang] }}
+{% endif %}
 {% endif %}
 
 {% if app.iap %}## Compras

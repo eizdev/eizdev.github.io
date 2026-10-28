@@ -28,7 +28,7 @@ Los reembolsos los gestiona la tienda: [Apple](https://reportaproblem.apple.com)
 {% if app.data_location[lang] %}{{ app.data_location[lang] }}{% elsif app.accounts %}En tu cuenta en nuestros servidores; consulta la política de privacidad.{% else %}Solo en tu dispositivo. No hay cuentas ni servidores.{% endif %}
 
 {% if app.delete_data_path[lang] %}**¿Cómo borro mis datos?**<br>
-{% if app.accounts %}{{ app.delete_data_path[lang] }} borra los datos de tu teléfono{% if app.telegram %} y desconecta Telegram{% endif %}; desinstalar la app hace lo mismo en el teléfono. Para que borremos también tu registro en nuestro servidor, escríbenos; consulta la [política de privacidad]({{ privacy_url }}).{% else %}{{ app.delete_data_path[lang] }}. Desinstalar la app también lo borra todo.{% endif %}
+{% if app.accounts %}{{ app.delete_data_path[lang] }} borra los datos de tu teléfono{% if app.telegram %} y desconecta Telegram{% endif %}; desinstalar la app hace lo mismo en el teléfono. Para que borremos también tu registro en nuestro servidor, escríbenos; consulta la [política de privacidad]({{ privacy_url }}).{% else %}{{ app.delete_data_path[lang] }}. {% if app.delete_data_note %}{{ app.delete_data_note[lang] }}{% else %}Desinstalar la app también lo borra todo.{% endif %}{% endif %}
 
 {% endif %}{% if app.ads %}{% if app.ads_consent == false %}**¿Cómo limito la personalización de los anuncios?**<br>
 En los ajustes del dispositivo (Android: Ajustes → Google → Anuncios, o Ajustes → Privacidad → Anuncios).{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}{{ app.premium_name }} elimina los anuncios por completo.{% endif %}{% endif %}{% else %}**¿Cómo cambio mi consentimiento para anuncios?**<br>

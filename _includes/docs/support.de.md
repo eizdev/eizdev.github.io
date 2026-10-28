@@ -28,7 +28,7 @@ Erstattungen laufen über den Store: [Apple](https://reportaproblem.apple.com) �
 {% if app.data_location[lang] %}{{ app.data_location[lang] }}{% elsif app.accounts %}In deinem Konto auf unseren Servern — siehe Datenschutzerklärung.{% else %}Nur auf deinem Gerät. Wir haben keine Konten und keine Server.{% endif %}
 
 {% if app.delete_data_path[lang] %}**Wie lösche ich meine Daten?**<br>
-{% if app.accounts %}{{ app.delete_data_path[lang] }} löscht die Daten auf deinem Telefon{% if app.telegram %} und trennt Telegram{% endif %}; Deinstallieren tut dasselbe für das Telefon. Um auch deinen Eintrag auf unserem Server löschen zu lassen, schreib uns — siehe [Datenschutzerklärung]({{ privacy_url }}).{% else %}{{ app.delete_data_path[lang] }}. Auch das Deinstallieren der App löscht alles.{% endif %}
+{% if app.accounts %}{{ app.delete_data_path[lang] }} löscht die Daten auf deinem Telefon{% if app.telegram %} und trennt Telegram{% endif %}; Deinstallieren tut dasselbe für das Telefon. Um auch deinen Eintrag auf unserem Server löschen zu lassen, schreib uns — siehe [Datenschutzerklärung]({{ privacy_url }}).{% else %}{{ app.delete_data_path[lang] }}. {% if app.delete_data_note %}{{ app.delete_data_note[lang] }}{% else %}Auch das Deinstallieren der App löscht alles.{% endif %}{% endif %}
 
 {% endif %}{% if app.ads %}{% if app.ads_consent == false %}**Wie schränke ich personalisierte Werbung ein?**<br>
 In den Geräteeinstellungen (Android: Einstellungen → Google → Werbung bzw. Einstellungen → Datenschutz → Werbung).{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}{{ app.premium_name }} entfernt Werbung vollständig.{% endif %}{% endif %}{% else %}**Wie ändere ich meine Werbe-Einwilligung?**<br>

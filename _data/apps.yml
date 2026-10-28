@@ -21,6 +21,8 @@
 #   analytics_note              Privacy → Analytics: provider, data, purpose, retention (needs analytics: true)
 #   iap_note                    extra sentence after Privacy → Purchases and Terms → Purchases (e.g. consumables)
 #   restore_note                support FAQ answer to "I bought … but it isn't unlocked" instead of the default
+#   ads_note                    extra paragraph after Privacy → Advertising (e.g. platform differences)
+#   delete_data_note            support FAQ sentence after delete_data_path instead of "Uninstalling … deletes everything"
 
 stick-and-kick:
   name: Stick & Kick
@@ -353,15 +355,16 @@ rapid-sudoku:
     fr: "Le sudoku contre la montre — niveaux Rapid, deux grilles quotidiennes et parties classiques sans chrono."
     es: "Sudoku contrarreloj: niveles Rapid, dos retos diarios y partidas clásicas sin cronómetro."
   email_tag: rapidsudoku             # plus-alias tag, used only if studio.support.plus_aliases
-  effective_date: 2026-10-26
+  effective_date: 2026-10-28
   stores:
-    ios: ""                          # App Store URL once live (iPhone, later)
+    ios: ""                          # App Store URL once live (iPhone only)
     android: ""                      # https://play.google.com/store/apps/details?id=com.eizdev.rapidsudoku
 
   # AdMob (app repo lib/core/ads/): full-screen ads when leaving the Rapid and Daily
   # result screens, paced; a rewarded video as an alternative to coins for the first
-  # continue of a game, granted on the phone. UMP consent first; the app is English only,
-  # so the other languages show the English path.
+  # continue of a game, granted on the phone. UMP consent first on both platforms; on
+  # iOS every request is non-personalized and there is no ATT prompt (app repo D46).
+  # The app is English only, so the other languages show the English path.
   ads: true
   ads_privacy_path:
     en: Settings → Ad privacy choices
@@ -375,6 +378,12 @@ rapid-sudoku:
     de: Vollbildanzeigen nach manchen Spielergebnissen und Videos mit Belohnung, die du freiwillig ansehen kannst, um ein Spiel einmal fortzusetzen
     fr: "des publicités plein écran après certains résultats de partie, et des vidéos avec récompense que vous pouvez choisir de regarder pour continuer une partie une fois"
     es: "anuncios a pantalla completa tras algunos resultados de partida y vídeos con recompensa que puedes elegir ver para continuar una partida una vez"
+  ads_note:
+    en: On iPhone the app never asks for permission to track you and requests only non-personalised ads, whatever you answer in the consent message. Google still uses the data above there to show, cap and measure ads and to prevent fraud, but not to personalise them.
+    uk: На iPhone застосунок ніколи не просить дозволу на відстеження і запитує лише неперсоналізовану рекламу, хоч би що ви відповіли в запиті на згоду. Google і там використовує наведені вище дані, щоб показувати, обмежувати й вимірювати рекламу та запобігати шахрайству, але не для персоналізації.
+    de: Auf dem iPhone fragt die App nie nach der Erlaubnis, dich zu tracken, und fordert nur nicht personalisierte Anzeigen an, egal was du in der Einwilligungsabfrage wählst. Google nutzt die oben genannten Daten dort weiterhin, um Anzeigen auszuliefern, zu begrenzen und zu messen und Betrug zu verhindern, aber nicht zur Personalisierung.
+    fr: "Sur iPhone, l’app ne demande jamais l’autorisation de vous suivre et ne demande que des publicités non personnalisées, quelle que soit votre réponse au message de consentement. Google y utilise toujours les données ci-dessus pour diffuser, limiter et mesurer les publicités et prévenir la fraude, mais pas pour les personnaliser."
+    es: "En iPhone la app nunca pide permiso para rastrearte y solo solicita anuncios no personalizados, respondas lo que respondas en el mensaje de consentimiento. Google sigue usando allí los datos anteriores para mostrar, limitar y medir anuncios y prevenir el fraude, pero no para personalizarlos."
   # Remove ads turns off the interstitials only; the rewarded continue stays for
   # everyone, so the ad SDK still starts (after consent) for owners too (D4, D5).
   ads_paid_note:
@@ -384,27 +393,31 @@ rapid-sudoku:
     fr: "« Remove ads » désactive les publicités plein écran ; les vidéos avec récompense ne se lancent que si vous choisissez d’en regarder une."
     es: "«Remove ads» desactiva los anuncios a pantalla completa; los vídeos con recompensa solo se reproducen cuando eliges ver uno."
 
-  # Google Play Billing (StoreKit on iOS later): the non-consumable remove_ads and the
-  # consumable coin bundles coins_10/20/50/100. Checked on the phone only (no server).
+  # Google Play Billing on Android, StoreKit 2 on iOS: the non-consumable remove_ads and
+  # the consumable coin bundles coins_10/20/50/100. Checked on the phone only (no server).
+  # On iOS a Keychain copy of the coin balance, login streak and remove-ads flag survives
+  # deleting the app (app repo T12.3).
   iap: true
   iap_kind: one_time
   premium_name: Remove ads
   iap_note:
-    en: Coin bundles are consumable. The coins are added on this device only; the stores can't restore them, and after a reinstall they come back only from your phone's own backup (Android). Only Remove ads can be restored.
-    uk: Набори монет — витратні покупки. Монети додаються лише на цьому пристрої; магазини не можуть їх відновити, а після перевстановлення вони повертаються лише з власної резервної копії телефона (Android). Відновити можна лише «Remove ads».
-    de: Münzpakete sind Verbrauchsartikel. Die Münzen werden nur auf diesem Gerät gutgeschrieben; die Stores können sie nicht wiederherstellen, und nach einer Neuinstallation kommen sie nur aus der eigenen Sicherung deines Telefons zurück (Android). Nur „Remove ads“ lässt sich wiederherstellen.
-    fr: "Les packs de pièces sont des achats consommables. Les pièces sont ajoutées sur cet appareil uniquement ; les stores ne peuvent pas les restaurer, et après une réinstallation elles ne reviennent que depuis la sauvegarde de votre téléphone (Android). Seul « Remove ads » peut être restauré."
-    es: "Los paquetes de monedas son compras consumibles. Las monedas se añaden solo en este dispositivo; las tiendas no pueden restaurarlas y, tras reinstalar, solo vuelven desde la copia de seguridad de tu teléfono (Android). Solo «Remove ads» se puede restaurar."
+    en: Coin bundles are consumable. The coins are added on this device only, and the stores can't restore them. After a reinstall they come back only from your phone itself — Android's own backup, or on iPhone the copy the app keeps in the phone's Keychain. Only Remove ads can be restored.
+    uk: Набори монет — витратні покупки. Монети додаються лише на цьому пристрої, і магазини не можуть їх відновити. Після перевстановлення вони повертаються лише з самого телефона — з власної резервної копії Android або, на iPhone, з копії, яку застосунок зберігає у Keychain (Зв’язці ключів) телефона. Відновити можна лише «Remove ads».
+    de: Münzpakete sind Verbrauchsartikel. Die Münzen werden nur auf diesem Gerät gutgeschrieben, und die Stores können sie nicht wiederherstellen. Nach einer Neuinstallation kommen sie nur vom Telefon selbst zurück — aus der eigenen Android-Sicherung oder auf dem iPhone aus der Kopie, die die App im Schlüsselbund (Keychain) des Telefons ablegt. Nur „Remove ads“ lässt sich wiederherstellen.
+    fr: "Les packs de pièces sont des achats consommables. Les pièces sont ajoutées sur cet appareil uniquement, et les stores ne peuvent pas les restaurer. Après une réinstallation, elles ne reviennent que depuis le téléphone lui-même : la sauvegarde d’Android ou, sur iPhone, la copie que l’app garde dans le trousseau (Keychain) du téléphone. Seul « Remove ads » peut être restauré."
+    es: "Los paquetes de monedas son compras consumibles. Las monedas se añaden solo en este dispositivo y las tiendas no pueden restaurarlas. Tras reinstalar, solo vuelven desde el propio teléfono: la copia de seguridad de Android o, en iPhone, la copia que la app guarda en el llavero (Keychain) del teléfono. Solo «Remove ads» se puede restaurar."
   restore_note:
-    en: Open **Settings → Restore purchases**, signed in to the same Google account you bought Remove ads with. Coin bundles can't be restored.
-    uk: Відкрийте **Settings → Restore purchases**, увійшовши в той самий обліковий запис Google, з якого купували «Remove ads». Набори монет відновити не можна.
-    de: Öffne **Settings → Restore purchases**, angemeldet mit demselben Google-Konto, mit dem du „Remove ads“ gekauft hast. Münzpakete lassen sich nicht wiederherstellen.
-    fr: "Ouvrez **Settings → Restore purchases**, connecté au même compte Google que celui utilisé pour acheter « Remove ads ». Les packs de pièces ne peuvent pas être restaurés."
-    es: "Abre **Settings → Restore purchases** con la misma cuenta de Google con la que compraste «Remove ads». Los paquetes de monedas no se pueden restaurar."
-  accounts: false                    # no accounts, no own server (Play Games sign-in only for leaderboards)
+    en: Open **Settings → Restore purchases**, signed in to the same Apple Account or Google account you bought Remove ads with. Coin bundles can't be restored.
+    uk: Відкрийте **Settings → Restore purchases**, увійшовши в той самий обліковий запис Apple або Google, з якого купували «Remove ads». Набори монет відновити не можна.
+    de: Öffne **Settings → Restore purchases**, angemeldet mit demselben Apple Account oder Google-Konto, mit dem du „Remove ads“ gekauft hast. Münzpakete lassen sich nicht wiederherstellen.
+    fr: "Ouvrez **Settings → Restore purchases**, connecté au même compte Apple ou Google que celui utilisé pour acheter « Remove ads ». Les packs de pièces ne peuvent pas être restaurés."
+    es: "Abre **Settings → Restore purchases** con la misma cuenta de Apple o de Google con la que compraste «Remove ads». Los paquetes de monedas no se pueden restaurar."
+  accounts: false                    # no accounts, no own server (Play Games / Game Center sign-in only for leaderboards)
   analytics: false                   # no analytics, no crash reporting (D15)
 
   # "Settings → Delete my data" (app repo lib/core/storage/local_data_wiper.dart, D23).
+  # It also rewrites the iOS Keychain copy with the wiped state; deleting the app on
+  # iOS leaves that copy behind, hence delete_data_note.
   # The app is English only, so every language shows the English labels.
   delete_data_path:
     en: Settings → Delete my data
@@ -412,22 +425,28 @@ rapid-sudoku:
     de: Settings → Delete my data
     fr: "Settings → Delete my data"
     es: "Settings → Delete my data"
+  delete_data_note:
+    en: Uninstalling the app deletes everything as well, except on iPhone, where the small Keychain copy of your coins, login streak and Remove ads stays so that a reinstall gets them back; Delete my data resets that copy too.
+    uk: Видалення застосунку також видаляє все, крім iPhone, де лишається невелика копія ваших монет, серії входів і «Remove ads» у Keychain, щоб після перевстановлення їх повернути; «Delete my data» скидає і цю копію.
+    de: Auch das Deinstallieren löscht alles, außer auf dem iPhone, wo die kleine Schlüsselbund-Kopie deiner Münzen, deiner Login-Serie und von „Remove ads“ bleibt, damit eine Neuinstallation sie zurückholt; „Delete my data“ setzt auch diese Kopie zurück.
+    fr: "Désinstaller l’app supprime aussi tout, sauf sur iPhone, où la petite copie de vos pièces, de votre série de connexions et de « Remove ads » reste dans le trousseau pour qu’une réinstallation les retrouve ; « Delete my data » réinitialise aussi cette copie."
+    es: "Desinstalar la app también lo borra todo, salvo en iPhone, donde la pequeña copia de tus monedas, tu racha de inicios y «Remove ads» se queda en el llavero para que una reinstalación las recupere; «Delete my data» también restablece esa copia."
 
   data_location:
-    en: Everything stays on your phone (and in your phone's own backup, if it is on). Scores you play for the leaderboards go to Google Play Games under your Play Games profile. We have no server.
-    uk: Усе зберігається на вашому телефоні (і в його власній резервній копії, якщо її ввімкнено). Результати для таблиць лідерів надсилаються в Google Play Games у ваш профіль Play Games. Власного сервера в нас немає.
-    de: Alles bleibt auf deinem Telefon (und in seiner eigenen Sicherung, falls aktiviert). Ergebnisse für die Bestenlisten gehen an Google Play Games in dein Play-Games-Profil. Wir haben keinen Server.
-    fr: "Tout reste sur votre téléphone (et dans sa propre sauvegarde, si elle est activée). Les scores des classements sont envoyés à Google Play Games, dans votre profil Play Jeux. Nous n’avons pas de serveur."
-    es: "Todo se queda en tu teléfono (y en su propia copia de seguridad, si está activada). Las puntuaciones de las clasificaciones van a Google Play Juegos, a tu perfil de Play Juegos. No tenemos servidor."
+    en: Everything stays on your phone (and in your phone's own backup, if it is on). Scores you play for the leaderboards go to Google Play Games on Android or Game Center on iPhone, under your profile there. We have no server.
+    uk: Усе зберігається на вашому телефоні (і в його власній резервній копії, якщо її ввімкнено). Результати для таблиць лідерів надсилаються в Google Play Games на Android або в Game Center на iPhone, у ваш профіль там. Власного сервера в нас немає.
+    de: Alles bleibt auf deinem Telefon (und in seiner eigenen Sicherung, falls aktiviert). Ergebnisse für die Bestenlisten gehen auf Android an Google Play Games und auf dem iPhone an Game Center, in dein Profil dort. Wir haben keinen Server.
+    fr: "Tout reste sur votre téléphone (et dans sa propre sauvegarde, si elle est activée). Les scores des classements sont envoyés à Google Play Games sur Android ou à Game Center sur iPhone, dans votre profil. Nous n’avons pas de serveur."
+    es: "Todo se queda en tu teléfono (y en su propia copia de seguridad, si está activada). Las puntuaciones de las clasificaciones van a Google Play Juegos en Android o a Game Center en iPhone, a tu perfil allí. No tenemos servidor."
 
   warranty_note:
-    en: "Leaderboards and sign-in depend on Google Play Games. We do not control it and are not responsible if it is unavailable or changes. Your progress and coins live on your device; we cannot recover them if they are lost."
-    uk: "Таблиці лідерів і вхід залежать від Google Play Games. Ми не контролюємо цей сервіс і не відповідаємо, якщо він недоступний або змінюється. Ваш прогрес і монети зберігаються на вашому пристрої; ми не можемо відновити їх у разі втрати."
-    de: "Bestenlisten und Anmeldung hängen von Google Play Games ab. Wir haben keinen Einfluss darauf und sind nicht verantwortlich, wenn es nicht erreichbar ist oder sich ändert. Dein Fortschritt und deine Münzen liegen auf deinem Gerät; gehen sie verloren, können wir sie nicht wiederherstellen."
-    fr: "Les classements et la connexion dépendent de Google Play Games. Nous ne le contrôlons pas et ne sommes pas responsables s’il est indisponible ou change. Votre progression et vos pièces restent sur votre appareil ; nous ne pouvons pas les récupérer en cas de perte."
-    es: "Las clasificaciones y el inicio de sesión dependen de Google Play Juegos. No lo controlamos y no somos responsables si no está disponible o cambia. Tu progreso y tus monedas están en tu dispositivo; no podemos recuperarlos si se pierden."
+    en: "Leaderboards and sign-in depend on Google Play Games (Android) and Game Center (iPhone). We do not control them and are not responsible if they are unavailable or change. Your progress and coins live on your device; we cannot recover them if they are lost."
+    uk: "Таблиці лідерів і вхід залежать від Google Play Games (Android) і Game Center (iPhone). Ми не контролюємо ці сервіси і не відповідаємо, якщо вони недоступні або змінюються. Ваш прогрес і монети зберігаються на вашому пристрої; ми не можемо відновити їх у разі втрати."
+    de: "Bestenlisten und Anmeldung hängen von Google Play Games (Android) und Game Center (iPhone) ab. Wir haben keinen Einfluss darauf und sind nicht verantwortlich, wenn sie nicht erreichbar sind oder sich ändern. Dein Fortschritt und deine Münzen liegen auf deinem Gerät; gehen sie verloren, können wir sie nicht wiederherstellen."
+    fr: "Les classements et la connexion dépendent de Google Play Games (Android) et de Game Center (iPhone). Nous ne les contrôlons pas et ne sommes pas responsables s’ils sont indisponibles ou changent. Votre progression et vos pièces restent sur votre appareil ; nous ne pouvons pas les récupérer en cas de perte."
+    es: "Las clasificaciones y el inicio de sesión dependen de Google Play Juegos (Android) y Game Center (iPhone). No los controlamos y no somos responsables si no están disponibles o cambian. Tu progreso y tus monedas están en tu dispositivo; no podemos recuperarlos si se pierden."
 
-  # Third-party SDKs that process personal data (app repo docs/legal/FACTS.md).
+  # Third-party SDKs and platform services that process personal data (app repo docs/legal/FACTS.md).
   sdks:
     - name: Google AdMob
       provider: Google Ireland Limited (EEA/UK/CH), Google LLC (elsewhere)
@@ -439,8 +458,12 @@ rapid-sudoku:
       privacy_url: https://policies.google.com/privacy
     - name: Google Play Games Services
       provider: Google Ireland Limited (EEA/UK/CH), Google LLC (elsewhere)
-      purpose: { en: Sign-in and leaderboards, uk: Вхід і таблиці лідерів, de: Anmeldung und Bestenlisten, fr: "Connexion et classements", es: "Inicio de sesión y clasificaciones" }
+      purpose: { en: Sign-in and leaderboards (Android), uk: Вхід і таблиці лідерів (Android), de: Anmeldung und Bestenlisten (Android), fr: "Connexion et classements (Android)", es: "Inicio de sesión y clasificaciones (Android)" }
       privacy_url: https://policies.google.com/privacy
+    - name: Apple Game Center
+      provider: Apple Distribution International Ltd. (EEA/UK/CH), Apple Inc. (elsewhere)
+      purpose: { en: Sign-in and leaderboards (iPhone), uk: Вхід і таблиці лідерів (iPhone), de: Anmeldung und Bestenlisten (iPhone), fr: "Connexion et classements (iPhone)", es: "Inicio de sesión y clasificaciones (iPhone)" }
+      privacy_url: https://www.apple.com/legal/privacy/
 
   # Data the app stores locally (never sent to us).
   local_data:
@@ -449,11 +472,11 @@ rapid-sudoku:
       de: Deine laufenden Spiele, Level und täglichen Rätsel
       fr: "Vos parties en cours, niveaux et grilles quotidiennes"
       es: "Tus partidas en curso, niveles y retos diarios"
-    - en: Your coins and their history (a coin purchase is recorded with the store's order number)
-      uk: Ваші монети та їхня історія (покупка монет записується з номером замовлення магазину)
-      de: Deine Münzen und ihr Verlauf (ein Münzkauf wird mit der Bestellnummer des Stores gespeichert)
-      fr: "Vos pièces et leur historique (un achat de pièces est enregistré avec le numéro de commande du store)"
-      es: "Tus monedas y su historial (una compra de monedas se guarda con el número de pedido de la tienda)"
+    - en: Your coins and their history (a coin purchase is recorded with the store's order or transaction number)
+      uk: Ваші монети та їхня історія (покупка монет записується з номером замовлення чи транзакції магазину)
+      de: Deine Münzen und ihr Verlauf (ein Münzkauf wird mit der Bestell- oder Transaktionsnummer des Stores gespeichert)
+      fr: "Vos pièces et leur historique (un achat de pièces est enregistré avec le numéro de commande ou de transaction du store)"
+      es: "Tus monedas y su historial (una compra de monedas se guarda con el número de pedido o de transacción de la tienda)"
     - en: Best scores, daily results and scores waiting to be sent to the leaderboards
       uk: Найкращі результати, щоденні результати та результати, що чекають на надсилання в таблиці лідерів
       de: Bestwerte, Tagesergebnisse und Ergebnisse, die noch an die Bestenlisten gesendet werden
@@ -464,6 +487,11 @@ rapid-sudoku:
       de: Einstellungen, deine Login-Serie und ob „Remove ads“ gekauft ist
       fr: "Réglages, votre série de connexions et l’achat éventuel de « Remove ads »"
       es: "Ajustes, tu racha de inicios y si tienes «Remove ads»"
+    - en: "On iPhone only: a small copy of your coin balance, login streak and Remove ads in the phone's Keychain, so that a reinstall gets them back. It stays on the iPhone when you delete the app (it is not synced to iCloud Keychain); Delete my data resets it."
+      uk: "Лише на iPhone: невелика копія балансу монет, серії входів і «Remove ads» у Keychain (Зв’язці ключів) телефона, щоб після перевстановлення їх повернути. Вона лишається на iPhone після видалення застосунку (не синхронізується з iCloud Keychain); «Delete my data» її скидає."
+      de: "Nur auf dem iPhone: eine kleine Kopie deines Münzstands, deiner Login-Serie und von „Remove ads“ im Schlüsselbund (Keychain) des Telefons, damit eine Neuinstallation sie zurückholt. Sie bleibt auf dem iPhone, wenn du die App löschst (sie wird nicht mit dem iCloud-Schlüsselbund synchronisiert); „Delete my data“ setzt sie zurück."
+      fr: "Sur iPhone uniquement : une petite copie de votre solde de pièces, de votre série de connexions et de « Remove ads » dans le trousseau (Keychain) du téléphone, pour qu’une réinstallation les retrouve. Elle reste sur l’iPhone quand vous supprimez l’app (elle n’est pas synchronisée avec le trousseau iCloud) ; « Delete my data » la réinitialise."
+      es: "Solo en iPhone: una pequeña copia de tu saldo de monedas, tu racha de inicios y «Remove ads» en el llavero (Keychain) del teléfono, para que una reinstalación los recupere. Se queda en el iPhone al borrar la app (no se sincroniza con el llavero de iCloud); «Delete my data» la restablece."
 
   # App-specific FAQ for the support page (generic purchase/data/ads answers
   # are added automatically from the flags above).
@@ -475,11 +503,11 @@ rapid-sudoku:
         fr: "Mes pièces reviennent-elles si je réinstalle l’app ou change de téléphone ?"
         es: "¿Recupero mis monedas si reinstalo la app o cambio de teléfono?"
       a:
-        en: On Android, yes, if backup is on in your phone's settings — they come back from your phone's Google backup as of the last backup (at most about a day old). The stores can't restore coin purchases, and we can't either, because we have no server.
-        uk: "На Android — так, якщо в налаштуваннях телефона ввімкнено резервне копіювання: монети повернуться з резервної копії Google станом на останнє копіювання (щонайбільше приблизно добової давності). Магазини не можуть відновити покупки монет, і ми теж, бо в нас немає сервера."
-        de: Auf Android ja, wenn die Sicherung in den Telefoneinstellungen aktiv ist — sie kommen aus der Google-Sicherung deines Telefons zurück, Stand der letzten Sicherung (höchstens etwa einen Tag alt). Die Stores können Münzkäufe nicht wiederherstellen, und wir auch nicht, da wir keinen Server haben.
-        fr: "Sur Android, oui, si la sauvegarde est activée dans les réglages du téléphone : elles reviennent depuis la sauvegarde Google du téléphone, dans l’état de la dernière sauvegarde (au plus environ un jour). Les stores ne peuvent pas restaurer les achats de pièces, et nous non plus, car nous n’avons pas de serveur."
-        es: "En Android, sí, si la copia de seguridad está activada en los ajustes del teléfono: vuelven desde la copia de Google del teléfono, tal como estaban en la última copia (como mucho de hace un día). Las tiendas no pueden restaurar compras de monedas, ni nosotros, porque no tenemos servidor."
+        en: On Android, yes, if backup is on in your phone's settings — they come back from your phone's Google backup as of the last backup (at most about a day old). On iPhone, yes after a reinstall on the same iPhone, from the copy the app keeps in the Keychain; on a new iPhone, if you set it up from an encrypted iCloud or computer backup. The stores can't restore coin purchases, and we can't either, because we have no server.
+        uk: "На Android — так, якщо в налаштуваннях телефона ввімкнено резервне копіювання: монети повернуться з резервної копії Google станом на останнє копіювання (щонайбільше приблизно добової давності). На iPhone — так після перевстановлення на тому самому iPhone, з копії, яку застосунок зберігає в Keychain; на новому iPhone — якщо ви налаштували його із зашифрованої резервної копії iCloud або комп’ютера. Магазини не можуть відновити покупки монет, і ми теж, бо в нас немає сервера."
+        de: Auf Android ja, wenn die Sicherung in den Telefoneinstellungen aktiv ist — sie kommen aus der Google-Sicherung deines Telefons zurück, Stand der letzten Sicherung (höchstens etwa einen Tag alt). Auf dem iPhone ja nach einer Neuinstallation auf demselben iPhone, aus der Kopie, die die App im Schlüsselbund ablegt; auf einem neuen iPhone, wenn du es aus einer verschlüsselten iCloud- oder Computer-Sicherung einrichtest. Die Stores können Münzkäufe nicht wiederherstellen, und wir auch nicht, da wir keinen Server haben.
+        fr: "Sur Android, oui, si la sauvegarde est activée dans les réglages du téléphone : elles reviennent depuis la sauvegarde Google du téléphone, dans l’état de la dernière sauvegarde (au plus environ un jour). Sur iPhone, oui après une réinstallation sur le même iPhone, depuis la copie que l’app garde dans le trousseau ; sur un nouvel iPhone, si vous le configurez depuis une sauvegarde chiffrée iCloud ou sur ordinateur. Les stores ne peuvent pas restaurer les achats de pièces, et nous non plus, car nous n’avons pas de serveur."
+        es: "En Android, sí, si la copia de seguridad está activada en los ajustes del teléfono: vuelven desde la copia de Google del teléfono, tal como estaban en la última copia (como mucho de hace un día). En iPhone, sí tras reinstalar en el mismo iPhone, desde la copia que la app guarda en el llavero; en un iPhone nuevo, si lo configuras desde una copia cifrada de iCloud o del ordenador. Las tiendas no pueden restaurar compras de monedas, ni nosotros, porque no tenemos servidor."
     - q:
         en: When do the daily puzzles change?
         uk: Коли змінюються щоденні пазли?
@@ -487,11 +515,11 @@ rapid-sudoku:
         fr: "Quand les grilles quotidiennes changent-elles ?"
         es: "¿Cuándo cambian los retos diarios?"
       a:
-        en: Every day at midnight Pacific time (Los Angeles), when Google Play Games resets its daily leaderboards. Daily coins and the login streak use the same day. New dailies need an internet connection; one you already started can be finished offline.
-        uk: Щодня опівночі за тихоокеанським часом (Лос-Анджелес), коли Google Play Games оновлює щоденні таблиці лідерів. Щоденні монети та серія входів рахуються за тим самим днем. Для нових щоденних пазлів потрібен інтернет; уже розпочатий можна завершити офлайн.
-        de: Jeden Tag um Mitternacht pazifischer Zeit (Los Angeles), wenn Google Play Games die Tagesbestenlisten zurücksetzt. Tägliche Münzen und die Login-Serie nutzen denselben Tag. Neue Tagesrätsel brauchen eine Internetverbindung; ein begonnenes kannst du offline beenden.
-        fr: "Chaque jour à minuit, heure du Pacifique (Los Angeles), quand Google Play Games réinitialise ses classements du jour. Les pièces quotidiennes et la série de connexions suivent le même jour. Les nouvelles grilles demandent une connexion ; une grille déjà commencée peut être terminée hors ligne."
-        es: "Cada día a medianoche, hora del Pacífico (Los Ángeles), cuando Google Play Juegos reinicia sus clasificaciones diarias. Las monedas diarias y la racha de inicios usan el mismo día. Los retos nuevos necesitan conexión; uno ya empezado se puede terminar sin conexión."
+        en: Every day at midnight Pacific time (Los Angeles), when the daily leaderboards on Google Play Games and Game Center reset. Daily coins and the login streak use the same day. New dailies need an internet connection; one you already started can be finished offline.
+        uk: Щодня опівночі за тихоокеанським часом (Лос-Анджелес), коли оновлюються щоденні таблиці лідерів у Google Play Games і Game Center. Щоденні монети та серія входів рахуються за тим самим днем. Для нових щоденних пазлів потрібен інтернет; уже розпочатий можна завершити офлайн.
+        de: Jeden Tag um Mitternacht pazifischer Zeit (Los Angeles), wenn die Tagesbestenlisten bei Google Play Games und Game Center zurückgesetzt werden. Tägliche Münzen und die Login-Serie nutzen denselben Tag. Neue Tagesrätsel brauchen eine Internetverbindung; ein begonnenes kannst du offline beenden.
+        fr: "Chaque jour à minuit, heure du Pacifique (Los Angeles), quand les classements du jour de Google Play Games et de Game Center sont réinitialisés. Les pièces quotidiennes et la série de connexions suivent le même jour. Les nouvelles grilles demandent une connexion ; une grille déjà commencée peut être terminée hors ligne."
+        es: "Cada día a medianoche, hora del Pacífico (Los Ángeles), cuando se reinician las clasificaciones diarias de Google Play Juegos y Game Center. Las monedas diarias y la racha de inicios usan el mismo día. Los retos nuevos necesitan conexión; uno ya empezado se puede terminar sin conexión."
     - q:
         en: How do I remove my scores from the leaderboards?
         uk: Як видалити мої результати з таблиць лідерів?
@@ -499,8 +527,8 @@ rapid-sudoku:
         fr: "Comment supprimer mes scores des classements ?"
         es: "¿Cómo borro mis puntuaciones de las clasificaciones?"
       a:
-        en: Leaderboard scores are kept by Google Play Games in your Play Games profile, not by us, so Settings → Delete my data doesn't remove them. Manage or delete your Play Games data in the Google Play Games app's settings.
-        uk: Результати в таблицях лідерів зберігає Google Play Games у вашому профілі Play Games, а не ми, тому Settings → Delete my data їх не видаляє. Керуйте даними Play Games або видаліть їх у налаштуваннях застосунку Google Play Games.
-        de: Die Ergebnisse der Bestenlisten speichert Google Play Games in deinem Play-Games-Profil, nicht wir, daher entfernt Settings → Delete my data sie nicht. Verwalte oder lösche deine Play-Games-Daten in den Einstellungen der Google-Play-Games-App.
-        fr: "Les scores des classements sont conservés par Google Play Games dans votre profil Play Jeux, pas par nous ; Settings → Delete my data ne les supprime donc pas. Gérez ou supprimez vos données Play Jeux dans les réglages de l’app Google Play Jeux."
-        es: "Las puntuaciones las guarda Google Play Juegos en tu perfil de Play Juegos, no nosotros, así que Settings → Delete my data no las borra. Gestiona o borra tus datos de Play Juegos en los ajustes de la app Google Play Juegos."
+        en: Leaderboard scores are kept by Google Play Games (in your Play Games profile) or by Apple's Game Center (with your Apple Account), not by us, so Settings → Delete my data doesn't remove them. On Android, manage or delete your Play Games data in the Google Play Games app's settings; on iPhone, Apple's Data and Privacy page (privacy.apple.com) handles Game Center data.
+        uk: Результати в таблицях лідерів зберігає Google Play Games (у вашому профілі Play Games) або Game Center від Apple (з вашим обліковим записом Apple), а не ми, тому Settings → Delete my data їх не видаляє. На Android керуйте даними Play Games або видаліть їх у налаштуваннях застосунку Google Play Games; на iPhone даними Game Center керує сторінка Apple «Дані та конфіденційність» (privacy.apple.com).
+        de: Die Ergebnisse der Bestenlisten speichert Google Play Games (in deinem Play-Games-Profil) oder Apples Game Center (mit deinem Apple Account), nicht wir, daher entfernt Settings → Delete my data sie nicht. Auf Android verwaltest oder löschst du deine Play-Games-Daten in den Einstellungen der Google-Play-Games-App; auf dem iPhone kümmert sich Apples Seite „Daten und Datenschutz“ (privacy.apple.com) um Game-Center-Daten.
+        fr: "Les scores des classements sont conservés par Google Play Games (dans votre profil Play Jeux) ou par Game Center d’Apple (avec votre compte Apple), pas par nous ; Settings → Delete my data ne les supprime donc pas. Sur Android, gérez ou supprimez vos données Play Jeux dans les réglages de l’app Google Play Jeux ; sur iPhone, la page « Données et confidentialité » d’Apple (privacy.apple.com) gère les données Game Center."
+        es: "Las puntuaciones las guarda Google Play Juegos (en tu perfil de Play Juegos) o Game Center de Apple (con tu cuenta de Apple), no nosotros, así que Settings → Delete my data no las borra. En Android, gestiona o borra tus datos de Play Juegos en los ajustes de la app Google Play Juegos; en iPhone, la página «Datos y privacidad» de Apple (privacy.apple.com) gestiona los datos de Game Center."

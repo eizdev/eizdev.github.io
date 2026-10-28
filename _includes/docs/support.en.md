@@ -28,7 +28,7 @@ Refunds are handled by the store: [Apple](https://reportaproblem.apple.com) · [
 {% if app.data_location[lang] %}{{ app.data_location[lang] }}{% elsif app.accounts %}In your account on our servers — see the privacy policy.{% else %}Only on your device. We have no accounts and no servers.{% endif %}
 
 {% if app.delete_data_path[lang] %}**How do I delete my data?**<br>
-{% if app.accounts %}{{ app.delete_data_path[lang] }} deletes the data on your phone{% if app.telegram %} and disconnects Telegram{% endif %}; uninstalling does the same for the phone. To have your record on our server deleted too, email us — see the [privacy policy]({{ privacy_url }}).{% else %}{{ app.delete_data_path[lang] }}. Uninstalling the app deletes everything as well.{% endif %}
+{% if app.accounts %}{{ app.delete_data_path[lang] }} deletes the data on your phone{% if app.telegram %} and disconnects Telegram{% endif %}; uninstalling does the same for the phone. To have your record on our server deleted too, email us — see the [privacy policy]({{ privacy_url }}).{% else %}{{ app.delete_data_path[lang] }}. {% if app.delete_data_note %}{{ app.delete_data_note[lang] }}{% else %}Uninstalling the app deletes everything as well.{% endif %}{% endif %}
 
 {% endif %}{% if app.ads %}{% if app.ads_consent == false %}**How do I limit ad personalisation?**<br>
 In your device settings (Android: Settings → Google → Ads, or Settings → Privacy → Ads).{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}{{ app.premium_name }} removes ads entirely.{% endif %}{% endif %}{% else %}**How do I change my ad consent?**<br>

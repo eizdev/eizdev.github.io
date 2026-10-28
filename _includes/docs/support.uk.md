@@ -28,7 +28,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 {% if app.data_location[lang] %}{{ app.data_location[lang] }}{% elsif app.accounts %}У вашому обліковому записі на наших серверах — див. політику конфіденційності.{% else %}Лише на вашому пристрої. У нас немає облікових записів і серверів.{% endif %}
 
 {% if app.delete_data_path[lang] %}**Як видалити мої дані?**<br>
-{% if app.accounts %}«{{ app.delete_data_path[lang] }}» видаляє дані на телефоні{% if app.telegram %} і відключає Telegram{% endif %}; видалення застосунку робить те саме для телефона. Щоб видалити також ваш запис на нашому сервері, напишіть нам — див. [політику конфіденційності]({{ privacy_url }}).{% else %}{{ app.delete_data_path[lang] }}. Видалення застосунку також стирає все.{% endif %}
+{% if app.accounts %}«{{ app.delete_data_path[lang] }}» видаляє дані на телефоні{% if app.telegram %} і відключає Telegram{% endif %}; видалення застосунку робить те саме для телефона. Щоб видалити також ваш запис на нашому сервері, напишіть нам — див. [політику конфіденційності]({{ privacy_url }}).{% else %}{{ app.delete_data_path[lang] }}. {% if app.delete_data_note %}{{ app.delete_data_note[lang] }}{% else %}Видалення застосунку також стирає все.{% endif %}{% endif %}
 
 {% endif %}{% if app.ads %}{% if app.ads_consent == false %}**Як обмежити персоналізацію реклами?**<br>
 У налаштуваннях пристрою (Android: Налаштування → Google → Реклама або Налаштування → Конфіденційність → Реклама).{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}{{ app.premium_name }} повністю прибирає рекламу.{% endif %}{% endif %}{% else %}**Як змінити згоду на рекламу?**<br>

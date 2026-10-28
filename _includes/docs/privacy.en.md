@@ -54,6 +54,9 @@ Telegram processes these data under its own [privacy policy](https://telegram.or
 The free version shows ads served by Google AdMob{% if app.ad_formats %}: {{ app.ad_formats[lang] }}{% endif %}. Google's software on your device may collect device identifiers (such as the Android Advertising ID), your IP address, device and app information and interactions with ads, in order to show, cap, measure and — only with your consent — personalise ads. Google acts as an independent controller.
 
 {% if app.ads_consent == false %}The app does not show its own consent message. Where the law requires consent for personalised ads (for example in the EEA, UK and Switzerland), Google does not serve personalised ads without it and may show non-personalised or limited ads instead. You can reset your advertising ID or opt out of personalised ads in your device settings (Android: Settings → Google → Ads, or Settings → Privacy → Ads).{% if app.iap and app.ads_paid_note %} {{ app.ads_paid_note[lang] }}{% endif %}{% else %}In the EEA, UK and Switzerland the app first shows Google's consent message (Google User Messaging Platform) and requests no ad before you answer. If you don't consent, Google shows only non-personalised or limited ads. Your choice is stored on your device; you can change it at any time in {% if app.ads_privacy_path[lang] %}**{{ app.ads_privacy_path[lang] }}**{% else %}the app's settings{% endif %}.{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}If you buy {{ app.premium_name }}, the ad software is no longer started.{% endif %}{% endif %}{% endif %}
+{% if app.ads_note %}
+{{ app.ads_note[lang] }}
+{% endif %}
 {% endif %}
 
 {% if app.iap %}## Purchases
