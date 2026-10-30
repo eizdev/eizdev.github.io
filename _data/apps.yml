@@ -355,7 +355,7 @@ rapid-sudoku:
     fr: "Le sudoku contre la montre — niveaux Rapid, deux grilles quotidiennes et parties classiques sans chrono."
     es: "Sudoku contrarreloj: niveles Rapid, dos retos diarios y partidas clásicas sin cronómetro."
   email_tag: rapidsudoku             # plus-alias tag, used only if studio.support.plus_aliases
-  effective_date: 2026-10-28
+  effective_date: 2026-10-30
   stores:
     ios: ""                          # App Store URL once live (iPhone only)
     android: ""                      # https://play.google.com/store/apps/details?id=com.eizdev.rapidsudoku
@@ -433,11 +433,11 @@ rapid-sudoku:
     es: "Desinstalar la app también lo borra todo, salvo en iPhone, donde la pequeña copia de tus monedas, tu racha de inicios y «Remove ads» se queda en el llavero para que una reinstalación las recupere; «Delete my data» también restablece esa copia."
 
   data_location:
-    en: Everything stays on your phone (and in your phone's own backup, if it is on). Scores you play for the leaderboards go to Google Play Games on Android or Game Center on iPhone, under your profile there. We have no server.
-    uk: Усе зберігається на вашому телефоні (і в його власній резервній копії, якщо її ввімкнено). Результати для таблиць лідерів надсилаються в Google Play Games на Android або в Game Center на iPhone, у ваш профіль там. Власного сервера в нас немає.
-    de: Alles bleibt auf deinem Telefon (und in seiner eigenen Sicherung, falls aktiviert). Ergebnisse für die Bestenlisten gehen auf Android an Google Play Games und auf dem iPhone an Game Center, in dein Profil dort. Wir haben keinen Server.
-    fr: "Tout reste sur votre téléphone (et dans sa propre sauvegarde, si elle est activée). Les scores des classements sont envoyés à Google Play Games sur Android ou à Game Center sur iPhone, dans votre profil. Nous n’avons pas de serveur."
-    es: "Todo se queda en tu teléfono (y en su propia copia de seguridad, si está activada). Las puntuaciones de las clasificaciones van a Google Play Juegos en Android o a Game Center en iPhone, a tu perfil allí. No tenemos servidor."
+    en: Everything stays on your phone (and in your phone's own backup, if it is on). Scores you play for the leaderboards go to Google Play Games on Android or Game Center on iPhone, under your profile there. The leaderboard screen also shows the public names and pictures of today's top players from that service; the app doesn't keep them. We have no server.
+    uk: Усе зберігається на вашому телефоні (і в його власній резервній копії, якщо її ввімкнено). Результати для таблиць лідерів надсилаються в Google Play Games на Android або в Game Center на iPhone, у ваш профіль там. Екран таблиці лідерів також показує публічні імена й зображення найкращих гравців дня з цього сервісу; застосунок їх не зберігає. Власного сервера в нас немає.
+    de: Alles bleibt auf deinem Telefon (und in seiner eigenen Sicherung, falls aktiviert). Ergebnisse für die Bestenlisten gehen auf Android an Google Play Games und auf dem iPhone an Game Center, in dein Profil dort. Die Bestenliste zeigt auch die öffentlichen Namen und Bilder der besten Spieler des Tages aus diesem Dienst; die App speichert sie nicht. Wir haben keinen Server.
+    fr: "Tout reste sur votre téléphone (et dans sa propre sauvegarde, si elle est activée). Les scores des classements sont envoyés à Google Play Games sur Android ou à Game Center sur iPhone, dans votre profil. L’écran des classements affiche aussi les noms et images publics des meilleurs joueurs du jour fournis par ce service ; l’app ne les conserve pas. Nous n’avons pas de serveur."
+    es: "Todo se queda en tu teléfono (y en su propia copia de seguridad, si está activada). Las puntuaciones de las clasificaciones van a Google Play Juegos en Android o a Game Center en iPhone, a tu perfil allí. La pantalla de clasificación también muestra los nombres e imágenes públicos de los mejores jugadores del día de ese servicio; la app no los guarda. No tenemos servidor."
 
   warranty_note:
     en: "Leaderboards and sign-in depend on Google Play Games (Android) and Game Center (iPhone). We do not control them and are not responsible if they are unavailable or change. Your progress and coins live on your device; we cannot recover them if they are lost."
