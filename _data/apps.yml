@@ -36,9 +36,23 @@ stick-and-kick:
   effective_date: 2026-10-17
   stores:
     ios: ""                          # App Store URL once live
-    android: ""                      # https://play.google.com/store/apps/details?id=com.stickandkick.app
+    android: ""                      # https://play.google.com/store/apps/details?id=com.stickandkick.app (store id: the app's D5)
 
   ads: true                          # Google AdMob in the free version (UMP consent in EEA/UK/CH)
+  # Spec Task 4.2: a banner on the session summary and at most one interstitial per app session, after a run.
+  ad_formats:
+    en: a banner on the summary after a practice run, and at most one full-screen ad per app session when you close a summary
+    uk: банер на підсумку після заняття та щонайбільше одну повноекранну рекламу за сеанс, коли ви закриваєте підсумок
+    de: ein Banner in der Auswertung nach dem Üben und höchstens eine Vollbildanzeige pro App-Sitzung, wenn du die Auswertung schließt
+    fr: "une bannière sur le récapitulatif après une séance, et au plus une publicité plein écran par session de l’app quand vous fermez le récapitulatif"
+    es: "un banner en el resumen tras una sesión de práctica y como mucho un anuncio a pantalla completa por sesión de la app al cerrar el resumen"
+  # D7 in the app's docs/DECISIONS.md: no ATT prompt, non-personalized ads on iOS.
+  ads_note:
+    en: On iPhone and iPad the app never asks for permission to track you and requests only non-personalised ads, whatever you answer in the consent message. Google still uses the data above there to show, cap and measure ads and to prevent fraud, but not to personalise them.
+    uk: На iPhone та iPad застосунок ніколи не просить дозволу на відстеження і запитує лише неперсоналізовану рекламу, хоч би що ви відповіли в запиті на згоду. Google і там використовує наведені вище дані, щоб показувати, обмежувати й вимірювати рекламу та запобігати шахрайству, але не для персоналізації.
+    de: Auf iPhone und iPad fragt die App nie nach der Erlaubnis, dich zu tracken, und fordert nur nicht personalisierte Anzeigen an, egal was du in der Einwilligungsabfrage wählst. Google nutzt die oben genannten Daten dort weiterhin, um Anzeigen auszuliefern, zu begrenzen und zu messen und Betrug zu verhindern, aber nicht zur Personalisierung.
+    fr: "Sur iPhone et iPad, l’app ne demande jamais l’autorisation de vous suivre et ne demande que des publicités non personnalisées, quelle que soit votre réponse au message de consentement. Google y utilise toujours les données ci-dessus pour diffuser, limiter et mesurer les publicités et prévenir la fraude, mais pas pour les personnaliser."
+    es: "En iPhone y iPad la app nunca pide permiso para rastrearte y solo solicita anuncios no personalizados, respondas lo que respondas en el mensaje de consentimiento. Google sigue usando allí los datos anteriores para mostrar, limitar y medir anuncios y prevenir el fraude, pero no para personalizarlos."
   iap: true                          # in-app purchase
   iap_kind: one_time                 # one_time | subscription
   premium_name: Premium
@@ -49,10 +63,17 @@ stick-and-kick:
   # fr/es show the English labels; switch them if the app ships French or Spanish.
   delete_data_path:
     en: Settings → Legal & privacy → Delete all my data
-    uk: Налаштування → Правова інформація → Видалити всі мої дані
+    uk: Налаштування → Правова інформація та приватність → Видалити всі мої дані
     de: Einstellungen → Rechtliches & Datenschutz → Alle meine Daten löschen
     fr: "Settings → Legal & privacy → Delete all my data"
     es: "Settings → Legal & privacy → Delete all my data"
+  # In-app path to the UMP privacy options (shown where consent applies).
+  ads_privacy_path:
+    en: Settings → Legal & privacy → Ad privacy choices
+    uk: Налаштування → Правова інформація та приватність → Налаштування приватності реклами
+    de: Einstellungen → Rechtliches & Datenschutz → Datenschutzoptionen für Werbung
+    fr: "Settings → Legal & privacy → Ad privacy choices"
+    es: "Settings → Legal & privacy → Ad privacy choices"
 
   # Third-party SDKs that process personal data.
   sdks:
