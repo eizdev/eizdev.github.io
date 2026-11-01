@@ -376,7 +376,7 @@ rapid-sudoku:
     fr: "Le sudoku contre la montre — niveaux Rapid, deux grilles quotidiennes et parties classiques sans chrono."
     es: "Sudoku contrarreloj: niveles Rapid, dos retos diarios y partidas clásicas sin cronómetro."
   email_tag: rapidsudoku             # plus-alias tag, used only if studio.support.plus_aliases
-  effective_date: 2026-10-30
+  effective_date: 2026-11-01
   stores:
     ios: ""                          # App Store URL once live (iPhone only)
     android: ""                      # https://play.google.com/store/apps/details?id=com.eizdev.rapidsudoku
@@ -503,6 +503,11 @@ rapid-sudoku:
       de: Bestwerte, Tagesergebnisse und Ergebnisse, die noch an die Bestenlisten gesendet werden
       fr: "Meilleurs scores, résultats quotidiens et scores en attente d’envoi aux classements"
       es: "Mejores puntuaciones, resultados diarios y puntuaciones pendientes de enviar a las clasificaciones"
+    - en: "A history of your finished Classic and Daily games: the puzzle and its solution, the day, whether you solved it, the time, mistakes and hints"
+      uk: "Історія завершених класичних ігор і щоденних пазлів: головоломка та її розвʼязок, день, чи розвʼязано, час, помилки й підказки"
+      de: "Ein Verlauf deiner beendeten Klassik- und Tagesspiele: das Rätsel und seine Lösung, der Tag, ob du es gelöst hast, die Zeit, Fehler und Hinweise"
+      fr: "Un historique de vos parties Classique et quotidiennes terminées : la grille et sa solution, le jour, si vous l’avez résolue, le temps, les erreurs et les indices"
+      es: "Un historial de tus partidas clásicas y diarias terminadas: el sudoku y su solución, el día, si lo resolviste, el tiempo, los errores y las pistas"
     - en: Settings, your login streak and whether Remove ads is owned
       uk: Налаштування, ваша серія входів і чи придбано «Remove ads»
       de: Einstellungen, deine Login-Serie und ob „Remove ads“ gekauft ist
