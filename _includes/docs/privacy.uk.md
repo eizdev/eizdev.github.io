@@ -78,6 +78,9 @@ Telegram обробляє ці дані відповідно до власної
 |---|---|---|
 {% for sdk in app.sdks %}| [{{ sdk.name }}]({{ sdk.privacy_url }}) | {{ sdk.provider }} | {{ sdk.purpose[lang] }} |
 {% endfor %}{% else %}Застосунок не використовує сторонніх сервісів, що обробляють персональні дані.{% endif %}
+{% if app.third_party_note %}
+{{ app.third_party_note[lang] }}
+{% endif %}
 
 ## Правові підстави
 

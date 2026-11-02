@@ -78,6 +78,9 @@ La app no contiene ningún servicio de analítica ni de informes de errores.
 |---|---|---|
 {% for sdk in app.sdks %}| [{{ sdk.name }}]({{ sdk.privacy_url }}) | {{ sdk.provider }} | {{ sdk.purpose[lang] }} |
 {% endfor %}{% else %}La app no usa servicios de terceros que traten datos personales.{% endif %}
+{% if app.third_party_note %}
+{{ app.third_party_note[lang] }}
+{% endif %}
 
 ## Bases jurídicas
 

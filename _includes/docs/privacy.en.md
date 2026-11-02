@@ -78,6 +78,9 @@ The app contains no analytics or crash-reporting service.
 |---|---|---|
 {% for sdk in app.sdks %}| [{{ sdk.name }}]({{ sdk.privacy_url }}) | {{ sdk.provider }} | {{ sdk.purpose[lang] }} |
 {% endfor %}{% else %}The app uses no third-party services that process personal data.{% endif %}
+{% if app.third_party_note %}
+{{ app.third_party_note[lang] }}
+{% endif %}
 
 ## Legal bases
 

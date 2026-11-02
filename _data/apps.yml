@@ -23,6 +23,8 @@
 #   restore_note                support FAQ answer to "I bought … but it isn't unlocked" instead of the default
 #   ads_note                    extra paragraph after Privacy → Advertising (e.g. platform differences)
 #   delete_data_note            support FAQ sentence after delete_data_path instead of "Uninstalling … deletes everything"
+#   third_party_note            Privacy → Third-party services: paragraph after the table, for a service that is not an SDK
+#                               (e.g. a public API the app calls directly; see `papertrading`)
 
 stick-and-kick:
   name: Stick & Kick
@@ -553,3 +555,165 @@ rapid-sudoku:
         de: Die Ergebnisse der Bestenlisten speichert Google Play Games (in deinem Play-Games-Profil) oder Apples Game Center (mit deinem Apple Account), nicht wir, daher entfernt Settings → Delete my data sie nicht. Auf Android verwaltest oder löschst du deine Play-Games-Daten in den Einstellungen der Google-Play-Games-App; auf dem iPhone kümmert sich Apples Seite „Daten und Datenschutz“ (privacy.apple.com) um Game-Center-Daten.
         fr: "Les scores des classements sont conservés par Google Play Games (dans votre profil Play Jeux) ou par Game Center d’Apple (avec votre compte Apple), pas par nous ; Settings → Delete my data ne les supprime donc pas. Sur Android, gérez ou supprimez vos données Play Jeux dans les réglages de l’app Google Play Jeux ; sur iPhone, la page « Données et confidentialité » d’Apple (privacy.apple.com) gère les données Game Center."
         es: "Las puntuaciones las guarda Google Play Juegos (en tu perfil de Play Juegos) o Game Center de Apple (con tu cuenta de Apple), no nosotros, así que Settings → Delete my data no las borra. En Android, gestiona o borra tus datos de Play Juegos en los ajustes de la app Google Play Juegos; en iPhone, la página «Datos y privacidad» de Apple (privacy.apple.com) gestiona los datos de Game Center."
+
+papertrading:
+  name: papertrading                 # working name (app repo D8); change here and in the app together
+  tagline:
+    en: Paper trading simulator for crypto spot and futures — virtual money, live market prices.
+    uk: Симулятор паперової торгівлі криптовалютою на спот- і ф’ючерсному ринках — віртуальні гроші, живі ринкові ціни.
+    de: Paper-Trading-Simulator für Krypto-Spot und -Futures — virtuelles Geld, echte Marktpreise in Echtzeit.
+    fr: "Simulateur de trading fictif de cryptos au comptant et en contrats à terme — argent virtuel, prix du marché en direct."
+    es: "Simulador de trading ficticio de criptomonedas al contado y en futuros: dinero virtual y precios de mercado en directo."
+  email_tag: papertrading            # plus-alias tag, used only if studio.support.plus_aliases
+  effective_date: 2026-11-02
+  stores:
+    ios: ""                          # App Store URL once live (iPhone and iPad)
+    android: ""                      # https://play.google.com/store/apps/details?id=com.eizdev.papertrading
+
+  # Facts: app repo eizdev/papertrading docs/legal/FACTS.md (2026-11-02). No accounts, no server,
+  # no analytics (D2, D3, D21). Live prices come from Binance's public market-data API
+  # (no account, no key), so Binance sees the IP address: third_party_note.
+  # The app is English only (D19), so every language shows the English in-app labels.
+
+  # AdMob for free users only, after UMP consent (T8.3/T8.4); Premium at start never starts the
+  # ad SDK. On iOS the UMP IDFA explainer is followed by the ATT prompt (personalised ads only
+  # if allowed; nothing is gated or rewarded on the answer).
+  ads: true
+  ad_formats:
+    en: a banner at the bottom of the Portfolio, Markets and Stats tabs, at most one full-screen ad after some of the positions you close (never more than one every three minutes), and rewarded videos you can choose to watch for 10 extra trades
+    uk: банер унизу вкладок Portfolio, Markets і Stats, щонайбільше одну повноекранну рекламу після деяких закритих вами позицій (не частіше ніж раз на три хвилини) та відео з винагородою, які ви можете переглянути, щоб отримати 10 додаткових угод
+    de: ein Banner unten auf den Tabs Portfolio, Markets und Stats, höchstens eine Vollbildanzeige nach manchen Positionen, die du schließt (nie öfter als einmal in drei Minuten), und Videos mit Belohnung, die du freiwillig ansehen kannst, um 10 zusätzliche Trades zu bekommen
+    fr: "une bannière en bas des onglets Portfolio, Markets et Stats, au plus une publicité plein écran après certaines positions que vous fermez (jamais plus d’une toutes les trois minutes), et des vidéos avec récompense que vous pouvez choisir de regarder pour obtenir 10 transactions supplémentaires"
+    es: "un banner en la parte inferior de las pestañas Portfolio, Markets y Stats, como mucho un anuncio a pantalla completa tras algunas de las posiciones que cierras (nunca más de uno cada tres minutos) y vídeos con recompensa que puedes elegir ver para conseguir 10 operaciones más"
+  ads_privacy_path:
+    en: Settings → Data & account → Ad privacy choices
+    uk: Settings → Data & account → Ad privacy choices
+    de: Settings → Data & account → Ad privacy choices
+    fr: "Settings → Data & account → Ad privacy choices"
+    es: "Settings → Data & account → Ad privacy choices"
+  ads_note:
+    en: On iPhone and iPad, after the consent message, the app may show Apple's request to allow tracking. Google uses the device's advertising identifier (IDFA) only if you allow it. You see the same number of ads either way and every feature works the same; you can change your answer at any time in the device's Settings → Privacy & Security → Tracking.
+    uk: На iPhone та iPad після запиту на згоду застосунок може показати запит Apple на дозвіл відстеження. Google використовує рекламний ідентифікатор пристрою (IDFA) лише якщо ви це дозволите. Кількість реклами однакова в обох випадках, і всі функції працюють так само; змінити відповідь можна будь-коли в Параметрах пристрою → Приватність і безпека → Відстеження.
+    de: Auf iPhone und iPad kann die App nach der Einwilligungsabfrage Apples Anfrage zur Erlaubnis des Trackings zeigen. Google nutzt die Werbe-ID des Geräts (IDFA) nur, wenn du es erlaubst. Du siehst in beiden Fällen gleich viele Anzeigen, und jede Funktion arbeitet gleich; deine Antwort kannst du jederzeit in den Einstellungen des Geräts → Datenschutz & Sicherheit → Tracking ändern.
+    fr: "Sur iPhone et iPad, après le message de consentement, l’app peut afficher la demande d’Apple pour autoriser le suivi. Google n’utilise l’identifiant publicitaire de l’appareil (IDFA) que si vous l’autorisez. Vous voyez autant de publicités dans les deux cas et toutes les fonctions marchent de la même façon ; vous pouvez changer votre réponse à tout moment dans Réglages de l’appareil → Confidentialité et sécurité → Suivi."
+    es: "En iPhone y iPad, tras el mensaje de consentimiento, la app puede mostrar la solicitud de Apple para permitir el rastreo. Google solo usa el identificador de publicidad del dispositivo (IDFA) si lo permites. Ves los mismos anuncios en ambos casos y todas las funciones son iguales; puedes cambiar tu respuesta en cualquier momento en Ajustes del dispositivo → Privacidad y seguridad → Rastreo."
+
+  # One non-consumable `premium_lifetime` (D4): unlimited portfolios and trades, full statistics,
+  # no ads. Checked on the phone with the store (no server, D7). No subscriptions, no consumables.
+  iap: true
+  iap_kind: one_time                 # the site's name for a non-consumable one-time purchase
+  premium_name: Premium
+  restore_note:
+    en: Open **Settings → Data & account → Restore purchases** (or Restore purchases on the Premium screen), signed in to the same Apple Account or Google account you bought Premium with.
+    uk: Відкрийте **Settings → Data & account → Restore purchases** (або Restore purchases на екрані Premium), увійшовши в той самий обліковий запис Apple або Google, з якого купували Premium.
+    de: Öffne **Settings → Data & account → Restore purchases** (oder Restore purchases auf dem Premium-Bildschirm), angemeldet mit demselben Apple Account oder Google-Konto, mit dem du Premium gekauft hast.
+    fr: "Ouvrez **Settings → Data & account → Restore purchases** (ou Restore purchases sur l’écran Premium), connecté au même compte Apple ou Google que celui utilisé pour acheter Premium."
+    es: "Abre **Settings → Data & account → Restore purchases** (o Restore purchases en la pantalla Premium) con la misma cuenta de Apple o de Google con la que compraste Premium."
+  accounts: false                    # no accounts, no own server (D2, D3)
+  analytics: false                   # no analytics, no crash reporting (D21)
+
+  # No delete_data_path: there is no "delete all my data" action (everything is on the phone,
+  # so uninstalling deletes it). Deleting one portfolio is answered in the FAQ below.
+
+  data_location:
+    en: Everything stays on your phone (and in your phone's own backup, if it is on). Backup files you export go only where you save or share them. To show prices, the app downloads public market data from Binance; it never sends your portfolios or trades anywhere. We have no server.
+    uk: Усе зберігається на вашому телефоні (і в його власній резервній копії, якщо її ввімкнено). Файли резервних копій, які ви експортуєте, потрапляють лише туди, куди ви їх збережете чи надішлете. Щоб показувати ціни, застосунок завантажує публічні ринкові дані з Binance; ваші портфелі та угоди він нікуди не надсилає. Власного сервера в нас немає.
+    de: Alles bleibt auf deinem Telefon (und in seiner eigenen Sicherung, falls aktiviert). Sicherungsdateien, die du exportierst, landen nur dort, wo du sie speicherst oder teilst. Für die Preise lädt die App öffentliche Marktdaten von Binance; deine Portfolios und Trades sendet sie nirgendwohin. Wir haben keinen Server.
+    fr: "Tout reste sur votre téléphone (et dans sa propre sauvegarde, si elle est activée). Les fichiers de sauvegarde que vous exportez vont uniquement là où vous les enregistrez ou les partagez. Pour afficher les prix, l’app télécharge les données de marché publiques de Binance ; elle n’envoie jamais vos portefeuilles ni vos transactions. Nous n’avons pas de serveur."
+    es: "Todo se queda en tu teléfono (y en su propia copia de seguridad, si está activada). Los archivos de copia de seguridad que exportas van solo adonde los guardes o compartas. Para mostrar precios, la app descarga datos de mercado públicos de Binance; nunca envía tus carteras ni tus operaciones. No tenemos servidor."
+
+  # The English sentences up to "financial advice" are the app's in-app and store-listing
+  # disclaimer word for word (app repo design/store/disclaimer.en.txt); keep them in step.
+  warranty_note:
+    en: "This is a simulation. All money in the app is virtual. The app never connects to an exchange account and never handles real funds. Nothing in it is financial advice. Prices come from Binance's public market data, which we do not control: they may be delayed, incomplete or unavailable (in some regions Binance blocks its futures data), and simulated fills, fees, funding and liquidations follow simplified rules, so results can differ from real trading. Do not base real-money decisions on the app."
+    uk: "Це симуляція. Усі гроші в застосунку віртуальні. Застосунок ніколи не під’єднується до облікового запису на біржі і ніколи не працює з реальними коштами. Ніщо в ньому не є фінансовою порадою. Ціни надходять із публічних ринкових даних Binance, які ми не контролюємо: вони можуть запізнюватися, бути неповними або недоступними (у деяких регіонах Binance блокує свої ф’ючерсні дані), а симульовані виконання ордерів, комісії, фандинг і ліквідації рахуються за спрощеними правилами, тож результати можуть відрізнятися від реальної торгівлі. Не ухвалюйте рішень щодо реальних грошей на підставі застосунку."
+    de: "Dies ist eine Simulation. Alles Geld in der App ist virtuell. Die App verbindet sich nie mit einem Börsenkonto und verwaltet nie echtes Geld. Nichts darin ist eine Finanzberatung. Die Preise stammen aus den öffentlichen Marktdaten von Binance, auf die wir keinen Einfluss haben: Sie können verzögert, unvollständig oder nicht verfügbar sein (in manchen Regionen sperrt Binance seine Futures-Daten), und simulierte Ausführungen, Gebühren, Funding und Liquidationen folgen vereinfachten Regeln, daher können die Ergebnisse vom echten Handel abweichen. Triff keine Entscheidungen über echtes Geld auf Grundlage der App."
+    fr: "Ceci est une simulation. Tout l’argent dans l’app est virtuel. L’app ne se connecte jamais à un compte sur une plateforme d’échange et ne gère jamais de fonds réels. Rien dans l’app ne constitue un conseil financier. Les prix proviennent des données de marché publiques de Binance, que nous ne contrôlons pas : ils peuvent être retardés, incomplets ou indisponibles (dans certaines régions, Binance bloque ses données de contrats à terme), et les exécutions, frais, financements et liquidations simulés suivent des règles simplifiées ; les résultats peuvent donc différer du trading réel. Ne prenez pas de décisions concernant de l’argent réel sur la base de l’app."
+    es: "Esto es una simulación. Todo el dinero de la app es virtual. La app nunca se conecta a una cuenta de un exchange y nunca maneja fondos reales. Nada en ella es asesoramiento financiero. Los precios proceden de los datos de mercado públicos de Binance, que no controlamos: pueden llegar con retraso, estar incompletos o no estar disponibles (en algunas regiones Binance bloquea sus datos de futuros), y las ejecuciones, comisiones, financiación y liquidaciones simuladas siguen reglas simplificadas, así que los resultados pueden diferir del trading real. No tomes decisiones sobre dinero real basándote en la app."
+
+  # Third-party SDKs that process personal data (app repo docs/legal/FACTS.md).
+  sdks:
+    - name: Google AdMob
+      provider: Google Ireland Limited (EEA/UK/CH), Google LLC (elsewhere)
+      purpose: { en: Advertising (free version), uk: Реклама (безкоштовна версія), de: Werbung (kostenlose Version), fr: "Publicité (version gratuite)", es: "Publicidad (versión gratuita)" }
+      privacy_url: https://policies.google.com/privacy
+    - name: Google User Messaging Platform
+      provider: Google Ireland Limited / Google LLC
+      purpose: { en: Ad consent, uk: Згода на рекламу, de: Werbe-Einwilligung, fr: "Consentement publicitaire", es: "Consentimiento para anuncios" }
+      privacy_url: https://policies.google.com/privacy
+
+  # Binance is not an SDK: the app calls its public market-data API directly (FACTS "Requests to third parties").
+  third_party_note:
+    en: "**Market data.** To show live prices, the app downloads public market data (prices, best bid and ask, funding rates, price history and trading rules) directly from Binance's public servers. It sends no account, key or identifier, and never your portfolios or trades. As with any request on the internet, Binance receives your IP address, the time and which markets are requested, and processes them as an independent controller under its own [privacy policy](https://www.binance.com/en/privacy). The app has no Binance account or login."
+    uk: "**Ринкові дані.** Щоб показувати живі ціни, застосунок завантажує публічні ринкові дані (ціни, найкращі ціни купівлі й продажу, ставки фандингу, історію цін і правила торгівлі) безпосередньо з публічних серверів Binance. Він не надсилає жодного облікового запису, ключа чи ідентифікатора і ніколи — ваших портфелів чи угод. Як і за будь-якого запиту в інтернеті, Binance отримує вашу IP-адресу, час і те, які ринки запитуються, та обробляє їх як самостійний контролер згідно з власною [політикою конфіденційності](https://www.binance.com/en/privacy). У застосунку немає облікового запису чи входу в Binance."
+    de: "**Marktdaten.** Für Live-Preise lädt die App öffentliche Marktdaten (Preise, bestes Gebot und bester Briefkurs, Funding-Raten, Kursverlauf und Handelsregeln) direkt von den öffentlichen Servern von Binance. Sie sendet kein Konto, keinen Schlüssel und keine Kennung und niemals deine Portfolios oder Trades. Wie bei jeder Anfrage im Internet erhält Binance deine IP-Adresse, die Uhrzeit und welche Märkte abgefragt werden, und verarbeitet sie als eigenständiger Verantwortlicher nach seiner eigenen [Datenschutzerklärung](https://www.binance.com/en/privacy). Die App hat kein Binance-Konto und keine Anmeldung bei Binance."
+    fr: "**Données de marché.** Pour afficher les prix en direct, l’app télécharge des données de marché publiques (prix, meilleurs prix acheteur et vendeur, taux de financement, historique des prix et règles de trading) directement depuis les serveurs publics de Binance. Elle n’envoie aucun compte, clé ni identifiant, et jamais vos portefeuilles ni vos transactions. Comme pour toute requête sur Internet, Binance reçoit votre adresse IP, l’heure et les marchés demandés, et les traite en tant que responsable de traitement indépendant selon sa propre [politique de confidentialité](https://www.binance.com/en/privacy). L’app n’a ni compte ni connexion Binance."
+    es: "**Datos de mercado.** Para mostrar precios en directo, la app descarga datos de mercado públicos (precios, mejor oferta de compra y de venta, tasas de financiación, historial de precios y reglas de trading) directamente de los servidores públicos de Binance. No envía ninguna cuenta, clave ni identificador, y nunca tus carteras ni tus operaciones. Como con cualquier solicitud en internet, Binance recibe tu dirección IP, la hora y qué mercados se consultan, y los trata como responsable independiente según su propia [política de privacidad](https://www.binance.com/en/privacy). La app no tiene cuenta ni inicio de sesión de Binance."
+
+  # Data the app stores locally (never sent to us).
+  local_data:
+    - en: Your portfolios (the names you type), deposits, orders, trades, positions and holdings, with their history (fees, funding, profit and loss, daily balances)
+      uk: Ваші портфелі (назви, які ви вводите), поповнення, ордери, угоди, позиції та активи разом з їхньою історією (комісії, фандинг, прибуток і збиток, щоденні баланси)
+      de: Deine Portfolios (die Namen, die du eingibst), Einzahlungen, Orders, Trades, Positionen und Bestände mit ihrem Verlauf (Gebühren, Funding, Gewinn und Verlust, tägliche Salden)
+      fr: "Vos portefeuilles (les noms que vous saisissez), dépôts, ordres, transactions, positions et avoirs, avec leur historique (frais, financement, gains et pertes, soldes quotidiens)"
+      es: "Tus carteras (los nombres que escribes), depósitos, órdenes, operaciones, posiciones y saldos, con su historial (comisiones, financiación, pérdidas y ganancias, saldos diarios)"
+    - en: A copy of Binance's public trading rules for each market, so the app can check orders
+      uk: Копія публічних правил торгівлі Binance для кожного ринку, щоб застосунок міг перевіряти ордери
+      de: Eine Kopie der öffentlichen Handelsregeln von Binance für jeden Markt, damit die App Orders prüfen kann
+      fr: "Une copie des règles de trading publiques de Binance pour chaque marché, pour que l’app puisse vérifier les ordres"
+      es: "Una copia de las reglas de trading públicas de Binance para cada mercado, para que la app pueda comprobar las órdenes"
+    - en: Settings, your trade counts and the extra trades earned from ads, and whether Premium is unlocked
+      uk: Налаштування, лічильники угод і додаткові угоди, отримані за рекламу, та чи розблоковано Premium
+      de: Einstellungen, deine Trade-Zähler und die durch Werbung verdienten Zusatz-Trades sowie ob Premium freigeschaltet ist
+      fr: "Réglages, vos compteurs de transactions et les transactions supplémentaires gagnées grâce aux publicités, et le déblocage éventuel de Premium"
+      es: "Ajustes, tus contadores de operaciones y las operaciones extra ganadas con anuncios, y si Premium está desbloqueado"
+    - en: Whether the ad consent message has run and when the last full-screen ad showed (your consent choice itself is stored by Google's consent software on the device)
+      uk: Чи показувався запит на згоду щодо реклами і коли востаннє показувалася повноекранна реклама (саму вашу відповідь зберігає на пристрої програмне забезпечення Google для згоди)
+      de: Ob die Werbe-Einwilligungsabfrage gelaufen ist und wann die letzte Vollbildanzeige kam (deine Einwilligung selbst speichert Googles Einwilligungssoftware auf dem Gerät)
+      fr: "Si le message de consentement publicitaire a été affiché et quand la dernière publicité plein écran est apparue (votre choix de consentement lui-même est enregistré sur l’appareil par le logiciel de consentement de Google)"
+      es: "Si se mostró el mensaje de consentimiento para anuncios y cuándo apareció el último anuncio a pantalla completa (tu elección de consentimiento la guarda en el dispositivo el software de consentimiento de Google)"
+    - en: "Backup files you export (Settings → Data & account → Back up to file) are not encrypted and go only where you save or share them; the app keeps no copy"
+      uk: "Файли резервних копій, які ви експортуєте (Settings → Data & account → Back up to file), не зашифровані й потрапляють лише туди, куди ви їх збережете чи надішлете; застосунок не зберігає їхньої копії"
+      de: "Sicherungsdateien, die du exportierst (Settings → Data & account → Back up to file), sind nicht verschlüsselt und landen nur dort, wo du sie speicherst oder teilst; die App behält keine Kopie"
+      fr: "Les fichiers de sauvegarde que vous exportez (Settings → Data & account → Back up to file) ne sont pas chiffrés et vont uniquement là où vous les enregistrez ou les partagez ; l’app n’en garde aucune copie"
+      es: "Los archivos de copia de seguridad que exportas (Settings → Data & account → Back up to file) no están cifrados y van solo adonde los guardes o compartas; la app no guarda ninguna copia"
+
+  # App-specific FAQ for the support page (generic purchase/data/ads answers
+  # are added automatically from the flags above).
+  faq:
+    - q:
+        en: Is this real trading? Can I win or lose real money?
+        uk: Це справжня торгівля? Чи можу я виграти або втратити реальні гроші?
+        de: Ist das echter Handel? Kann ich echtes Geld gewinnen oder verlieren?
+        fr: "Est-ce du vrai trading ? Puis-je gagner ou perdre de l’argent réel ?"
+        es: "¿Es trading real? ¿Puedo ganar o perder dinero real?"
+      a:
+        en: No. This is a simulation. All money in the app is virtual. The app never connects to an exchange account and never handles real funds. Nothing in it is financial advice. Virtual balances can't be paid out, bought or exchanged for anything.
+        uk: Ні. Це симуляція. Усі гроші в застосунку віртуальні. Застосунок ніколи не під’єднується до облікового запису на біржі і ніколи не працює з реальними коштами. Ніщо в ньому не є фінансовою порадою. Віртуальні баланси не можна вивести, купити чи обміняти на щось.
+        de: Nein. Dies ist eine Simulation. Alles Geld in der App ist virtuell. Die App verbindet sich nie mit einem Börsenkonto und verwaltet nie echtes Geld. Nichts darin ist eine Finanzberatung. Virtuelle Guthaben können weder ausgezahlt noch gekauft oder gegen etwas eingetauscht werden.
+        fr: "Non. Ceci est une simulation. Tout l’argent dans l’app est virtuel. L’app ne se connecte jamais à un compte sur une plateforme d’échange et ne gère jamais de fonds réels. Rien dans l’app ne constitue un conseil financier. Les soldes virtuels ne peuvent être ni retirés, ni achetés, ni échangés contre quoi que ce soit."
+        es: "No. Esto es una simulación. Todo el dinero de la app es virtual. La app nunca se conecta a una cuenta de un exchange y nunca maneja fondos reales. Nada en ella es asesoramiento financiero. Los saldos virtuales no se pueden retirar, comprar ni cambiar por nada."
+    - q:
+        en: Futures prices don't load in my country.
+        uk: У моїй країні не завантажуються ціни ф’ючерсів.
+        de: In meinem Land laden die Futures-Preise nicht.
+        fr: "Les prix des contrats à terme ne se chargent pas dans mon pays."
+        es: "En mi país no cargan los precios de futuros."
+      a:
+        en: Binance blocks its futures market data in some regions. The app then says "Futures data unavailable in your region". Spot prices still work there, so on the free plan you can create a spot portfolio instead. Prices need an internet connection; when you come back online, the app catches up on what happened to your orders while it was closed.
+        uk: У деяких регіонах Binance блокує свої ф’ючерсні ринкові дані. Тоді застосунок показує «Futures data unavailable in your region». Спот-ціни там працюють, тож на безкоштовному плані ви можете натомість створити спот-портфель. Для цін потрібен інтернет; коли ви знову онлайн, застосунок наздоганяє те, що сталося з вашими ордерами, поки він був закритий.
+        de: In manchen Regionen sperrt Binance seine Futures-Marktdaten. Die App zeigt dann „Futures data unavailable in your region“. Spot-Preise funktionieren dort weiterhin, daher kannst du im kostenlosen Plan stattdessen ein Spot-Portfolio anlegen. Preise brauchen eine Internetverbindung; bist du wieder online, holt die App nach, was mit deinen Orders passiert ist, während sie geschlossen war.
+        fr: "Dans certaines régions, Binance bloque ses données de marché des contrats à terme. L’app affiche alors « Futures data unavailable in your region ». Les prix au comptant fonctionnent toujours, donc avec l’offre gratuite vous pouvez créer un portefeuille au comptant à la place. Les prix demandent une connexion ; une fois de retour en ligne, l’app rattrape ce qui est arrivé à vos ordres pendant qu’elle était fermée."
+        es: "En algunas regiones Binance bloquea sus datos de mercado de futuros. La app muestra entonces «Futures data unavailable in your region». Los precios al contado siguen funcionando, así que con el plan gratuito puedes crear una cartera al contado en su lugar. Los precios necesitan conexión; cuando vuelves a estar en línea, la app pone al día lo que pasó con tus órdenes mientras estaba cerrada."
+    - q:
+        en: How do I delete my data?
+        uk: Як видалити мої дані?
+        de: Wie lösche ich meine Daten?
+        fr: "Comment supprimer mes données ?"
+        es: "¿Cómo borro mis datos?"
+      a:
+        en: There is no account and nothing is stored on a server, so all your data is on your phone. To delete one portfolio with its orders, trades and history, open Portfolio, tap the portfolio name and choose Delete portfolio (Reset and start over clears its history instead). Uninstalling the app deletes everything. Backup files you exported and your phone's own backups are yours to delete.
+        uk: Облікового запису немає, і на сервері нічого не зберігається, тож усі ваші дані — на вашому телефоні. Щоб видалити один портфель з його ордерами, угодами та історією, відкрийте Portfolio, торкніться назви портфеля й виберіть Delete portfolio (Reset and start over натомість очищає його історію). Видалення застосунку видаляє все. Експортовані файли резервних копій і власні резервні копії телефона ви видаляєте самі.
+        de: Es gibt kein Konto, und nichts wird auf einem Server gespeichert, daher liegen alle deine Daten auf deinem Telefon. Um ein Portfolio mit seinen Orders, Trades und seinem Verlauf zu löschen, öffne Portfolio, tippe auf den Portfolionamen und wähle Delete portfolio (Reset and start over leert stattdessen nur den Verlauf). Das Deinstallieren der App löscht alles. Exportierte Sicherungsdateien und die eigenen Sicherungen deines Telefons löschst du selbst.
+        fr: "Il n’y a pas de compte et rien n’est stocké sur un serveur : toutes vos données sont sur votre téléphone. Pour supprimer un portefeuille avec ses ordres, transactions et historique, ouvrez Portfolio, touchez le nom du portefeuille et choisissez Delete portfolio (Reset and start over efface plutôt son historique). Désinstaller l’app supprime tout. Les fichiers de sauvegarde exportés et les sauvegardes du téléphone, c’est à vous de les supprimer."
+        es: "No hay cuenta y no se guarda nada en un servidor, así que todos tus datos están en tu teléfono. Para borrar una cartera con sus órdenes, operaciones e historial, abre Portfolio, toca el nombre de la cartera y elige Delete portfolio (Reset and start over borra solo su historial). Desinstalar la app lo borra todo. Los archivos de copia de seguridad que exportaste y las copias del propio teléfono los borras tú."

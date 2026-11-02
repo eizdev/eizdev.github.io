@@ -78,6 +78,9 @@ Die App enthält keine Analyse- oder Absturzberichtsdienste.
 |---|---|---|
 {% for sdk in app.sdks %}| [{{ sdk.name }}]({{ sdk.privacy_url }}) | {{ sdk.provider }} | {{ sdk.purpose[lang] }} |
 {% endfor %}{% else %}Die App nutzt keine Drittanbieter, die personenbezogene Daten verarbeiten.{% endif %}
+{% if app.third_party_note %}
+{{ app.third_party_note[lang] }}
+{% endif %}
 
 ## Rechtsgrundlagen
 

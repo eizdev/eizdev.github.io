@@ -78,6 +78,9 @@ L’app ne contient aucun service d’analyse ni de rapport de plantage.
 |---|---|---|
 {% for sdk in app.sdks %}| [{{ sdk.name }}]({{ sdk.privacy_url }}) | {{ sdk.provider }} | {{ sdk.purpose[lang] }} |
 {% endfor %}{% else %}L’app n’utilise aucun service tiers traitant des données personnelles.{% endif %}
+{% if app.third_party_note %}
+{{ app.third_party_note[lang] }}
+{% endif %}
 
 ## Bases légales
 
