@@ -1,6 +1,6 @@
 ---
 layout: legal
-app: papertrading
-doc: terms
+app: ghost-trader
+doc: support
 lang: de
 ---

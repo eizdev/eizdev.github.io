@@ -24,7 +24,7 @@
 #   ads_note                    extra paragraph after Privacy → Advertising (e.g. platform differences)
 #   delete_data_note            support FAQ sentence after delete_data_path instead of "Uninstalling … deletes everything"
 #   third_party_note            Privacy → Third-party services: paragraph after the table, for a service that is not an SDK
-#                               (e.g. a public API the app calls directly; see `papertrading`)
+#                               (e.g. a public API the app calls directly; see `ghost-trader`)
 
 stick-and-kick:
   name: Stick & Kick
@@ -556,21 +556,21 @@ rapid-sudoku:
         fr: "Les scores des classements sont conservés par Google Play Games (dans votre profil Play Jeux) ou par Game Center d’Apple (avec votre compte Apple), pas par nous ; Settings → Delete my data ne les supprime donc pas. Sur Android, gérez ou supprimez vos données Play Jeux dans les réglages de l’app Google Play Jeux ; sur iPhone, la page « Données et confidentialité » d’Apple (privacy.apple.com) gère les données Game Center."
         es: "Las puntuaciones las guarda Google Play Juegos (en tu perfil de Play Juegos) o Game Center de Apple (con tu cuenta de Apple), no nosotros, así que Settings → Delete my data no las borra. En Android, gestiona o borra tus datos de Play Juegos en los ajustes de la app Google Play Juegos; en iPhone, la página «Datos y privacidad» de Apple (privacy.apple.com) gestiona los datos de Game Center."
 
-papertrading:
-  name: papertrading                 # working name (app repo D8); change here and in the app together
+ghost-trader:
+  name: Ghost Trader                 # app repo D32 (was the working name papertrading); change here and in the app together
   tagline:
     en: Paper trading simulator for crypto spot and futures — virtual money, live market prices.
     uk: Симулятор паперової торгівлі криптовалютою на спот- і ф’ючерсному ринках — віртуальні гроші, живі ринкові ціни.
     de: Paper-Trading-Simulator für Krypto-Spot und -Futures — virtuelles Geld, echte Marktpreise in Echtzeit.
     fr: "Simulateur de trading fictif de cryptos au comptant et en contrats à terme — argent virtuel, prix du marché en direct."
     es: "Simulador de trading ficticio de criptomonedas al contado y en futuros: dinero virtual y precios de mercado en directo."
-  email_tag: papertrading            # plus-alias tag, used only if studio.support.plus_aliases
+  email_tag: ghosttrader             # plus-alias tag, used only if studio.support.plus_aliases
   effective_date: 2026-11-03
   stores:
     ios: ""                          # App Store URL once live (iPhone and iPad)
-    android: ""                      # https://play.google.com/store/apps/details?id=com.eizdev.papertrading
+    android: ""                      # https://play.google.com/store/apps/details?id=com.eizdev.ghosttrader
 
-  # Facts: app repo eizdev/papertrading docs/legal/FACTS.md (2026-11-02; coin logos 2026-11-03). No accounts, no server,
+  # Facts: app repo eizdev/ghost-trader docs/legal/FACTS.md (2026-11-02; coin logos 2026-11-03). No accounts, no server,
   # no analytics (D2, D3, D21). Live prices come from Binance's public market-data API
   # (no account, no key), so Binance sees the IP address: third_party_note.
   # The app is English only (D19), so every language shows the English in-app labels.
