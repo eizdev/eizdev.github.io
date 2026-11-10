@@ -718,3 +718,116 @@ papertrading:
         de: Es gibt kein Konto, und nichts wird auf einem Server gespeichert, daher liegen alle deine Daten auf deinem Telefon. Um ein Portfolio mit seinen Orders, Trades und seinem Verlauf zu löschen, öffne Portfolio, tippe auf den Portfolionamen und wähle Delete portfolio (Reset and start over leert stattdessen nur den Verlauf). Das Deinstallieren der App löscht alles. Exportierte Sicherungsdateien und die eigenen Sicherungen deines Telefons löschst du selbst.
         fr: "Il n’y a pas de compte et rien n’est stocké sur un serveur : toutes vos données sont sur votre téléphone. Pour supprimer un portefeuille avec ses ordres, transactions et historique, ouvrez Portfolio, touchez le nom du portefeuille et choisissez Delete portfolio (Reset and start over efface plutôt son historique). Désinstaller l’app supprime tout. Les fichiers de sauvegarde exportés et les sauvegardes du téléphone, c’est à vous de les supprimer."
         es: "No hay cuenta y no se guarda nada en un servidor, así que todos tus datos están en tu teléfono. Para borrar una cartera con sus órdenes, operaciones e historial, abre Portfolio, toca el nombre de la cartera y elige Delete portfolio (Reset and start over borra solo su historial). Desinstalar la app lo borra todo. Los archivos de copia de seguridad que exportaste y las copias del propio teléfono los borras tú."
+
+fridge-widget:
+  name: Fridge Widget                # working name (app repo D8); change here and in the app together
+  tagline:
+    en: A home-screen widget that looks like a fridge door with paper stickers and labels.
+    uk: Віджет для головного екрана, схожий на дверцята холодильника з паперовими стікерами та етикетками.
+    de: Ein Widget für den Startbildschirm, das wie eine Kühlschranktür mit Papier-Stickern und Etiketten aussieht.
+    fr: "Un widget d’écran d’accueil qui ressemble à une porte de frigo avec des stickers en papier et des étiquettes."
+    es: "Un widget para la pantalla de inicio que parece la puerta de una nevera con pegatinas de papel y etiquetas."
+  email_tag: fridgewidget            # plus-alias tag, used only if studio.support.plus_aliases
+  effective_date: 2026-11-10
+  stores:
+    ios: ""                          # Android only (app repo D1)
+    android: ""                      # https://play.google.com/store/apps/details?id=com.eizdev.fridge once live
+
+  # Facts: app repo eizdev/fridge-widget docs/legal/FACTS.md and docs/DECISIONS.md (2026-11-10).
+  # Native Android app (D1, D7). No server, no INTERNET permission (D2), no accounts (D3),
+  # no ads and no IAP in v1 (D4), no analytics, no third-party SDKs that process personal data.
+  # Android Auto Backup stays on (D11): data_location says so.
+  # The app ships en and uk (D5); its UI labels aren't final, so the texts name no in-app paths.
+  ads: false
+  iap: false
+  accounts: false
+  analytics: false
+
+  # No "delete all my data" action in the app: one fridge is deleted from the app's list of fridges,
+  # everything by uninstalling or clearing storage. Answered in the FAQ below.
+  delete_data_path: ""
+
+  data_location:
+    en: Only on your phone, in the app's own storage. The app has no internet access and we have no server. If backup is on for your phone, Android can include the app's data in your own Google device backup and restore it when you set up a new phone; that backup belongs to your Google account and we cannot see it.
+    uk: Лише на вашому телефоні, у власному сховищі застосунку. Застосунок не має доступу до інтернету, а власного сервера в нас немає. Якщо на телефоні ввімкнено резервне копіювання, Android може додати дані застосунку до вашої власної резервної копії пристрою в Google і відновити їх, коли ви налаштовуватимете новий телефон; ця копія належить вашому обліковому запису Google, і ми її не бачимо.
+    de: Nur auf deinem Telefon, im eigenen Speicher der App. Die App hat keinen Internetzugriff, und wir haben keinen Server. Ist auf deinem Telefon die Sicherung aktiviert, kann Android die Daten der App in deine eigene Google-Gerätesicherung aufnehmen und sie wiederherstellen, wenn du ein neues Telefon einrichtest; diese Sicherung gehört zu deinem Google-Konto, und wir können sie nicht sehen.
+    fr: "Uniquement sur votre téléphone, dans le stockage propre de l’app. L’app n’a pas accès à Internet et nous n’avons pas de serveur. Si la sauvegarde est activée sur votre téléphone, Android peut inclure les données de l’app dans votre propre sauvegarde Google de l’appareil et les restaurer quand vous configurez un nouveau téléphone ; cette sauvegarde appartient à votre compte Google et nous ne pouvons pas la voir."
+    es: "Solo en tu teléfono, en el almacenamiento propio de la app. La app no tiene acceso a internet y no tenemos servidor. Si la copia de seguridad está activada en tu teléfono, Android puede incluir los datos de la app en tu propia copia de seguridad de Google del dispositivo y restaurarlos cuando configures un teléfono nuevo; esa copia pertenece a tu cuenta de Google y no podemos verla."
+
+  warranty_note:
+    en: "The widget is shown by your phone's home-screen app (the launcher): how often it refreshes, which sizes it allows and how it looks can differ between phones and launchers, and we do not control them. Your fridges live only on your device; we cannot recover them if they are lost."
+    uk: "Віджет показує застосунок головного екрана вашого телефона (лаунчер): як часто віджет оновлюється, які розміри дозволені і який він має вигляд, може відрізнятися залежно від телефона й лаунчера, і ми цього не контролюємо. Ваші холодильники зберігаються лише на вашому пристрої; ми не можемо відновити їх у разі втрати."
+    de: "Das Widget wird von der Startbildschirm-App deines Telefons (dem Launcher) angezeigt: Wie oft es sich aktualisiert, welche Größen möglich sind und wie es aussieht, kann je nach Telefon und Launcher verschieden sein, und darauf haben wir keinen Einfluss. Deine Kühlschränke liegen nur auf deinem Gerät; gehen sie verloren, können wir sie nicht wiederherstellen."
+    fr: "Le widget est affiché par l’application d’écran d’accueil de votre téléphone (le launcher) : sa fréquence de mise à jour, les tailles possibles et son apparence peuvent varier selon le téléphone et le launcher, et nous ne les contrôlons pas. Vos frigos restent uniquement sur votre appareil ; nous ne pouvons pas les récupérer en cas de perte."
+    es: "El widget lo muestra la app de pantalla de inicio de tu teléfono (el launcher): la frecuencia con la que se actualiza, los tamaños posibles y su aspecto pueden variar según el teléfono y el launcher, y no los controlamos. Tus neveras solo están en tu dispositivo; no podemos recuperarlas si se pierden."
+
+  sdks: []                           # no third-party SDKs that process personal data (FACTS.md)
+
+  # Data the app stores locally (never sent to us): the three Room tables in FACTS.md.
+  local_data:
+    - en: Your fridges (their style and the optional name you give them)
+      uk: Ваші холодильники (їхній стиль і необов’язкова назва, яку ви їм даєте)
+      de: Deine Kühlschränke (ihr Stil und der optionale Name, den du ihnen gibst)
+      fr: "Vos frigos (leur style et le nom facultatif que vous leur donnez)"
+      es: "Tus neveras (su estilo y el nombre opcional que les pongas)"
+    - en: "The stickers and labels on them: the text you type, color, position, size and rotation"
+      uk: "Стікери та етикетки на них: текст, який ви вводите, колір, положення, розмір і поворот"
+      de: "Die Sticker und Etiketten darauf: der Text, den du eingibst, Farbe, Position, Größe und Drehung"
+      fr: "Les stickers et étiquettes qui s’y trouvent : le texte que vous saisissez, la couleur, la position, la taille et la rotation"
+      es: "Las pegatinas y etiquetas que tienen: el texto que escribes, el color, la posición, el tamaño y el giro"
+    - en: Which fridge each home-screen widget shows, and the widget's last size
+      uk: Який холодильник показує кожен віджет на головному екрані, та останній розмір віджета
+      de: Welchen Kühlschrank jedes Widget auf dem Startbildschirm zeigt, und die letzte Größe des Widgets
+      fr: "Quel frigo affiche chaque widget de l’écran d’accueil, et la dernière taille du widget"
+      es: "Qué nevera muestra cada widget de la pantalla de inicio y el último tamaño del widget"
+
+  # App-specific FAQ for the support page ("Where is my data stored?" comes from data_location).
+  faq:
+    - q:
+        en: The widget is blank or doesn't update.
+        uk: Віджет порожній або не оновлюється.
+        de: Das Widget ist leer oder aktualisiert sich nicht.
+        fr: "Le widget est vide ou ne se met pas à jour."
+        es: "El widget está en blanco o no se actualiza."
+      a:
+        en: Open the app once, then look at the widget again. If it is still blank, remove the widget from the home screen and add it again, picking your existing fridge; your stickers are kept. Some launchers limit how often widgets are updated, so there the widget can take a moment to catch up.
+        uk: Відкрийте застосунок один раз і знову подивіться на віджет. Якщо він досі порожній, приберіть віджет із головного екрана й додайте його знову, вибравши свій наявний холодильник; ваші стікери збережуться. Деякі лаунчери обмежують, як часто оновлюються віджети, тож там віджету може знадобитися трохи часу, щоб оновитися.
+        de: Öffne die App einmal und sieh dir das Widget dann noch einmal an. Ist es weiterhin leer, entferne das Widget vom Startbildschirm und füge es erneut hinzu, wobei du deinen vorhandenen Kühlschrank auswählst; deine Sticker bleiben erhalten. Manche Launcher begrenzen, wie oft Widgets aktualisiert werden, daher kann das Widget dort einen Moment brauchen.
+        fr: "Ouvrez l’app une fois, puis regardez à nouveau le widget. S’il est toujours vide, retirez le widget de l’écran d’accueil et ajoutez-le à nouveau en choisissant votre frigo existant ; vos stickers sont conservés. Certains launchers limitent la fréquence de mise à jour des widgets, donc le widget peut y mettre un moment à se mettre à jour."
+        es: "Abre la app una vez y vuelve a mirar el widget. Si sigue en blanco, quita el widget de la pantalla de inicio y vuelve a añadirlo eligiendo tu nevera existente; tus pegatinas se conservan. Algunos launchers limitan la frecuencia con la que se actualizan los widgets, así que allí el widget puede tardar un momento en ponerse al día."
+    - q:
+        en: I removed the widget. Are my stickers gone? Can I move a fridge to another widget?
+        uk: Віджет прибрано. Мої стікери зникли? Чи можна перенести холодильник на інший віджет?
+        de: Ich habe das Widget entfernt. Sind meine Sticker weg? Kann ich einen Kühlschrank auf ein anderes Widget bringen?
+        fr: "J’ai retiré le widget. Mes stickers ont-ils disparu ? Puis-je déplacer un frigo vers un autre widget ?"
+        es: "He quitado el widget. ¿Se han perdido mis pegatinas? ¿Puedo pasar una nevera a otro widget?"
+      a:
+        en: No, they are not gone. Removing a widget doesn't delete its fridge; every fridge stays in the app's list of fridges. To show it again, or on another widget, add a new widget to the home screen and pick the existing fridge when the app asks. One fridge can also be shown on several widgets.
+        uk: Ні, не зникли. Якщо прибрати віджет, його холодильник не видаляється; кожен холодильник лишається в списку холодильників у застосунку. Щоб знову показати його або показати на іншому віджеті, додайте новий віджет на головний екран і виберіть наявний холодильник, коли застосунок запитає. Один холодильник також можна показувати на кількох віджетах.
+        de: Nein, sie sind nicht weg. Wenn du ein Widget entfernst, wird sein Kühlschrank nicht gelöscht; jeder Kühlschrank bleibt in der Liste der Kühlschränke in der App. Um ihn wieder oder auf einem anderen Widget zu zeigen, füge ein neues Widget zum Startbildschirm hinzu und wähle den vorhandenen Kühlschrank, wenn die App fragt. Ein Kühlschrank kann auch auf mehreren Widgets erscheinen.
+        fr: "Non, ils n’ont pas disparu. Retirer un widget ne supprime pas son frigo ; chaque frigo reste dans la liste des frigos de l’app. Pour l’afficher à nouveau, ou sur un autre widget, ajoutez un nouveau widget à l’écran d’accueil et choisissez le frigo existant quand l’app le demande. Un même frigo peut aussi s’afficher sur plusieurs widgets."
+        es: "No, no se han perdido. Quitar un widget no borra su nevera; cada nevera sigue en la lista de neveras de la app. Para mostrarla de nuevo, o en otro widget, añade un widget nuevo a la pantalla de inicio y elige la nevera existente cuando la app lo pregunte. Una misma nevera también puede mostrarse en varios widgets."
+    - q:
+        en: Can I sync my fridges with another phone?
+        uk: Чи можна синхронізувати холодильники з іншим телефоном?
+        de: Kann ich meine Kühlschränke mit einem anderen Telefon synchronisieren?
+        fr: "Puis-je synchroniser mes frigos avec un autre téléphone ?"
+        es: "¿Puedo sincronizar mis neveras con otro teléfono?"
+      a:
+        en: Not in this version. There are no accounts and the app has no internet access, so your fridges stay on the phone where you made them. If backup is on for your phone, Android can bring them over when you set up a new phone from that backup.
+        uk: У цій версії — ні. Облікових записів немає, і застосунок не має доступу до інтернету, тож ваші холодильники лишаються на телефоні, де ви їх створили. Якщо на телефоні ввімкнено резервне копіювання, Android може перенести їх, коли ви налаштовуватимете новий телефон із цієї копії.
+        de: In dieser Version nicht. Es gibt keine Konten, und die App hat keinen Internetzugriff, daher bleiben deine Kühlschränke auf dem Telefon, auf dem du sie angelegt hast. Ist auf deinem Telefon die Sicherung aktiviert, kann Android sie übernehmen, wenn du ein neues Telefon aus dieser Sicherung einrichtest.
+        fr: "Pas dans cette version. Il n’y a pas de compte et l’app n’a pas accès à Internet, donc vos frigos restent sur le téléphone où vous les avez créés. Si la sauvegarde est activée sur votre téléphone, Android peut les transférer quand vous configurez un nouveau téléphone à partir de cette sauvegarde."
+        es: "En esta versión no. No hay cuentas y la app no tiene acceso a internet, así que tus neveras se quedan en el teléfono donde las creaste. Si la copia de seguridad está activada en tu teléfono, Android puede traerlas cuando configures un teléfono nuevo a partir de esa copia."
+    - q:
+        en: How do I delete my data?
+        uk: Як видалити мої дані?
+        de: Wie lösche ich meine Daten?
+        fr: "Comment supprimer mes données ?"
+        es: "¿Cómo borro mis datos?"
+      a:
+        en: There is no account and nothing is stored on a server, so all your data is on your phone. To remove a fridge with its stickers and labels, delete it in the app's list of fridges; removing a widget only takes it off the home screen. To erase everything the app has stored, uninstall the app or clear its storage in your phone's Settings → Apps. Copies in your phone's own Google backup are managed in your Google account.
+        uk: Облікового запису немає, і на сервері нічого не зберігається, тож усі ваші дані — на вашому телефоні. Щоб прибрати холодильник з його стікерами й етикетками, видаліть його в списку холодильників у застосунку; якщо прибрати віджет, він лише зникне з головного екрана. Щоб стерти все, що зберігає застосунок, видаліть застосунок або очистьте його сховище в Налаштуваннях телефона → Застосунки. Копіями у власній резервній копії телефона в Google ви керуєте у своєму обліковому записі Google.
+        de: Es gibt kein Konto, und nichts wird auf einem Server gespeichert, daher liegen alle deine Daten auf deinem Telefon. Um einen Kühlschrank mit seinen Stickern und Etiketten zu entfernen, lösche ihn in der Liste der Kühlschränke in der App; ein Widget zu entfernen nimmt es nur vom Startbildschirm. Um alles zu löschen, was die App gespeichert hat, deinstalliere die App oder lösche ihren Speicher in den Einstellungen deines Telefons → Apps. Kopien in der eigenen Google-Sicherung deines Telefons verwaltest du in deinem Google-Konto.
+        fr: "Il n’y a pas de compte et rien n’est stocké sur un serveur : toutes vos données sont sur votre téléphone. Pour retirer un frigo avec ses stickers et étiquettes, supprimez-le dans la liste des frigos de l’app ; retirer un widget ne fait que l’enlever de l’écran d’accueil. Pour effacer tout ce que l’app a enregistré, désinstallez l’app ou videz son stockage dans les Paramètres du téléphone → Applications. Les copies dans la sauvegarde Google de votre téléphone se gèrent dans votre compte Google."
+        es: "No hay cuenta y no se guarda nada en un servidor, así que todos tus datos están en tu teléfono. Para quitar una nevera con sus pegatinas y etiquetas, bórrala en la lista de neveras de la app; quitar un widget solo lo saca de la pantalla de inicio. Para borrar todo lo que la app ha guardado, desinstala la app o borra su almacenamiento en Ajustes del teléfono → Aplicaciones. Las copias en la copia de seguridad de Google de tu teléfono se gestionan en tu cuenta de Google."
