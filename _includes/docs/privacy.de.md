@@ -9,7 +9,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 
 Diese Erklärung beschreibt, was mit Informationen passiert, wenn du **{{ app.name }}** („die App“) nutzt.
 
-- {% if app.accounts %}Die App speichert einen kleinen Eintrag auf unserem Server — siehe „Daten auf unserem Server“ unten.{% else %}Wir haben keine Konten und keine Server. Was du in der App erstellst, bleibt auf deinem Gerät.{% endif %}
+- {% if app.accounts %}Die App speichert einen kleinen Eintrag auf unserem Server — siehe „Daten auf unserem Server“ unten.{% else %}Wir haben keine Konten und keine Server. Was du in der App erstellst, bleibt auf deinem Gerät.{% if app.summary_note %} {{ app.summary_note[lang] }}{% endif %}{% endif %}
 {% if app.telegram %}- Um Sticker-Packs zu veröffentlichen, kannst du dein Telegram-Konto verbinden. Veröffentlichte Packs liegen auf Telegram.
 {% endif %}{% if app.ads %}- Die kostenlose Version zeigt Werbung von Google AdMob.{% unless app.ads_consent == false %} Im EWR, im Vereinigten Königreich und in der Schweiz fragen wir zuerst nach deiner Einwilligung.{% endunless %}{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}{{ app.premium_name }} entfernt die Werbung vollständig.{% endif %}{% endif %}
 {% endif %}{% if app.iap %}- Käufe laufen über Apple oder Google. Wir sehen deine Zahlungsdaten nie.
@@ -26,8 +26,8 @@ Die App speichert Folgendes ausschließlich auf deinem Gerät. {% if app.telegra
 
 {% for item in app.local_data %}- {{ item[lang] }}
 {% endfor %}
-Diese Daten können in den Gerätesicherungen (iCloud / Android Backup) enthalten sein, wenn du diese aktiviert hast.
-{% if app.delete_data_path[lang] %}Du kannst sie jederzeit löschen: **{{ app.delete_data_path[lang] }}**, oder indem du die App deinstallierst.{% else %}Beim Deinstallieren der App werden sie gelöscht.{% endif %}
+{% if app.backup_note %}{{ app.backup_note[lang] }}{% else %}Diese Daten können in den Gerätesicherungen (iCloud / Android Backup) enthalten sein, wenn du diese aktiviert hast.{% endif %}
+{% if app.delete_data_path[lang] %}Du kannst sie jederzeit löschen: **{{ app.delete_data_path[lang] }}**, oder indem du die App deinstallierst.{% else %}{% if app.local_delete_note %}{{ app.local_delete_note[lang] }}{% else %}Beim Deinstallieren der App werden sie gelöscht.{% endif %}{% endif %}
 
 {% if app.accounts %}## Daten auf unserem Server
 
@@ -93,7 +93,7 @@ Soweit die DSGVO oder ein vergleichbares Gesetz gilt, verarbeiten wir Daten auf 
 
 ## Wo Daten verarbeitet werden
 
-Wir sitzen in der Ukraine. {% if app.sdks.size > 0 %}Die oben genannten Dienste können Daten in anderen Ländern verarbeiten, auch in den USA. Für Daten aus dem EWR, dem Vereinigten Königreich und der Schweiz stützen sie sich auf einen Angemessenheitsbeschluss (etwa das EU-US Data Privacy Framework) oder auf die Standardvertragsklauseln der EU-Kommission.{% else %}Die Daten der App bleiben auf deinem Gerät.{% endif %}
+Wir sitzen in der Ukraine. {% if app.sdks.size > 0 %}Die oben genannten Dienste können Daten in anderen Ländern verarbeiten, auch in den USA. Für Daten aus dem EWR, dem Vereinigten Königreich und der Schweiz stützen sie sich auf einen Angemessenheitsbeschluss (etwa das EU-US Data Privacy Framework) oder auf die Standardvertragsklauseln der EU-Kommission.{% else %}{% if app.processing_note %}{{ app.processing_note[lang] }}{% else %}Die Daten der App bleiben auf deinem Gerät.{% endif %}{% endif %}
 
 ## Speicherdauer
 

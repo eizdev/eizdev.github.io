@@ -7,7 +7,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 
 **{{ t.effective_date }}:** {{ app.effective_date | date: "%Y-%m-%d" }}
 
-These terms apply to **{{ app.name }}** ("the app"), provided by {{ studio.owner_name }}, an individual developer publishing as {{ studio.name }} ("we"). By using the app you accept them. The store's own terms (Apple Media Services Terms / Google Play Terms of Service) also apply.{% if app.telegram %} When you publish to Telegram, [Telegram's Terms of Service](https://telegram.org/tos) apply as well.{% endif %}
+These terms apply to **{{ app.name }}** ("the app"), provided by {{ studio.owner_name }}, an individual developer publishing as {{ studio.name }} ("we"). By using the app you accept them. The store's own terms ({% if app.store_terms %}{{ app.store_terms[lang] }}{% else %}Apple Media Services Terms / Google Play Terms of Service{% endif %}) also apply.{% if app.telegram %} When you publish to Telegram, [Telegram's Terms of Service](https://telegram.org/tos) apply as well.{% endif %}
 
 ## Licence
 

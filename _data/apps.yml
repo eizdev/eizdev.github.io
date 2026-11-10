@@ -25,6 +25,13 @@
 #   delete_data_note            support FAQ sentence after delete_data_path instead of "Uninstalling … deletes everything"
 #   third_party_note            Privacy → Third-party services: paragraph after the table, for a service that is not an SDK
 #                               (e.g. a public API the app calls directly; see `ghost-trader`)
+#   summary_note                Privacy → first bullet: sentence after "What you create in the app stays on your device."
+#                               (e.g. the device-backup caveat; see `fridge-widget`)
+#   backup_note                 Privacy → on-device data: replaces the generic "(iCloud / Android Backup)" sentence
+#   local_delete_note           Privacy → on-device data: replaces "Uninstalling the app erases them." (no delete_data_path)
+#   processing_note             Privacy → Where data is processed: replaces "The app's data stays on your device." (no sdks)
+#   store_terms                 Terms → first paragraph: the store terms named in brackets, for a one-store app
+#                               (default: "Apple Media Services Terms / Google Play Terms of Service")
 
 stick-and-kick:
   name: Stick & Kick
@@ -737,15 +744,50 @@ fridge-widget:
   # Native Android app (D1, D7). No server, no INTERNET permission (D2), no accounts (D3),
   # no ads and no IAP in v1 (D4), no analytics, no third-party SDKs that process personal data.
   # Android Auto Backup stays on (D11): data_location says so.
-  # The app ships en and uk (D5); its UI labels aren't final, so the texts name no in-app paths.
+  # The app ships en and uk (D5). In-app paths (app T5.2): fridge list ⋮ → About (uk: ⋮ → Про застосунок);
+  # a fridge is deleted with ⋮ next to it → Delete. de/fr/es users see the English app, so those texts use the
+  # English labels. Android only: summary_note, backup_note, local_delete_note, processing_note and store_terms
+  # replace the generic iOS + Android wording of the shared templates.
   ads: false
   iap: false
   accounts: false
   analytics: false
 
   # No "delete all my data" action in the app: one fridge is deleted from the app's list of fridges,
-  # everything by uninstalling or clearing storage. Answered in the FAQ below.
+  # everything by uninstalling or clearing storage. Said by local_delete_note and the FAQ below.
   delete_data_path: ""
+
+  summary_note:
+    en: "If backup is on for your phone, Android can also keep a copy in your own Google backup (see below)."
+    uk: "Якщо на телефоні ввімкнено резервне копіювання, Android також може зберігати копію у вашій власній резервній копії Google (див. нижче)."
+    de: "Ist auf deinem Telefon die Sicherung aktiviert, kann Android außerdem eine Kopie in deiner eigenen Google-Sicherung ablegen (siehe unten)."
+    fr: "Si la sauvegarde est activée sur votre téléphone, Android peut aussi en garder une copie dans votre propre sauvegarde Google (voir ci-dessous)."
+    es: "Si la copia de seguridad está activada en tu teléfono, Android también puede guardar una copia en tu propia copia de seguridad de Google (ver más abajo)."
+  # App D11 (Auto Backup on, database only) and D12 / M6 F2 (deleted text is overwritten and checkpointed).
+  backup_note:
+    en: "If backup is on for your phone, Android can include these data in your own Google device backup and restore them when you set up a new phone. Android makes that backup for your Google account; it is not sent to us and we cannot see it. Text you delete in the app is erased from the app's storage, so later backups no longer contain it."
+    uk: "Якщо на телефоні ввімкнено резервне копіювання, Android може додати ці дані до вашої власної резервної копії пристрою в Google і відновити їх, коли ви налаштовуватимете новий телефон. Цю копію створює Android для вашого облікового запису Google; її не надсилають нам, і ми її не бачимо. Текст, який ви видаляєте в застосунку, стирається зі сховища застосунку, тож наступні резервні копії його вже не містять."
+    de: "Ist auf deinem Telefon die Sicherung aktiviert, kann Android diese Daten in deine eigene Google-Gerätesicherung aufnehmen und sie wiederherstellen, wenn du ein neues Telefon einrichtest. Diese Sicherung erstellt Android für dein Google-Konto; sie wird nicht an uns gesendet, und wir können sie nicht sehen. Text, den du in der App löschst, wird aus dem Speicher der App entfernt, spätere Sicherungen enthalten ihn also nicht mehr."
+    fr: "Si la sauvegarde est activée sur votre téléphone, Android peut inclure ces données dans votre propre sauvegarde Google de l’appareil et les restaurer quand vous configurez un nouveau téléphone. Android réalise cette sauvegarde pour votre compte Google ; elle ne nous est pas envoyée et nous ne pouvons pas la voir. Le texte que vous supprimez dans l’app est effacé du stockage de l’app : les sauvegardes suivantes ne le contiennent plus."
+    es: "Si la copia de seguridad está activada en tu teléfono, Android puede incluir estos datos en tu propia copia de seguridad de Google del dispositivo y restaurarlos cuando configures un teléfono nuevo. Android hace esa copia para tu cuenta de Google; no se nos envía y no podemos verla. El texto que borras en la app se elimina del almacenamiento de la app, así que las copias posteriores ya no lo contienen."
+  local_delete_note:
+    en: "To delete a fridge with its stickers and labels, tap ⋮ next to it in the app's list of fridges, then **Delete**; its text is erased from your device. Uninstalling the app, or clearing its storage in your phone's Settings → Apps, erases everything."
+    uk: "Щоб видалити холодильник разом зі стікерами й етикетками, торкніться ⋮ біля нього в списку холодильників у застосунку, а потім **Видалити**; його текст буде стерто з пристрою. Якщо видалити застосунок або очистити його сховище в Налаштуваннях телефона → Застосунки, буде стерто все."
+    de: "Um einen Kühlschrank mit seinen Stickern und Etiketten zu löschen, tippe in der Liste der Kühlschränke in der App neben ihm auf ⋮ und dann auf **Delete**; sein Text wird von deinem Gerät gelöscht. Wenn du die App deinstallierst oder ihren Speicher in den Einstellungen deines Telefons → Apps löschst, wird alles gelöscht."
+    fr: "Pour supprimer un frigo avec ses stickers et étiquettes, touchez ⋮ à côté de lui dans la liste des frigos de l’app, puis **Delete** ; son texte est effacé de votre appareil. Désinstaller l’app, ou vider son stockage dans les Paramètres du téléphone → Applications, efface tout."
+    es: "Para borrar una nevera con sus pegatinas y etiquetas, toca ⋮ junto a ella en la lista de neveras de la app y luego **Delete**; su texto se borra de tu dispositivo. Desinstalar la app, o borrar su almacenamiento en Ajustes del teléfono → Aplicaciones, lo borra todo."
+  processing_note:
+    en: "The app has no internet access, so its data stays on your device and, if backup is on, in your own Google device backup, which Android keeps for your Google account."
+    uk: "Застосунок не має доступу до інтернету, тож його дані залишаються на вашому пристрої та, якщо ввімкнено резервне копіювання, у вашій власній резервній копії пристрою в Google, яку Android зберігає для вашого облікового запису Google."
+    de: "Die App hat keinen Internetzugriff, ihre Daten bleiben also auf deinem Gerät und, wenn die Sicherung aktiviert ist, in deiner eigenen Google-Gerätesicherung, die Android für dein Google-Konto speichert."
+    fr: "L’app n’a pas accès à Internet : ses données restent sur votre appareil et, si la sauvegarde est activée, dans votre propre sauvegarde Google de l’appareil, qu’Android conserve pour votre compte Google."
+    es: "La app no tiene acceso a internet, así que sus datos se quedan en tu dispositivo y, si la copia de seguridad está activada, en tu propia copia de seguridad de Google del dispositivo, que Android guarda para tu cuenta de Google."
+  store_terms:                       # Android only (app D1)
+    en: Google Play Terms of Service
+    uk: Умови використання Google Play
+    de: Google Play-Nutzungsbedingungen
+    fr: "Conditions d’utilisation de Google Play"
+    es: "Términos del Servicio de Google Play"
 
   data_location:
     en: Only on your phone, in the app's own storage. The app has no internet access and we have no server. If backup is on for your phone, Android can include the app's data in your own Google device backup and restore it when you set up a new phone; that backup belongs to your Google account and we cannot see it.
@@ -755,11 +797,11 @@ fridge-widget:
     es: "Solo en tu teléfono, en el almacenamiento propio de la app. La app no tiene acceso a internet y no tenemos servidor. Si la copia de seguridad está activada en tu teléfono, Android puede incluir los datos de la app en tu propia copia de seguridad de Google del dispositivo y restaurarlos cuando configures un teléfono nuevo; esa copia pertenece a tu cuenta de Google y no podemos verla."
 
   warranty_note:
-    en: "The widget is shown by your phone's home-screen app (the launcher): how often it refreshes, which sizes it allows and how it looks can differ between phones and launchers, and we do not control them. Your fridges live only on your device; we cannot recover them if they are lost."
-    uk: "Віджет показує застосунок головного екрана вашого телефона (лаунчер): як часто віджет оновлюється, які розміри дозволені і який він має вигляд, може відрізнятися залежно від телефона й лаунчера, і ми цього не контролюємо. Ваші холодильники зберігаються лише на вашому пристрої; ми не можемо відновити їх у разі втрати."
-    de: "Das Widget wird von der Startbildschirm-App deines Telefons (dem Launcher) angezeigt: Wie oft es sich aktualisiert, welche Größen möglich sind und wie es aussieht, kann je nach Telefon und Launcher verschieden sein, und darauf haben wir keinen Einfluss. Deine Kühlschränke liegen nur auf deinem Gerät; gehen sie verloren, können wir sie nicht wiederherstellen."
-    fr: "Le widget est affiché par l’application d’écran d’accueil de votre téléphone (le launcher) : sa fréquence de mise à jour, les tailles possibles et son apparence peuvent varier selon le téléphone et le launcher, et nous ne les contrôlons pas. Vos frigos restent uniquement sur votre appareil ; nous ne pouvons pas les récupérer en cas de perte."
-    es: "El widget lo muestra la app de pantalla de inicio de tu teléfono (el launcher): la frecuencia con la que se actualiza, los tamaños posibles y su aspecto pueden variar según el teléfono y el launcher, y no los controlamos. Tus neveras solo están en tu dispositivo; no podemos recuperarlas si se pierden."
+    en: "The widget is shown by your phone's home-screen app (the launcher): how often it refreshes, which sizes it allows and how it looks can differ between phones and launchers, and we do not control them. Your fridges are stored on your device (and in your own Google device backup if backup is on); we cannot recover them if they are lost."
+    uk: "Віджет показує застосунок головного екрана вашого телефона (лаунчер): як часто віджет оновлюється, які розміри дозволені і який він має вигляд, може відрізнятися залежно від телефона й лаунчера, і ми цього не контролюємо. Ваші холодильники зберігаються на вашому пристрої (і у вашій власній резервній копії пристрою в Google, якщо її ввімкнено); ми не можемо відновити їх у разі втрати."
+    de: "Das Widget wird von der Startbildschirm-App deines Telefons (dem Launcher) angezeigt: Wie oft es sich aktualisiert, welche Größen möglich sind und wie es aussieht, kann je nach Telefon und Launcher verschieden sein, und darauf haben wir keinen Einfluss. Deine Kühlschränke liegen auf deinem Gerät (und in deiner eigenen Google-Gerätesicherung, wenn die Sicherung aktiviert ist); gehen sie verloren, können wir sie nicht wiederherstellen."
+    fr: "Le widget est affiché par l’application d’écran d’accueil de votre téléphone (le launcher) : sa fréquence de mise à jour, les tailles possibles et son apparence peuvent varier selon le téléphone et le launcher, et nous ne les contrôlons pas. Vos frigos sont stockés sur votre appareil (et dans votre propre sauvegarde Google de l’appareil si la sauvegarde est activée) ; nous ne pouvons pas les récupérer en cas de perte."
+    es: "El widget lo muestra la app de pantalla de inicio de tu teléfono (el launcher): la frecuencia con la que se actualiza, los tamaños posibles y su aspecto pueden variar según el teléfono y el launcher, y no los controlamos. Tus neveras se guardan en tu dispositivo (y en tu propia copia de seguridad de Google del dispositivo si la copia está activada); no podemos recuperarlas si se pierden."
 
   sdks: []                           # no third-party SDKs that process personal data (FACTS.md)
 
@@ -826,8 +868,20 @@ fridge-widget:
         fr: "Comment supprimer mes données ?"
         es: "¿Cómo borro mis datos?"
       a:
-        en: There is no account and nothing is stored on a server, so all your data is on your phone. To remove a fridge with its stickers and labels, delete it in the app's list of fridges; removing a widget only takes it off the home screen. To erase everything the app has stored, uninstall the app or clear its storage in your phone's Settings → Apps. Copies in your phone's own Google backup are managed in your Google account.
-        uk: Облікового запису немає, і на сервері нічого не зберігається, тож усі ваші дані — на вашому телефоні. Щоб прибрати холодильник з його стікерами й етикетками, видаліть його в списку холодильників у застосунку; якщо прибрати віджет, він лише зникне з головного екрана. Щоб стерти все, що зберігає застосунок, видаліть застосунок або очистьте його сховище в Налаштуваннях телефона → Застосунки. Копіями у власній резервній копії телефона в Google ви керуєте у своєму обліковому записі Google.
-        de: Es gibt kein Konto, und nichts wird auf einem Server gespeichert, daher liegen alle deine Daten auf deinem Telefon. Um einen Kühlschrank mit seinen Stickern und Etiketten zu entfernen, lösche ihn in der Liste der Kühlschränke in der App; ein Widget zu entfernen nimmt es nur vom Startbildschirm. Um alles zu löschen, was die App gespeichert hat, deinstalliere die App oder lösche ihren Speicher in den Einstellungen deines Telefons → Apps. Kopien in der eigenen Google-Sicherung deines Telefons verwaltest du in deinem Google-Konto.
-        fr: "Il n’y a pas de compte et rien n’est stocké sur un serveur : toutes vos données sont sur votre téléphone. Pour retirer un frigo avec ses stickers et étiquettes, supprimez-le dans la liste des frigos de l’app ; retirer un widget ne fait que l’enlever de l’écran d’accueil. Pour effacer tout ce que l’app a enregistré, désinstallez l’app ou videz son stockage dans les Paramètres du téléphone → Applications. Les copies dans la sauvegarde Google de votre téléphone se gèrent dans votre compte Google."
-        es: "No hay cuenta y no se guarda nada en un servidor, así que todos tus datos están en tu teléfono. Para quitar una nevera con sus pegatinas y etiquetas, bórrala en la lista de neveras de la app; quitar un widget solo lo saca de la pantalla de inicio. Para borrar todo lo que la app ha guardado, desinstala la app o borra su almacenamiento en Ajustes del teléfono → Aplicaciones. Las copias en la copia de seguridad de Google de tu teléfono se gestionan en tu cuenta de Google."
+        en: There is no account and nothing is stored on a server, so all your data is on your phone. To remove a fridge with its stickers and labels, tap ⋮ next to it in the app's list of fridges, then **Delete**; removing a widget only takes it off the home screen. To erase everything the app has stored, uninstall the app or clear its storage in your phone's Settings → Apps. Copies in your phone's own Google backup are managed in your Google account.
+        uk: Облікового запису немає, і на сервері нічого не зберігається, тож усі ваші дані — на вашому телефоні. Щоб прибрати холодильник з його стікерами й етикетками, торкніться ⋮ біля нього в списку холодильників у застосунку, а потім **Видалити**; якщо прибрати віджет, він лише зникне з головного екрана. Щоб стерти все, що зберігає застосунок, видаліть застосунок або очистьте його сховище в Налаштуваннях телефона → Застосунки. Копіями у власній резервній копії телефона в Google ви керуєте у своєму обліковому записі Google.
+        de: Es gibt kein Konto, und nichts wird auf einem Server gespeichert, daher liegen alle deine Daten auf deinem Telefon. Um einen Kühlschrank mit seinen Stickern und Etiketten zu entfernen, tippe in der Liste der Kühlschränke in der App neben ihm auf ⋮ und dann auf **Delete**; ein Widget zu entfernen nimmt es nur vom Startbildschirm. Um alles zu löschen, was die App gespeichert hat, deinstalliere die App oder lösche ihren Speicher in den Einstellungen deines Telefons → Apps. Kopien in der eigenen Google-Sicherung deines Telefons verwaltest du in deinem Google-Konto.
+        fr: "Il n’y a pas de compte et rien n’est stocké sur un serveur : toutes vos données sont sur votre téléphone. Pour retirer un frigo avec ses stickers et étiquettes, touchez ⋮ à côté de lui dans la liste des frigos de l’app, puis **Delete** ; retirer un widget ne fait que l’enlever de l’écran d’accueil. Pour effacer tout ce que l’app a enregistré, désinstallez l’app ou videz son stockage dans les Paramètres du téléphone → Applications. Les copies dans la sauvegarde Google de votre téléphone se gèrent dans votre compte Google."
+        es: "No hay cuenta y no se guarda nada en un servidor, así que todos tus datos están en tu teléfono. Para quitar una nevera con sus pegatinas y etiquetas, toca ⋮ junto a ella en la lista de neveras de la app y luego **Delete**; quitar un widget solo lo saca de la pantalla de inicio. Para borrar todo lo que la app ha guardado, desinstala la app o borra su almacenamiento en Ajustes del teléfono → Aplicaciones. Las copias en la copia de seguridad de Google de tu teléfono se gestionan en tu cuenta de Google."
+    - q:
+        en: Where do I find the privacy policy, terms and support in the app?
+        uk: Де в застосунку знайти політику конфіденційності, умови та підтримку?
+        de: Wo finde ich in der App die Datenschutzerklärung, die Nutzungsbedingungen und den Support?
+        fr: "Où trouver la politique de confidentialité, les conditions et le support dans l’app ?"
+        es: "¿Dónde encuentro en la app la política de privacidad, los términos y el soporte?"
+      a:
+        en: "In the app's list of fridges, tap ⋮ at the top right, then **About**. From there you can also email us (the app version is already in the subject) and see the open-source licenses."
+        uk: "У списку холодильників у застосунку торкніться ⋮ угорі праворуч, а потім **Про застосунок**. Звідти також можна написати нам (версія застосунку вже буде в темі листа) і переглянути ліцензії відкритого коду."
+        de: "Tippe in der Liste der Kühlschränke in der App oben rechts auf ⋮ und dann auf **About**. Dort kannst du uns auch eine E-Mail schreiben (die App-Version steht schon im Betreff) und die Open-Source-Lizenzen ansehen."
+        fr: "Dans la liste des frigos de l’app, touchez ⋮ en haut à droite, puis **About**. Vous pouvez aussi nous écrire depuis cet écran (la version de l’app est déjà dans l’objet) et consulter les licences open source."
+        es: "En la lista de neveras de la app, toca ⋮ arriba a la derecha y luego **About**. Desde ahí también puedes escribirnos (la versión de la app ya va en el asunto) y ver las licencias de código abierto."

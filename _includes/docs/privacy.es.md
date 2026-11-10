@@ -9,7 +9,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 
 Esta política explica qué ocurre con la información cuando usas **{{ app.name }}** («la app»).
 
-- {% if app.accounts %}La app guarda un pequeño registro en nuestro servidor; consulta «Información en nuestro servidor» más abajo.{% else %}No hay cuentas ni servidores. Lo que creas en la app se queda en tu dispositivo.{% endif %}
+- {% if app.accounts %}La app guarda un pequeño registro en nuestro servidor; consulta «Información en nuestro servidor» más abajo.{% else %}No hay cuentas ni servidores. Lo que creas en la app se queda en tu dispositivo.{% if app.summary_note %} {{ app.summary_note[lang] }}{% endif %}{% endif %}
 {% if app.telegram %}- Para publicar packs de stickers puedes conectar tu cuenta de Telegram. Los packs publicados se alojan en Telegram.
 {% endif %}{% if app.ads %}- La versión gratuita muestra anuncios de Google AdMob.{% unless app.ads_consent == false %} En el EEE, el Reino Unido y Suiza te pedimos primero tu consentimiento.{% endunless %}{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}{{ app.premium_name }} elimina los anuncios por completo.{% endif %}{% endif %}
 {% endif %}{% if app.iap %}- Las compras se hacen a través de Apple o Google. Nunca vemos tus datos de pago.
@@ -26,8 +26,8 @@ La app guarda lo siguiente solo en tu dispositivo. {% if app.telegram %}No se no
 
 {% for item in app.local_data %}- {{ item[lang] }}
 {% endfor %}
-Estos datos pueden incluirse en las copias de seguridad de tu dispositivo (iCloud / copia de seguridad de Android) si las tienes activadas.
-{% if app.delete_data_path[lang] %}Puedes borrarlos en cualquier momento en **{{ app.delete_data_path[lang] }}** o desinstalando la app.{% else %}Al desinstalar la app se borran.{% endif %}
+{% if app.backup_note %}{{ app.backup_note[lang] }}{% else %}Estos datos pueden incluirse en las copias de seguridad de tu dispositivo (iCloud / copia de seguridad de Android) si las tienes activadas.{% endif %}
+{% if app.delete_data_path[lang] %}Puedes borrarlos en cualquier momento en **{{ app.delete_data_path[lang] }}** o desinstalando la app.{% else %}{% if app.local_delete_note %}{{ app.local_delete_note[lang] }}{% else %}Al desinstalar la app se borran.{% endif %}{% endif %}
 
 {% if app.accounts %}## Información en nuestro servidor
 
@@ -93,7 +93,7 @@ Cuando se aplica el RGPD o una ley similar, tratamos los datos con estas bases:
 
 ## Dónde se tratan los datos
 
-Estamos en Ucrania. {% if app.sdks.size > 0 %}Los servicios de la lista anterior pueden tratar datos en otros países, incluidos los Estados Unidos. Para los datos del EEE, el Reino Unido y Suiza se basan en una decisión de adecuación (como el EU–US Data Privacy Framework) o en las cláusulas contractuales tipo de la Comisión Europea.{% else %}Los datos de la app se quedan en tu dispositivo.{% endif %}
+Estamos en Ucrania. {% if app.sdks.size > 0 %}Los servicios de la lista anterior pueden tratar datos en otros países, incluidos los Estados Unidos. Para los datos del EEE, el Reino Unido y Suiza se basan en una decisión de adecuación (como el EU–US Data Privacy Framework) o en las cláusulas contractuales tipo de la Comisión Europea.{% else %}{% if app.processing_note %}{{ app.processing_note[lang] }}{% else %}Los datos de la app se quedan en tu dispositivo.{% endif %}{% endif %}
 
 ## Cuánto tiempo guardamos los datos
 

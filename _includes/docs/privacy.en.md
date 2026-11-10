@@ -9,7 +9,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 
 This policy explains what happens to information when you use **{{ app.name }}** ("the app").
 
-- {% if app.accounts %}The app keeps a small record on our server — see "Information on our server" below.{% else %}We have no accounts and no servers. What you create in the app stays on your device.{% endif %}
+- {% if app.accounts %}The app keeps a small record on our server — see "Information on our server" below.{% else %}We have no accounts and no servers. What you create in the app stays on your device.{% if app.summary_note %} {{ app.summary_note[lang] }}{% endif %}{% endif %}
 {% if app.telegram %}- To publish sticker packs you can connect your Telegram account. Published packs live on Telegram.
 {% endif %}{% if app.ads %}- The free version shows ads from Google AdMob.{% unless app.ads_consent == false %} In the EEA, UK and Switzerland we ask for your consent first.{% endunless %}{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}{{ app.premium_name }} removes ads entirely.{% endif %}{% endif %}
 {% endif %}{% if app.iap %}- Purchases go through Apple or Google. We never see your payment details.
@@ -26,8 +26,8 @@ The app stores the following only on your device. {% if app.telegram %}It is not
 
 {% for item in app.local_data %}- {{ item[lang] }}
 {% endfor %}
-These data may be included in your device's own backups (iCloud / Android Backup) if you enabled them.
-{% if app.delete_data_path[lang] %}You can erase them at any time via **{{ app.delete_data_path[lang] }}**, or by uninstalling the app.{% else %}Uninstalling the app erases them.{% endif %}
+{% if app.backup_note %}{{ app.backup_note[lang] }}{% else %}These data may be included in your device's own backups (iCloud / Android Backup) if you enabled them.{% endif %}
+{% if app.delete_data_path[lang] %}You can erase them at any time via **{{ app.delete_data_path[lang] }}**, or by uninstalling the app.{% else %}{% if app.local_delete_note %}{{ app.local_delete_note[lang] }}{% else %}Uninstalling the app erases them.{% endif %}{% endif %}
 
 {% if app.accounts %}## Information on our server
 
@@ -93,7 +93,7 @@ Where the GDPR or a similar law applies, we process data on these bases:
 
 ## Where data is processed
 
-We are based in Ukraine. {% if app.sdks.size > 0 %}The services listed above may process data in other countries, including the United States. For data from the EEA, the UK and Switzerland they rely on an adequacy decision (such as the EU–US Data Privacy Framework) or on the European Commission's Standard Contractual Clauses.{% else %}The app's data stays on your device.{% endif %}
+We are based in Ukraine. {% if app.sdks.size > 0 %}The services listed above may process data in other countries, including the United States. For data from the EEA, the UK and Switzerland they rely on an adequacy decision (such as the EU–US Data Privacy Framework) or on the European Commission's Standard Contractual Clauses.{% else %}{% if app.processing_note %}{{ app.processing_note[lang] }}{% else %}The app's data stays on your device.{% endif %}{% endif %}
 
 ## How long we keep data
 

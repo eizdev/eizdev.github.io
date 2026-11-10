@@ -7,7 +7,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 
 **{{ t.effective_date }} :** {{ app.effective_date | date: "%Y-%m-%d" }}
 
-Les présentes conditions s’appliquent à **{{ app.name }}** (« l’app »), fournie par {{ studio.owner_name }}, développeur individuel publiant sous le nom {{ studio.name }} (« nous »). En utilisant l’app, vous les acceptez. Les conditions propres à la boutique (Conditions générales des services multimédias Apple / Conditions d’utilisation de Google Play) s’appliquent également.{% if app.telegram %} Lorsque vous publiez sur Telegram, les [conditions d’utilisation de Telegram](https://telegram.org/tos) s’appliquent aussi.{% endif %}
+Les présentes conditions s’appliquent à **{{ app.name }}** (« l’app »), fournie par {{ studio.owner_name }}, développeur individuel publiant sous le nom {{ studio.name }} (« nous »). En utilisant l’app, vous les acceptez. Les conditions propres à la boutique ({% if app.store_terms %}{{ app.store_terms[lang] }}{% else %}Conditions générales des services multimédias Apple / Conditions d’utilisation de Google Play{% endif %}) s’appliquent également.{% if app.telegram %} Lorsque vous publiez sur Telegram, les [conditions d’utilisation de Telegram](https://telegram.org/tos) s’appliquent aussi.{% endif %}
 
 ## Licence
 
