@@ -747,6 +747,9 @@ fridge-widget:
   # Share or Join of a fridge, which no build offers yet. So "sends nothing over the internet" replaces "no internet
   # access", and sdks stays [] (no SDK processes personal data before then). S12 rewrites this entry (accounts,
   # server, sdks, data_location, effective_date) before sharing ships.
+  # Sync round S5 (2026-11-11): the app has a Share entry (and debug-only invite/join entries), shown only in a build
+  # with the owner's Firebase config, which no build has yet, so this entry still holds. A release with that config
+  # must not ship before S12 updates it (app docs/OWNER_TODO.md).
   # Android Auto Backup stays on (D11): data_location says so.
   # The app ships en and uk (D5). In-app paths (app T5.2): fridge list ⋮ → About (uk: ⋮ → Про застосунок);
   # a fridge is deleted with ⋮ next to it → Delete. de/fr/es users see the English app, so those texts use the
