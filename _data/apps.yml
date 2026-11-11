@@ -807,11 +807,11 @@ fridge-widget:
 
   # Data the app stores locally (never sent to us): the three Room tables in FACTS.md.
   local_data:
-    - en: Your fridges (their style and the optional name you give them)
-      uk: Ваші холодильники (їхній стиль і необов’язкова назва, яку ви їм даєте)
-      de: Deine Kühlschränke (ihr Stil und der optionale Name, den du ihnen gibst)
-      fr: "Vos frigos (leur style et le nom facultatif que vous leur donnez)"
-      es: "Tus neveras (su estilo y el nombre opcional que les pongas)"
+    - en: Your fridges (their style, the optional name you give them, and whether the clock is shown)
+      uk: Ваші холодильники (їхній стиль, необов’язкова назва, яку ви їм даєте, і чи показано годинник)
+      de: Deine Kühlschränke (ihr Stil, der optionale Name, den du ihnen gibst, und ob die Uhr angezeigt wird)
+      fr: "Vos frigos (leur style, le nom facultatif que vous leur donnez et si l’horloge est affichée)"
+      es: "Tus neveras (su estilo, el nombre opcional que les pongas y si se muestra el reloj)"
     - en: "The stickers and labels on them: the text you type, color, position, size and rotation"
       uk: "Стікери та етикетки на них: текст, який ви вводите, колір, положення, розмір і поворот"
       de: "Die Sticker und Etiketten darauf: der Text, den du eingibst, Farbe, Position, Größe und Drehung"
