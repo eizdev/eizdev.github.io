@@ -9,7 +9,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 
 This policy explains what happens to information when you use **{{ app.name }}** ("the app").
 
-- {% if app.accounts %}The app keeps a small record on our server — see "Information on our server" below.{% else %}We have no accounts and no servers. What you create in the app stays on your device.{% if app.summary_note %} {{ app.summary_note[lang] }}{% endif %}{% endif %}
+- {% if app.accounts %}{% if app.server_summary %}{{ app.server_summary[lang] }}{% else %}The app keeps a small record on our server — see "Information on our server" below.{% endif %}{% else %}We have no accounts and no servers. What you create in the app stays on your device.{% if app.summary_note %} {{ app.summary_note[lang] }}{% endif %}{% endif %}
 {% if app.telegram %}- To publish sticker packs you can connect your Telegram account. Published packs live on Telegram.
 {% endif %}{% if app.ads %}- The free version shows ads from Google AdMob.{% unless app.ads_consent == false %} In the EEA, UK and Switzerland we ask for your consent first.{% endunless %}{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}{{ app.premium_name }} removes ads entirely.{% endif %}{% endif %}
 {% endif %}{% if app.iap %}- Purchases go through Apple or Google. We never see your payment details.
@@ -22,7 +22,7 @@ Email: [{{ email }}](mailto:{{ email }})
 
 ## Information that stays on your device
 
-The app stores the following only on your device. {% if app.telegram %}It is not sent to us, except the finished stickers of a pack you publish (see "Telegram" below):{% else %}It is never sent to us:{% endif %}
+{% if app.local_intro %}{{ app.local_intro[lang] }}{% else %}The app stores the following only on your device. {% if app.telegram %}It is not sent to us, except the finished stickers of a pack you publish (see "Telegram" below):{% else %}It is never sent to us:{% endif %}{% endif %}
 
 {% for item in app.local_data %}- {{ item[lang] }}
 {% endfor %}
@@ -35,7 +35,7 @@ The app signs in anonymously: it gets a random ID from Firebase Authentication. 
 
 {% for item in app.server.data %}- {{ item[lang] }}
 {% endfor %}
-We use these data only to run the app: to link your packs and purchases to your app ID, to publish and manage your packs, and to apply the free limits. We do not sell them or use them for advertising. The hosting provider processes technical data such as IP addresses to deliver and protect the server and keeps short-lived request logs for troubleshooting. We keep the record while you use the app.
+{% if app.server_use_note %}{{ app.server_use_note[lang] }}{% else %}We use these data only to run the app: to link your packs and purchases to your app ID, to publish and manage your packs, and to apply the free limits. We do not sell them or use them for advertising. The hosting provider processes technical data such as IP addresses to deliver and protect the server and keeps short-lived request logs for troubleshooting. We keep the record while you use the app.{% endif %}
 
 {% if app.server_delete[lang] %}{{ app.server_delete[lang] }}{% else %}To have your record deleted, email us. We delete it within 30 days.{% endif %}
 {% endif %}
@@ -93,12 +93,12 @@ Where the GDPR or a similar law applies, we process data on these bases:
 
 ## Where data is processed
 
-We are based in Ukraine. {% if app.sdks.size > 0 %}The services listed above may process data in other countries, including the United States. For data from the EEA, the UK and Switzerland they rely on an adequacy decision (such as the EU–US Data Privacy Framework) or on the European Commission's Standard Contractual Clauses.{% else %}{% if app.processing_note %}{{ app.processing_note[lang] }}{% else %}The app's data stays on your device.{% endif %}{% endif %}
+We are based in Ukraine. {% if app.sdks.size > 0 %}The services listed above may process data in other countries, including the United States. For data from the EEA, the UK and Switzerland they rely on an adequacy decision (such as the EU–US Data Privacy Framework) or on the European Commission's Standard Contractual Clauses.{% else %}{% if app.processing_note %}{{ app.processing_note[lang] }}{% else %}The app's data stays on your device.{% endif %}{% endif %}{% if app.processing_extra %} {{ app.processing_extra[lang] }}{% endif %}
 
 ## How long we keep data
 
 - On your device: until you delete it in the app or uninstall the app.
-{% if app.accounts %}- The record on our server: while you use the app, and at most 30 days after you ask us to delete it.
+{% if app.accounts %}- {% if app.server_retention %}{{ app.server_retention[lang] }}{% else %}The record on our server: while you use the app, and at most 30 days after you ask us to delete it.{% endif %}
 - Our server's request logs: a few days.
 {% endif %}{% if app.analytics %}- Crash and error reports: 90 days.
 {% endif %}- Emails to us: as long as we need them to answer you.

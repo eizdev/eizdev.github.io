@@ -29,7 +29,7 @@ La version gratuite affiche des publicités fournies par des tiers. Nous ne somm
 
 ## Votre contenu
 
-{% if app.user_content %}Vos photos et vos stickers vous appartiennent. Les brouillons restent sur votre appareil ; faites vos propres sauvegardes, nous ne pouvons pas récupérer des brouillons perdus.
+{% if app.content_terms %}{{ app.content_terms[lang] }}{% elsif app.user_content %}Vos photos et vos stickers vous appartiennent. Les brouillons restent sur votre appareil ; faites vos propres sauvegardes, nous ne pouvons pas récupérer des brouillons perdus.
 
 Vous ne pouvez utiliser que des photos et d’autres contenus qui vous appartiennent ou que vous avez le droit d’utiliser, y compris avec l’accord des personnes qui y figurent. Ne créez ni ne publiez aucun contenu illégal, portant atteinte aux droits d’autrui (droit d’auteur, marques, vie privée), harcelant, menaçant ou sexualisant qui que ce soit, montrant des contenus sexuels impliquant des mineurs, faisant l’apologie de la violence ou de la haine, ou abusif de toute autre manière. Vous êtes responsable de ce que vous créez et publiez.
 

@@ -29,7 +29,7 @@ La versión gratuita muestra anuncios de terceros. No somos responsables del con
 
 ## Tu contenido
 
-{% if app.user_content %}Tus fotos y stickers siguen siendo tuyos. Los borradores se quedan en tu dispositivo; haz tus propias copias de seguridad, no podemos recuperar borradores perdidos.
+{% if app.content_terms %}{{ app.content_terms[lang] }}{% elsif app.user_content %}Tus fotos y stickers siguen siendo tuyos. Los borradores se quedan en tu dispositivo; haz tus propias copias de seguridad, no podemos recuperar borradores perdidos.
 
 Solo puedes usar fotos y otro material que te pertenezca o que tengas permiso para usar, incluido el permiso de las personas que aparecen en ellos. No crees ni publiques contenido que sea ilegal, que vulnere derechos ajenos (derechos de autor, marcas, privacidad), que acose, amenace o sexualice a nadie, que muestre contenido sexual con menores, que promueva la violencia o el odio, o que sea abusivo de cualquier otro modo. Eres responsable de lo que creas y publicas.
 

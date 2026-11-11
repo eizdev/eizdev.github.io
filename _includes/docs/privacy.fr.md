@@ -9,7 +9,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 
 Cette politique explique ce qu’il advient des informations lorsque vous utilisez **{{ app.name }}** (« l’app »).
 
-- {% if app.accounts %}L’app conserve un petit enregistrement sur notre serveur — voir « Informations sur notre serveur » ci-dessous.{% else %}Il n’y a ni compte ni serveur. Ce que vous créez dans l’app reste sur votre appareil.{% if app.summary_note %} {{ app.summary_note[lang] }}{% endif %}{% endif %}
+- {% if app.accounts %}{% if app.server_summary %}{{ app.server_summary[lang] }}{% else %}L’app conserve un petit enregistrement sur notre serveur — voir « Informations sur notre serveur » ci-dessous.{% endif %}{% else %}Il n’y a ni compte ni serveur. Ce que vous créez dans l’app reste sur votre appareil.{% if app.summary_note %} {{ app.summary_note[lang] }}{% endif %}{% endif %}
 {% if app.telegram %}- Pour publier des packs de stickers, vous pouvez connecter votre compte Telegram. Les packs publiés sont hébergés par Telegram.
 {% endif %}{% if app.ads %}- La version gratuite affiche des publicités de Google AdMob.{% unless app.ads_consent == false %} Dans l’EEE, au Royaume-Uni et en Suisse, nous vous demandons d’abord votre consentement.{% endunless %}{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}{{ app.premium_name }} supprime entièrement les publicités.{% endif %}{% endif %}
 {% endif %}{% if app.iap %}- Les achats passent par Apple ou Google. Nous ne voyons jamais vos données de paiement.
@@ -22,7 +22,7 @@ E-mail : [{{ email }}](mailto:{{ email }})
 
 ## Informations qui restent sur votre appareil
 
-L’app enregistre les éléments suivants uniquement sur votre appareil. {% if app.telegram %}Ils ne nous sont pas envoyés, sauf les stickers finis d’un pack que vous publiez (voir « Telegram » ci-dessous) :{% else %}Ils ne nous sont jamais envoyés :{% endif %}
+{% if app.local_intro %}{{ app.local_intro[lang] }}{% else %}L’app enregistre les éléments suivants uniquement sur votre appareil. {% if app.telegram %}Ils ne nous sont pas envoyés, sauf les stickers finis d’un pack que vous publiez (voir « Telegram » ci-dessous) :{% else %}Ils ne nous sont jamais envoyés :{% endif %}{% endif %}
 
 {% for item in app.local_data %}- {{ item[lang] }}
 {% endfor %}
@@ -35,7 +35,7 @@ L’app se connecte de façon anonyme : elle reçoit un identifiant aléatoire d
 
 {% for item in app.server.data %}- {{ item[lang] }}
 {% endfor %}
-Nous utilisons ces données uniquement pour faire fonctionner l’app : relier vos packs et vos achats à votre identifiant d’app, publier et gérer vos packs, et appliquer les limites gratuites. Nous ne les vendons pas et ne les utilisons pas à des fins publicitaires. L’hébergeur traite des données techniques comme les adresses IP pour acheminer les requêtes et protéger le serveur, et conserve des journaux de requêtes de courte durée pour le diagnostic. Nous conservons l’enregistrement tant que vous utilisez l’app.
+{% if app.server_use_note %}{{ app.server_use_note[lang] }}{% else %}Nous utilisons ces données uniquement pour faire fonctionner l’app : relier vos packs et vos achats à votre identifiant d’app, publier et gérer vos packs, et appliquer les limites gratuites. Nous ne les vendons pas et ne les utilisons pas à des fins publicitaires. L’hébergeur traite des données techniques comme les adresses IP pour acheminer les requêtes et protéger le serveur, et conserve des journaux de requêtes de courte durée pour le diagnostic. Nous conservons l’enregistrement tant que vous utilisez l’app.{% endif %}
 
 {% if app.server_delete[lang] %}{{ app.server_delete[lang] }}{% else %}Pour faire supprimer votre enregistrement, écrivez-nous. Nous le supprimons sous 30 jours.{% endif %}
 {% endif %}
@@ -93,12 +93,12 @@ Lorsque le RGPD ou une loi similaire s’applique, nous traitons les données su
 
 ## Où les données sont traitées
 
-Nous sommes établis en Ukraine. {% if app.sdks.size > 0 %}Les services listés ci-dessus peuvent traiter des données dans d’autres pays, notamment aux États-Unis. Pour les données provenant de l’EEE, du Royaume-Uni et de la Suisse, ils s’appuient sur une décision d’adéquation (comme le EU–US Data Privacy Framework) ou sur les clauses contractuelles types de la Commission européenne.{% else %}{% if app.processing_note %}{{ app.processing_note[lang] }}{% else %}Les données de l’app restent sur votre appareil.{% endif %}{% endif %}
+Nous sommes établis en Ukraine. {% if app.sdks.size > 0 %}Les services listés ci-dessus peuvent traiter des données dans d’autres pays, notamment aux États-Unis. Pour les données provenant de l’EEE, du Royaume-Uni et de la Suisse, ils s’appuient sur une décision d’adéquation (comme le EU–US Data Privacy Framework) ou sur les clauses contractuelles types de la Commission européenne.{% else %}{% if app.processing_note %}{{ app.processing_note[lang] }}{% else %}Les données de l’app restent sur votre appareil.{% endif %}{% endif %}{% if app.processing_extra %} {{ app.processing_extra[lang] }}{% endif %}
 
 ## Durée de conservation
 
 - Sur votre appareil : jusqu’à ce que vous les supprimiez dans l’app ou désinstalliez l’app.
-{% if app.accounts %}- L’enregistrement sur notre serveur : tant que vous utilisez l’app, et au plus 30 jours après votre demande de suppression.
+{% if app.accounts %}- {% if app.server_retention %}{{ app.server_retention[lang] }}{% else %}L’enregistrement sur notre serveur : tant que vous utilisez l’app, et au plus 30 jours après votre demande de suppression.{% endif %}
 - Les journaux de requêtes de notre serveur : quelques jours.
 {% endif %}{% if app.analytics %}- Les rapports de plantage et d’erreur : 90 jours.
 {% endif %}- Les e-mails que vous nous envoyez : le temps nécessaire pour vous répondre.

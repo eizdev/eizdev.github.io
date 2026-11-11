@@ -29,7 +29,7 @@ Die kostenlose Version zeigt Werbung von Drittanbietern. Für deren Inhalte sind
 
 ## Deine Inhalte
 
-{% if app.user_content %}Deine Fotos und Sticker gehören dir. Entwürfe bleiben auf deinem Gerät; bitte erstelle eigene Sicherungen, verlorene Entwürfe können wir nicht wiederherstellen.
+{% if app.content_terms %}{{ app.content_terms[lang] }}{% elsif app.user_content %}Deine Fotos und Sticker gehören dir. Entwürfe bleiben auf deinem Gerät; bitte erstelle eigene Sicherungen, verlorene Entwürfe können wir nicht wiederherstellen.
 
 Verwende nur Fotos und anderes Material, das dir gehört oder das du nutzen darfst, auch mit Erlaubnis der abgebildeten Personen. Erstelle oder veröffentliche keine Inhalte, die rechtswidrig sind, Rechte anderer verletzen (Urheberrecht, Marken, Privatsphäre), andere belästigen, bedrohen oder sexualisieren, sexuelle Inhalte mit Minderjährigen zeigen, zu Gewalt oder Hass aufrufen oder anderweitig missbräuchlich sind. Du bist für das verantwortlich, was du erstellst und veröffentlichst.
 

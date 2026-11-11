@@ -29,7 +29,7 @@ The free version shows ads provided by third parties. We are not responsible for
 
 ## Your content
 
-{% if app.user_content %}Your photos and stickers remain yours. Drafts stay on your device; keep your own backups, we cannot recover lost drafts.
+{% if app.content_terms %}{{ app.content_terms[lang] }}{% elsif app.user_content %}Your photos and stickers remain yours. Drafts stay on your device; keep your own backups, we cannot recover lost drafts.
 
 You may only use photos and other material that you own or have permission to use, including permission from people shown in them. Do not create or publish content that is illegal, infringes others' rights (copyright, trademarks, privacy), harasses, threatens or sexualises anyone, shows sexual content involving minors, promotes violence or hatred, or is otherwise abusive. You are responsible for what you create and publish.
 

@@ -9,7 +9,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 
 Esta política explica qué ocurre con la información cuando usas **{{ app.name }}** («la app»).
 
-- {% if app.accounts %}La app guarda un pequeño registro en nuestro servidor; consulta «Información en nuestro servidor» más abajo.{% else %}No hay cuentas ni servidores. Lo que creas en la app se queda en tu dispositivo.{% if app.summary_note %} {{ app.summary_note[lang] }}{% endif %}{% endif %}
+- {% if app.accounts %}{% if app.server_summary %}{{ app.server_summary[lang] }}{% else %}La app guarda un pequeño registro en nuestro servidor; consulta «Información en nuestro servidor» más abajo.{% endif %}{% else %}No hay cuentas ni servidores. Lo que creas en la app se queda en tu dispositivo.{% if app.summary_note %} {{ app.summary_note[lang] }}{% endif %}{% endif %}
 {% if app.telegram %}- Para publicar packs de stickers puedes conectar tu cuenta de Telegram. Los packs publicados se alojan en Telegram.
 {% endif %}{% if app.ads %}- La versión gratuita muestra anuncios de Google AdMob.{% unless app.ads_consent == false %} En el EEE, el Reino Unido y Suiza te pedimos primero tu consentimiento.{% endunless %}{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}{{ app.premium_name }} elimina los anuncios por completo.{% endif %}{% endif %}
 {% endif %}{% if app.iap %}- Las compras se hacen a través de Apple o Google. Nunca vemos tus datos de pago.
@@ -22,7 +22,7 @@ Correo electrónico: [{{ email }}](mailto:{{ email }})
 
 ## Información que se queda en tu dispositivo
 
-La app guarda lo siguiente solo en tu dispositivo. {% if app.telegram %}No se nos envía, salvo los stickers terminados de un pack que publiques (consulta «Telegram» más abajo):{% else %}Nunca se nos envía:{% endif %}
+{% if app.local_intro %}{{ app.local_intro[lang] }}{% else %}La app guarda lo siguiente solo en tu dispositivo. {% if app.telegram %}No se nos envía, salvo los stickers terminados de un pack que publiques (consulta «Telegram» más abajo):{% else %}Nunca se nos envía:{% endif %}{% endif %}
 
 {% for item in app.local_data %}- {{ item[lang] }}
 {% endfor %}
@@ -35,7 +35,7 @@ La app inicia sesión de forma anónima: recibe un identificador aleatorio de Fi
 
 {% for item in app.server.data %}- {{ item[lang] }}
 {% endfor %}
-Usamos estos datos solo para que la app funcione: para vincular tus packs y compras a tu identificador de app, para publicar y gestionar tus packs y para aplicar los límites gratuitos. No los vendemos ni los usamos con fines publicitarios. El proveedor de alojamiento trata datos técnicos como las direcciones IP para entregar y proteger el servidor, y guarda registros de solicitudes de corta duración para resolver problemas. Conservamos el registro mientras uses la app.
+{% if app.server_use_note %}{{ app.server_use_note[lang] }}{% else %}Usamos estos datos solo para que la app funcione: para vincular tus packs y compras a tu identificador de app, para publicar y gestionar tus packs y para aplicar los límites gratuitos. No los vendemos ni los usamos con fines publicitarios. El proveedor de alojamiento trata datos técnicos como las direcciones IP para entregar y proteger el servidor, y guarda registros de solicitudes de corta duración para resolver problemas. Conservamos el registro mientras uses la app.{% endif %}
 
 {% if app.server_delete[lang] %}{{ app.server_delete[lang] }}{% else %}Para que borremos tu registro, escríbenos. Lo borramos en un plazo de 30 días.{% endif %}
 {% endif %}
@@ -93,12 +93,12 @@ Cuando se aplica el RGPD o una ley similar, tratamos los datos con estas bases:
 
 ## Dónde se tratan los datos
 
-Estamos en Ucrania. {% if app.sdks.size > 0 %}Los servicios de la lista anterior pueden tratar datos en otros países, incluidos los Estados Unidos. Para los datos del EEE, el Reino Unido y Suiza se basan en una decisión de adecuación (como el EU–US Data Privacy Framework) o en las cláusulas contractuales tipo de la Comisión Europea.{% else %}{% if app.processing_note %}{{ app.processing_note[lang] }}{% else %}Los datos de la app se quedan en tu dispositivo.{% endif %}{% endif %}
+Estamos en Ucrania. {% if app.sdks.size > 0 %}Los servicios de la lista anterior pueden tratar datos en otros países, incluidos los Estados Unidos. Para los datos del EEE, el Reino Unido y Suiza se basan en una decisión de adecuación (como el EU–US Data Privacy Framework) o en las cláusulas contractuales tipo de la Comisión Europea.{% else %}{% if app.processing_note %}{{ app.processing_note[lang] }}{% else %}Los datos de la app se quedan en tu dispositivo.{% endif %}{% endif %}{% if app.processing_extra %} {{ app.processing_extra[lang] }}{% endif %}
 
 ## Cuánto tiempo guardamos los datos
 
 - En tu dispositivo: hasta que los borres en la app o desinstales la app.
-{% if app.accounts %}- El registro en nuestro servidor: mientras uses la app y como máximo 30 días después de que nos pidas borrarlo.
+{% if app.accounts %}- {% if app.server_retention %}{{ app.server_retention[lang] }}{% else %}El registro en nuestro servidor: mientras uses la app y como máximo 30 días después de que nos pidas borrarlo.{% endif %}
 - Los registros de solicitudes de nuestro servidor: unos días.
 {% endif %}{% if app.analytics %}- Los informes de fallos y errores: 90 días.
 {% endif %}- Los correos que nos envías: el tiempo necesario para responderte.

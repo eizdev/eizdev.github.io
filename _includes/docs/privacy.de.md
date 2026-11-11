@@ -9,7 +9,7 @@ Do not indent lines (Markdown would turn them into code blocks).
 
 Diese Erklärung beschreibt, was mit Informationen passiert, wenn du **{{ app.name }}** („die App“) nutzt.
 
-- {% if app.accounts %}Die App speichert einen kleinen Eintrag auf unserem Server — siehe „Daten auf unserem Server“ unten.{% else %}Wir haben keine Konten und keine Server. Was du in der App erstellst, bleibt auf deinem Gerät.{% if app.summary_note %} {{ app.summary_note[lang] }}{% endif %}{% endif %}
+- {% if app.accounts %}{% if app.server_summary %}{{ app.server_summary[lang] }}{% else %}Die App speichert einen kleinen Eintrag auf unserem Server — siehe „Daten auf unserem Server“ unten.{% endif %}{% else %}Wir haben keine Konten und keine Server. Was du in der App erstellst, bleibt auf deinem Gerät.{% if app.summary_note %} {{ app.summary_note[lang] }}{% endif %}{% endif %}
 {% if app.telegram %}- Um Sticker-Packs zu veröffentlichen, kannst du dein Telegram-Konto verbinden. Veröffentlichte Packs liegen auf Telegram.
 {% endif %}{% if app.ads %}- Die kostenlose Version zeigt Werbung von Google AdMob.{% unless app.ads_consent == false %} Im EWR, im Vereinigten Königreich und in der Schweiz fragen wir zuerst nach deiner Einwilligung.{% endunless %}{% if app.iap %} {% if app.ads_paid_note %}{{ app.ads_paid_note[lang] }}{% else %}{{ app.premium_name }} entfernt die Werbung vollständig.{% endif %}{% endif %}
 {% endif %}{% if app.iap %}- Käufe laufen über Apple oder Google. Wir sehen deine Zahlungsdaten nie.
@@ -22,7 +22,7 @@ Diese Erklärung beschreibt, was mit Informationen passiert, wenn du **{{ app.na
 
 ## Daten, die auf deinem Gerät bleiben
 
-Die App speichert Folgendes ausschließlich auf deinem Gerät. {% if app.telegram %}Es wird nicht an uns übertragen, außer den fertigen Stickern eines Packs, das du veröffentlichst (siehe „Telegram“ unten):{% else %}Es wird nie an uns übertragen:{% endif %}
+{% if app.local_intro %}{{ app.local_intro[lang] }}{% else %}Die App speichert Folgendes ausschließlich auf deinem Gerät. {% if app.telegram %}Es wird nicht an uns übertragen, außer den fertigen Stickern eines Packs, das du veröffentlichst (siehe „Telegram“ unten):{% else %}Es wird nie an uns übertragen:{% endif %}{% endif %}
 
 {% for item in app.local_data %}- {{ item[lang] }}
 {% endfor %}
@@ -35,7 +35,7 @@ Die App meldet sich anonym an: Sie erhält eine zufällige ID von Firebase Authe
 
 {% for item in app.server.data %}- {{ item[lang] }}
 {% endfor %}
-Wir nutzen diese Daten nur für den Betrieb der App (Art. 6 Abs. 1 lit. b DSGVO): um deine Packs und Käufe deiner App-ID zuzuordnen, deine Packs zu veröffentlichen und zu verwalten und die kostenlosen Limits anzuwenden. Wir verkaufen sie nicht und nutzen sie nicht für Werbung. Der Hosting-Anbieter verarbeitet technische Daten wie IP-Adressen, um den Server auszuliefern und zu schützen, und speichert kurzlebige Anfrage-Logs zur Fehlersuche. Wir speichern den Eintrag, solange du die App nutzt.
+{% if app.server_use_note %}{{ app.server_use_note[lang] }}{% else %}Wir nutzen diese Daten nur für den Betrieb der App (Art. 6 Abs. 1 lit. b DSGVO): um deine Packs und Käufe deiner App-ID zuzuordnen, deine Packs zu veröffentlichen und zu verwalten und die kostenlosen Limits anzuwenden. Wir verkaufen sie nicht und nutzen sie nicht für Werbung. Der Hosting-Anbieter verarbeitet technische Daten wie IP-Adressen, um den Server auszuliefern und zu schützen, und speichert kurzlebige Anfrage-Logs zur Fehlersuche. Wir speichern den Eintrag, solange du die App nutzt.{% endif %}
 
 {% if app.server_delete[lang] %}{{ app.server_delete[lang] }}{% else %}Um deinen Eintrag löschen zu lassen, schreib uns. Wir löschen ihn innerhalb von 30 Tagen.{% endif %}
 {% endif %}
@@ -93,12 +93,12 @@ Soweit die DSGVO oder ein vergleichbares Gesetz gilt, verarbeiten wir Daten auf 
 
 ## Wo Daten verarbeitet werden
 
-Wir sitzen in der Ukraine. {% if app.sdks.size > 0 %}Die oben genannten Dienste können Daten in anderen Ländern verarbeiten, auch in den USA. Für Daten aus dem EWR, dem Vereinigten Königreich und der Schweiz stützen sie sich auf einen Angemessenheitsbeschluss (etwa das EU-US Data Privacy Framework) oder auf die Standardvertragsklauseln der EU-Kommission.{% else %}{% if app.processing_note %}{{ app.processing_note[lang] }}{% else %}Die Daten der App bleiben auf deinem Gerät.{% endif %}{% endif %}
+Wir sitzen in der Ukraine. {% if app.sdks.size > 0 %}Die oben genannten Dienste können Daten in anderen Ländern verarbeiten, auch in den USA. Für Daten aus dem EWR, dem Vereinigten Königreich und der Schweiz stützen sie sich auf einen Angemessenheitsbeschluss (etwa das EU-US Data Privacy Framework) oder auf die Standardvertragsklauseln der EU-Kommission.{% else %}{% if app.processing_note %}{{ app.processing_note[lang] }}{% else %}Die Daten der App bleiben auf deinem Gerät.{% endif %}{% endif %}{% if app.processing_extra %} {{ app.processing_extra[lang] }}{% endif %}
 
 ## Speicherdauer
 
 - Auf deinem Gerät: bis du sie in der App löschst oder die App deinstallierst.
-{% if app.accounts %}- Der Eintrag auf unserem Server: solange du die App nutzt, und höchstens 30 Tage nach deiner Löschanfrage.
+{% if app.accounts %}- {% if app.server_retention %}{{ app.server_retention[lang] }}{% else %}Der Eintrag auf unserem Server: solange du die App nutzt, und höchstens 30 Tage nach deiner Löschanfrage.{% endif %}
 - Anfrageprotokolle unseres Servers: wenige Tage.
 {% endif %}{% if app.analytics %}- Absturz- und Fehlerberichte: 90 Tage.
 {% endif %}- E-Mails an uns: solange wir sie für die Antwort brauchen.
