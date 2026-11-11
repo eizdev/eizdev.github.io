@@ -741,8 +741,12 @@ fridge-widget:
     android: ""                      # https://play.google.com/store/apps/details?id=com.eizdev.fridge once live
 
   # Facts: app repo eizdev/fridge-widget docs/legal/FACTS.md and docs/DECISIONS.md (2026-11-10).
-  # Native Android app (D1, D7). No server, no INTERNET permission (D2), no accounts (D3),
-  # no ads and no IAP in v1 (D4), no analytics, no third-party SDKs that process personal data.
+  # Native Android app (D1, D7). No accounts (D3), no ads and no IAP in v1 (D4), no analytics.
+  # Sync round S4 (2026-11-11): the app now holds the INTERNET and ACCESS_NETWORK_STATE permissions and the
+  # Firebase Auth / Messaging / Remote Config SDKs (D-S9, superseding D2), but sends nothing until the user's first
+  # Share or Join of a fridge, which no build offers yet. So "sends nothing over the internet" replaces "no internet
+  # access", and sdks stays [] (no SDK processes personal data before then). S12 rewrites this entry (accounts,
+  # server, sdks, data_location, effective_date) before sharing ships.
   # Android Auto Backup stays on (D11): data_location says so.
   # The app ships en and uk (D5). In-app paths (app T5.2): fridge list ⋮ → About (uk: ⋮ → Про застосунок);
   # a fridge is deleted with ⋮ next to it → Delete. de/fr/es users see the English app, so those texts use the
@@ -777,11 +781,11 @@ fridge-widget:
     fr: "Pour supprimer un frigo avec ses stickers et étiquettes, touchez ⋮ à côté de lui dans la liste des frigos de l’app, puis **Delete** ; son texte est effacé de votre appareil. Désinstaller l’app, ou vider son stockage dans les Paramètres du téléphone → Applications, efface tout."
     es: "Para borrar una nevera con sus pegatinas y etiquetas, toca ⋮ junto a ella en la lista de neveras de la app y luego **Delete**; su texto se borra de tu dispositivo. Desinstalar la app, o borrar su almacenamiento en Ajustes del teléfono → Aplicaciones, lo borra todo."
   processing_note:
-    en: "The app has no internet access, so its data stays on your device and, if backup is on, in your own Google device backup, which Android keeps for your Google account."
-    uk: "Застосунок не має доступу до інтернету, тож його дані залишаються на вашому пристрої та, якщо ввімкнено резервне копіювання, у вашій власній резервній копії пристрою в Google, яку Android зберігає для вашого облікового запису Google."
-    de: "Die App hat keinen Internetzugriff, ihre Daten bleiben also auf deinem Gerät und, wenn die Sicherung aktiviert ist, in deiner eigenen Google-Gerätesicherung, die Android für dein Google-Konto speichert."
-    fr: "L’app n’a pas accès à Internet : ses données restent sur votre appareil et, si la sauvegarde est activée, dans votre propre sauvegarde Google de l’appareil, qu’Android conserve pour votre compte Google."
-    es: "La app no tiene acceso a internet, así que sus datos se quedan en tu dispositivo y, si la copia de seguridad está activada, en tu propia copia de seguridad de Google del dispositivo, que Android guarda para tu cuenta de Google."
+    en: "The app sends nothing over the internet, so its data stays on your device and, if backup is on, in your own Google device backup, which Android keeps for your Google account."
+    uk: "Застосунок нічого не надсилає через інтернет, тож його дані залишаються на вашому пристрої та, якщо ввімкнено резервне копіювання, у вашій власній резервній копії пристрою в Google, яку Android зберігає для вашого облікового запису Google."
+    de: "Die App sendet nichts über das Internet, ihre Daten bleiben also auf deinem Gerät und, wenn die Sicherung aktiviert ist, in deiner eigenen Google-Gerätesicherung, die Android für dein Google-Konto speichert."
+    fr: "L’app n’envoie rien sur Internet : ses données restent sur votre appareil et, si la sauvegarde est activée, dans votre propre sauvegarde Google de l’appareil, qu’Android conserve pour votre compte Google."
+    es: "La app no envía nada por internet, así que sus datos se quedan en tu dispositivo y, si la copia de seguridad está activada, en tu propia copia de seguridad de Google del dispositivo, que Android guarda para tu cuenta de Google."
   store_terms:                       # Android only (app D1)
     en: Google Play Terms of Service
     uk: Умови використання Google Play
@@ -790,11 +794,11 @@ fridge-widget:
     es: "Términos del Servicio de Google Play"
 
   data_location:
-    en: Only on your phone, in the app's own storage. The app has no internet access and we have no server. If backup is on for your phone, Android can include the app's data in your own Google device backup and restore it when you set up a new phone; that backup belongs to your Google account and we cannot see it.
-    uk: Лише на вашому телефоні, у власному сховищі застосунку. Застосунок не має доступу до інтернету, а власного сервера в нас немає. Якщо на телефоні ввімкнено резервне копіювання, Android може додати дані застосунку до вашої власної резервної копії пристрою в Google і відновити їх, коли ви налаштовуватимете новий телефон; ця копія належить вашому обліковому запису Google, і ми її не бачимо.
-    de: Nur auf deinem Telefon, im eigenen Speicher der App. Die App hat keinen Internetzugriff, und wir haben keinen Server. Ist auf deinem Telefon die Sicherung aktiviert, kann Android die Daten der App in deine eigene Google-Gerätesicherung aufnehmen und sie wiederherstellen, wenn du ein neues Telefon einrichtest; diese Sicherung gehört zu deinem Google-Konto, und wir können sie nicht sehen.
-    fr: "Uniquement sur votre téléphone, dans le stockage propre de l’app. L’app n’a pas accès à Internet et nous n’avons pas de serveur. Si la sauvegarde est activée sur votre téléphone, Android peut inclure les données de l’app dans votre propre sauvegarde Google de l’appareil et les restaurer quand vous configurez un nouveau téléphone ; cette sauvegarde appartient à votre compte Google et nous ne pouvons pas la voir."
-    es: "Solo en tu teléfono, en el almacenamiento propio de la app. La app no tiene acceso a internet y no tenemos servidor. Si la copia de seguridad está activada en tu teléfono, Android puede incluir los datos de la app en tu propia copia de seguridad de Google del dispositivo y restaurarlos cuando configures un teléfono nuevo; esa copia pertenece a tu cuenta de Google y no podemos verla."
+    en: Only on your phone, in the app's own storage. The app sends nothing over the internet and we have no server. If backup is on for your phone, Android can include the app's data in your own Google device backup and restore it when you set up a new phone; that backup belongs to your Google account and we cannot see it.
+    uk: Лише на вашому телефоні, у власному сховищі застосунку. Застосунок нічого не надсилає через інтернет, а власного сервера в нас немає. Якщо на телефоні ввімкнено резервне копіювання, Android може додати дані застосунку до вашої власної резервної копії пристрою в Google і відновити їх, коли ви налаштовуватимете новий телефон; ця копія належить вашому обліковому запису Google, і ми її не бачимо.
+    de: Nur auf deinem Telefon, im eigenen Speicher der App. Die App sendet nichts über das Internet, und wir haben keinen Server. Ist auf deinem Telefon die Sicherung aktiviert, kann Android die Daten der App in deine eigene Google-Gerätesicherung aufnehmen und sie wiederherstellen, wenn du ein neues Telefon einrichtest; diese Sicherung gehört zu deinem Google-Konto, und wir können sie nicht sehen.
+    fr: "Uniquement sur votre téléphone, dans le stockage propre de l’app. L’app n’envoie rien sur Internet et nous n’avons pas de serveur. Si la sauvegarde est activée sur votre téléphone, Android peut inclure les données de l’app dans votre propre sauvegarde Google de l’appareil et les restaurer quand vous configurez un nouveau téléphone ; cette sauvegarde appartient à votre compte Google et nous ne pouvons pas la voir."
+    es: "Solo en tu teléfono, en el almacenamiento propio de la app. La app no envía nada por internet y no tenemos servidor. Si la copia de seguridad está activada en tu teléfono, Android puede incluir los datos de la app en tu propia copia de seguridad de Google del dispositivo y restaurarlos cuando configures un teléfono nuevo; esa copia pertenece a tu cuenta de Google y no podemos verla."
 
   warranty_note:
     en: "The widget is shown by your phone's home-screen app (the launcher): how often it refreshes, which sizes it allows and how it looks can differ between phones and launchers, and we do not control them. Your fridges are stored on your device (and in your own Google device backup if backup is on); we cannot recover them if they are lost."
@@ -856,11 +860,11 @@ fridge-widget:
         fr: "Puis-je synchroniser mes frigos avec un autre téléphone ?"
         es: "¿Puedo sincronizar mis neveras con otro teléfono?"
       a:
-        en: Not in this version. There are no accounts and the app has no internet access, so your fridges stay on the phone where you made them. If backup is on for your phone, Android can bring them over when you set up a new phone from that backup.
-        uk: У цій версії — ні. Облікових записів немає, і застосунок не має доступу до інтернету, тож ваші холодильники лишаються на телефоні, де ви їх створили. Якщо на телефоні ввімкнено резервне копіювання, Android може перенести їх, коли ви налаштовуватимете новий телефон із цієї копії.
-        de: In dieser Version nicht. Es gibt keine Konten, und die App hat keinen Internetzugriff, daher bleiben deine Kühlschränke auf dem Telefon, auf dem du sie angelegt hast. Ist auf deinem Telefon die Sicherung aktiviert, kann Android sie übernehmen, wenn du ein neues Telefon aus dieser Sicherung einrichtest.
-        fr: "Pas dans cette version. Il n’y a pas de compte et l’app n’a pas accès à Internet, donc vos frigos restent sur le téléphone où vous les avez créés. Si la sauvegarde est activée sur votre téléphone, Android peut les transférer quand vous configurez un nouveau téléphone à partir de cette sauvegarde."
-        es: "En esta versión no. No hay cuentas y la app no tiene acceso a internet, así que tus neveras se quedan en el teléfono donde las creaste. Si la copia de seguridad está activada en tu teléfono, Android puede traerlas cuando configures un teléfono nuevo a partir de esa copia."
+        en: Not in this version. There are no accounts and the app sends nothing over the internet, so your fridges stay on the phone where you made them. If backup is on for your phone, Android can bring them over when you set up a new phone from that backup.
+        uk: У цій версії — ні. Облікових записів немає, і застосунок нічого не надсилає через інтернет, тож ваші холодильники лишаються на телефоні, де ви їх створили. Якщо на телефоні ввімкнено резервне копіювання, Android може перенести їх, коли ви налаштовуватимете новий телефон із цієї копії.
+        de: In dieser Version nicht. Es gibt keine Konten, und die App sendet nichts über das Internet, daher bleiben deine Kühlschränke auf dem Telefon, auf dem du sie angelegt hast. Ist auf deinem Telefon die Sicherung aktiviert, kann Android sie übernehmen, wenn du ein neues Telefon aus dieser Sicherung einrichtest.
+        fr: "Pas dans cette version. Il n’y a pas de compte et l’app n’envoie rien sur Internet, donc vos frigos restent sur le téléphone où vous les avez créés. Si la sauvegarde est activée sur votre téléphone, Android peut les transférer quand vous configurez un nouveau téléphone à partir de cette sauvegarde."
+        es: "En esta versión no. No hay cuentas y la app no envía nada por internet, así que tus neveras se quedan en el teléfono donde las creaste. Si la copia de seguridad está activada en tu teléfono, Android puede traerlas cuando configures un teléfono nuevo a partir de esa copia."
     - q:
         en: How do I delete my data?
         uk: Як видалити мої дані?
