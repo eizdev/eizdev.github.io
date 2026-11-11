@@ -750,6 +750,9 @@ fridge-widget:
   # Sync round S5 (2026-11-11): the app has a Share entry (and debug-only invite/join entries), shown only in a build
   # with the owner's Firebase config, which no build has yet, so this entry still holds. A release with that config
   # must not ship before S12 updates it (app docs/OWNER_TODO.md).
+  # Sync round S9 (2026-11-11): in such a build a successful Share or Join also turns on Firebase Cloud Messaging; the
+  # FCM token goes to the Worker, and data messages carry only a fridge id (no notifications). Still no build has the
+  # config, so this entry still holds; S12 adds the token (device id) when it rewrites the entry.
   # Android Auto Backup stays on (D11): data_location says so.
   # The app ships en and uk (D5). In-app paths (app T5.2): fridge list ⋮ → About (uk: ⋮ → Про застосунок);
   # a fridge is deleted with ⋮ next to it → Delete. de/fr/es users see the English app, so those texts use the
