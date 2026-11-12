@@ -727,7 +727,7 @@ ghost-trader:
         es: "No hay cuenta y no se guarda nada en un servidor, así que todos tus datos están en tu teléfono. Para borrar una cartera con sus órdenes, operaciones e historial, abre Portfolio, toca el nombre de la cartera y elige Delete portfolio (Reset and start over borra solo su historial). Desinstalar la app lo borra todo. Los archivos de copia de seguridad que exportaste y las copias del propio teléfono los borras tú."
 
 fridge-widget:
-  name: Fridge Widget                # working name (app repo D8); change here and in the app together
+  name: Our Fridge Door              # app repo D15; must equal LegalConfig.SUPPORT_SUBJECT_APP_NAME
   tagline:
     en: A home-screen widget that looks like a fridge door with paper stickers and labels.
     uk: Віджет для головного екрана, схожий на дверцята холодильника з паперовими стікерами та етикетками.
