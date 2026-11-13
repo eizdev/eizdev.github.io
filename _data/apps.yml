@@ -41,6 +41,7 @@ stick-and-kick:
     de: Timing-Trainer für Drummer — mitklopfen und sehen, wie stabil du bist.
     fr: "Entraîneur de rythme pour batteurs — tapez en mesure et voyez votre régularité."
     es: "Entrenador de ritmo para bateristas: toca al compás y mira lo estable que eres."
+    ru: "Тренажёр ритма для барабанщиков — играйте под клик и смотрите, насколько вы точны."
   email_tag: stickkick               # plus-alias tag, used only if studio.support.plus_aliases
   effective_date: 2026-10-17
   stores:
@@ -55,6 +56,7 @@ stick-and-kick:
     de: ein Banner in der Auswertung nach dem Üben und höchstens eine Vollbildanzeige pro App-Sitzung, wenn du die Auswertung schließt
     fr: "une bannière sur le récapitulatif après une séance, et au plus une publicité plein écran par session de l’app quand vous fermez le récapitulatif"
     es: "un banner en el resumen tras una sesión de práctica y como mucho un anuncio a pantalla completa por sesión de la app al cerrar el resumen"
+    ru: "баннер на итоговом экране после занятия и не более одной полноэкранной рекламы за сеанс, когда вы закрываете итоги"
   # D7 in the app's docs/DECISIONS.md: no ATT prompt, non-personalized ads on iOS.
   ads_note:
     en: On iPhone and iPad the app never asks for permission to track you and requests only non-personalised ads, whatever you answer in the consent message. Google still uses the data above there to show, cap and measure ads and to prevent fraud, but not to personalise them.
@@ -62,6 +64,7 @@ stick-and-kick:
     de: Auf iPhone und iPad fragt die App nie nach der Erlaubnis, dich zu tracken, und fordert nur nicht personalisierte Anzeigen an, egal was du in der Einwilligungsabfrage wählst. Google nutzt die oben genannten Daten dort weiterhin, um Anzeigen auszuliefern, zu begrenzen und zu messen und Betrug zu verhindern, aber nicht zur Personalisierung.
     fr: "Sur iPhone et iPad, l’app ne demande jamais l’autorisation de vous suivre et ne demande que des publicités non personnalisées, quelle que soit votre réponse au message de consentement. Google y utilise toujours les données ci-dessus pour diffuser, limiter et mesurer les publicités et prévenir la fraude, mais pas pour les personnaliser."
     es: "En iPhone y iPad la app nunca pide permiso para rastrearte y solo solicita anuncios no personalizados, respondas lo que respondas en el mensaje de consentimiento. Google sigue usando allí los datos anteriores para mostrar, limitar y medir anuncios y prevenir el fraude, pero no para personalizarlos."
+    ru: "На iPhone и iPad приложение никогда не запрашивает разрешение на отслеживание и запрашивает только неперсонализированную рекламу, что бы вы ни ответили в запросе согласия. Google и там использует указанные выше данные, чтобы показывать, ограничивать и измерять рекламу и предотвращать мошенничество, но не для персонализации."
   iap: true                          # in-app purchase
   iap_kind: one_time                 # one_time | subscription
   premium_name: Premium
@@ -69,13 +72,14 @@ stick-and-kick:
   analytics: false                   # analytics or crash reporting
 
   # In-app path to the "delete all my data" action, or "" if there is none.
-  # fr/es show the English labels; switch them if the app ships French or Spanish.
+  # fr/es/ru show the English labels; switch them if the app ships French, Spanish or Russian.
   delete_data_path:
     en: Settings → Legal & privacy → Delete all my data
     uk: Налаштування → Правова інформація та приватність → Видалити всі мої дані
     de: Einstellungen → Rechtliches & Datenschutz → Alle meine Daten löschen
     fr: "Settings → Legal & privacy → Delete all my data"
     es: "Settings → Legal & privacy → Delete all my data"
+    ru: "Settings → Legal & privacy → Delete all my data"
   # In-app path to the UMP privacy options (shown where consent applies).
   ads_privacy_path:
     en: Settings → Legal & privacy → Ad privacy choices
@@ -83,16 +87,17 @@ stick-and-kick:
     de: Einstellungen → Rechtliches & Datenschutz → Datenschutzoptionen für Werbung
     fr: "Settings → Legal & privacy → Ad privacy choices"
     es: "Settings → Legal & privacy → Ad privacy choices"
+    ru: "Settings → Legal & privacy → Ad privacy choices"
 
   # Third-party SDKs that process personal data.
   sdks:
     - name: Google AdMob
       provider: Google Ireland Limited (EEA/UK/CH), Google LLC (elsewhere)
-      purpose: { en: Advertising, uk: Реклама, de: Werbung, fr: "Publicité", es: "Publicidad" }
+      purpose: { en: Advertising, uk: Реклама, de: Werbung, fr: "Publicité", es: "Publicidad", ru: "Реклама" }
       privacy_url: https://policies.google.com/privacy
     - name: Google User Messaging Platform
       provider: Google Ireland Limited / Google LLC
-      purpose: { en: Ad consent, uk: Згода на рекламу, de: Werbe-Einwilligung, fr: "Consentement publicitaire", es: "Consentimiento para anuncios" }
+      purpose: { en: Ad consent, uk: Згода на рекламу, de: Werbe-Einwilligung, fr: "Consentement publicitaire", es: "Consentimiento para anuncios", ru: "Согласие на рекламу" }
       privacy_url: https://policies.google.com/privacy
 
   # Data the app stores locally (never sent to us).
@@ -102,21 +107,25 @@ stick-and-kick:
       de: Von dir aufgenommene Patterns (Name, Tempo, Takt, Schläge)
       fr: "Les patterns que vous enregistrez (nom, tempo, mesure, frappes)"
       es: "Los patrones que grabas (nombre, tempo, compás, golpes)"
+      ru: "Записанные вами паттерны (название, темп, размер, удары)"
     - en: Practice history and timing scores
       uk: Історія занять і оцінки точності
       de: Übungsverlauf und Timing-Werte
       fr: "Historique d’entraînement et scores de précision"
       es: "Historial de práctica y puntuaciones de ritmo"
+      ru: "История занятий и оценки точности"
     - en: Calibration offset (audio/touch delay)
       uk: Калібрування (затримка звуку/дотику)
       de: Kalibrierung (Audio-/Touch-Verzögerung)
       fr: "Calibrage (latence audio/tactile)"
       es: "Calibración (retardo de audio/toque)"
+      ru: "Калибровка (задержка звука/касания)"
     - en: Settings and whether Premium is unlocked
       uk: Налаштування та чи розблоковано Premium
       de: Einstellungen und ob Premium freigeschaltet ist
       fr: "Réglages et déblocage éventuel de Premium"
       es: "Ajustes y si Premium está desbloqueado"
+      ru: "Настройки и то, разблокирован ли Premium"
 
   # App-specific FAQ for the support page (generic purchase/data/ads answers
   # are added automatically from the flags above).
@@ -127,12 +136,14 @@ stick-and-kick:
         de: Mit Bluetooth-Kopfhörern wirken die Ergebnisse ungenau.
         fr: "Mes résultats semblent faux avec un casque Bluetooth."
         es: "Con auriculares Bluetooth los resultados no parecen precisos."
+        ru: "С Bluetooth-наушниками результаты кажутся неточными."
       a:
         en: Bluetooth adds a variable delay. Use wired headphones or the speaker, or run Settings → Calibration with the headphones connected.
         uk: Bluetooth додає змінну затримку. Використовуйте дротові навушники чи динамік або пройдіть Налаштування → Калібрування з підключеними навушниками.
         de: Bluetooth fügt eine schwankende Verzögerung hinzu. Nutze kabelgebundene Kopfhörer oder den Lautsprecher oder führe Einstellungen → Kalibrierung mit verbundenen Kopfhörern aus.
         fr: "Le Bluetooth ajoute une latence variable. Utilisez un casque filaire ou le haut-parleur, ou lancez Settings → Calibration avec le casque connecté."
         es: "El Bluetooth añade un retardo variable. Usa auriculares con cable o el altavoz, o ejecuta Settings → Calibration con los auriculares conectados."
+        ru: "Bluetooth добавляет непостоянную задержку. Используйте проводные наушники или динамик либо пройдите Settings → Calibration с подключёнными наушниками."
 
 stickerzzz:
   name: Stickerzzz
@@ -142,6 +153,7 @@ stickerzzz:
     de: Mach aus deinen Fotos Sticker-Packs für Telegram.
     fr: "Transformez vos photos en packs de stickers Telegram."
     es: "Convierte tus fotos en packs de stickers para Telegram."
+    ru: "Превращайте свои фото в наборы стикеров для Telegram."
   email_tag: stickerzzz              # plus-alias tag, used only if studio.support.plus_aliases
   effective_date: 2026-10-18
   stores:
@@ -159,12 +171,14 @@ stickerzzz:
     de: Settings → Ad privacy choices
     fr: "Réglages → Confidentialité des annonces"
     es: "Ajustes → Privacidad de los anuncios"
+    ru: "Settings → Ad privacy choices"
   ad_formats:
     en: full-screen ads at some moments, and rewarded videos you can choose to watch for 5 more stickers in a pack
     uk: повноекранну рекламу в окремі моменти та відео з винагородою, які ви можете переглянути, щоб отримати ще 5 стікерів у паку
     de: Vollbildanzeigen an manchen Stellen und Videos mit Belohnung, die du freiwillig für 5 weitere Sticker in einem Pack ansehen kannst
     fr: "des publicités plein écran à certains moments, et des vidéos avec récompense que vous pouvez choisir de regarder pour 5 stickers de plus dans un pack"
     es: "anuncios a pantalla completa en algunos momentos y vídeos con recompensa que puedes elegir ver para tener 5 stickers más en un pack"
+    ru: "полноэкранную рекламу в отдельные моменты и видео с вознаграждением, которые вы можете посмотреть, чтобы получить ещё 5 стикеров в паке"
   # Plus keeps ads; Ads Free/Premium turn off interstitials (LimitsService.showsAds).
   # The optional rewarded video (+5 stickers) stays available to everyone who still needs it.
   ads_paid_note:
@@ -173,6 +187,7 @@ stickerzzz:
     de: Ads Free und Premium schalten die Vollbildanzeigen ab; Belohnungsvideos laufen nur, wenn du selbst eins ansehen möchtest.
     fr: "Ads Free et Premium désactivent les publicités plein écran ; les vidéos avec récompense ne se lancent que si vous choisissez d’en regarder une."
     es: "Ads Free y Premium desactivan los anuncios a pantalla completa; los vídeos con recompensa solo se reproducen cuando eliges ver uno."
+    ru: "Ads Free и Premium отключают полноэкранную рекламу; видео с вознаграждением воспроизводятся, только когда вы сами решите его посмотреть."
 
   # Google Play Billing one-time products ads_free / unlimited (shown as "Plus") / premium,
   # verified by our server (api-worker POST /v1/purchases → Google Play Developer API).
@@ -185,6 +200,7 @@ stickerzzz:
     de: Ads Free, Plus und Premium
     fr: "Ads Free, Plus et Premium"
     es: "Ads Free, Plus y Premium"
+    ru: "Ads Free, Plus и Premium"
   iap_server_check: true
   # Fair use (round 2, D-B4/D-B5): the cap every account has, paid plans included.
   fair_use:
@@ -193,6 +209,7 @@ stickerzzz:
     de: Ein Konto kann bis zu 100 Sticker-Packs haben.
     fr: "Un compte peut avoir jusqu’à 100 packs de stickers."
     es: "Una cuenta puede tener hasta 100 packs de stickers."
+    ru: "В одной учётной записи может быть до 100 наборов стикеров."
 
   # Firebase Anonymous Auth + own server (Cloudflare Worker + D1). No sign-in with
   # name/email. Firebase Crashlytics for crashes and errors (lib/core/logging/app_log.dart);
@@ -205,6 +222,7 @@ stickerzzz:
     de: "Die App nutzt Firebase Crashlytics (Google LLC), um Abstürze und Fehler zu finden und zu beheben. Stürzt die App ab oder tritt ein unerwarteter Fehler auf, sendet sie einen Bericht mit dem Fehler und der Stelle im Code, den letzten Protokollzeilen davor (geöffnete Bildschirme, Anfragen an unseren Server und ihre Ergebnisse, mit technischen IDs — nie deine Fotos, Sticker, Tokens oder Kauf-Tokens), deinem Gerätemodell und der Systemversion, der App-Version, einer Crashlytics-Installations-ID und deiner anonymen App-ID sowie der App-Sprache und dem Design, ob Telegram verbunden ist, wie viele Packs du veröffentlicht hast und ob du einen Plan besitzt. Wir nutzen diese Berichte nur, damit die App funktioniert (unser berechtigtes Interesse an einer stabilen App); Crashlytics speichert sie 90 Tage. Es gibt keine Analyse: Wir verfolgen nicht, wie du die App nutzt."
     fr: "L’app utilise Firebase Crashlytics (Google LLC) pour détecter et corriger les plantages et les erreurs. Lorsque l’app plante ou rencontre une erreur inattendue, elle envoie un rapport contenant l’erreur et l’endroit du code où elle s’est produite, les dernières lignes du journal qui la précèdent (écrans ouverts, requêtes à notre serveur et leurs résultats, avec des identifiants techniques — jamais vos photos, vos stickers, vos jetons ni vos jetons d’achat), le modèle de votre appareil et la version du système, la version de l’app, un identifiant d’installation Crashlytics et votre identifiant d’app anonyme, ainsi que la langue et le thème de l’app, la connexion ou non de Telegram, le nombre de packs publiés et la possession éventuelle d’une offre. Nous utilisons ces rapports uniquement pour que l’app fonctionne (notre intérêt légitime à disposer d’une app stable) ; Crashlytics les conserve 90 jours. Il n’y a aucune analyse d’usage : nous ne suivons pas la façon dont vous utilisez l’app."
     es: "La app usa Firebase Crashlytics (Google LLC) para encontrar y corregir fallos y errores. Cuando la app se cierra inesperadamente o encuentra un error inesperado, envía un informe con el error y el punto del código donde ocurrió, las últimas líneas del registro anteriores (pantallas abiertas, solicitudes a nuestro servidor y sus resultados, con identificadores técnicos; nunca tus fotos, stickers, tokens ni tokens de compra), el modelo de tu dispositivo y la versión del sistema, la versión de la app, un identificador de instalación de Crashlytics y tu identificador de app anónimo, además del idioma y el tema de la app, si Telegram está conectado, cuántos packs has publicado y si tienes algún plan. Usamos estos informes solo para que la app funcione (nuestro interés legítimo en una app estable); Crashlytics los conserva 90 días. No hay analítica: no seguimos cómo usas la app."
+    ru: "Приложение использует Firebase Crashlytics (Google LLC), чтобы находить и исправлять сбои и ошибки. Когда приложение аварийно завершается или сталкивается с непредвиденной ошибкой, оно отправляет отчёт с ошибкой и местом в коде, где она произошла, последними строками журнала перед ней (открытые экраны, запросы к нашему серверу и их результаты с техническими идентификаторами — никогда не ваши фото, стикеры, токены или токены покупок), моделью устройства и версией системы, версией приложения, идентификатором установки Crashlytics и вашим анонимным идентификатором приложения, а также языком и темой приложения, тем, подключён ли Telegram, количеством опубликованных паков и тем, есть ли у вас тариф. Мы используем эти отчёты только для того, чтобы приложение работало (наш законный интерес в стабильном приложении); Crashlytics хранит их 90 дней. Аналитики нет: мы не отслеживаем, как вы пользуетесь приложением."
   server:
     host: Cloudflare, Inc. (Cloudflare Workers, D1)
     data:
@@ -213,32 +231,38 @@ stickerzzz:
         de: Eine zufällige App-ID aus Firebase Anonymous Authentication und wann sie zuerst gesehen wurde
         fr: "Un identifiant d’app aléatoire issu de Firebase Anonymous Authentication, et la date à laquelle il a été vu pour la première fois"
         es: "Un identificador de app aleatorio de Firebase Anonymous Authentication y cuándo se vio por primera vez"
+        ru: "Случайный идентификатор приложения из Firebase Anonymous Authentication и время его первого появления"
       - en: Which plans you own (Ads Free, Plus, Premium). The purchase token the app sends is used to check the purchase with Google Play; we keep only a one-way hash of it, to limit how many accounts one purchase unlocks
         uk: Які тарифи у вас є (Ads Free, Plus, Premium). Токен покупки, який надсилає застосунок, використовується для перевірки в Google Play; ми зберігаємо лише його односторонній хеш, щоб обмежити кількість облікових записів для однієї покупки
         de: Welche Pläne du besitzt (Ads Free, Plus, Premium). Das Kauf-Token, das die App sendet, wird zur Prüfung bei Google Play verwendet; wir speichern nur einen Einweg-Hash davon, um zu begrenzen, wie viele Konten ein Kauf freischaltet
         fr: "Les offres que vous possédez (Ads Free, Plus, Premium). Le jeton d’achat envoyé par l’app sert à vérifier l’achat auprès de Google Play ; nous n’en gardons qu’une empreinte irréversible, pour limiter le nombre de comptes qu’un achat débloque"
         es: "Qué planes tienes (Ads Free, Plus, Premium). El token de compra que envía la app se usa para comprobar la compra con Google Play; solo guardamos un hash irreversible de él, para limitar cuántas cuentas desbloquea una compra"
+        ru: "Какие тарифы у вас есть (Ads Free, Plus, Premium). Токен покупки, который отправляет приложение, используется для проверки покупки в Google Play; мы храним только его односторонний хеш, чтобы ограничить число учётных записей, которые разблокирует одна покупка"
       - en: "If you connect Telegram: your Telegram user ID, username and first name, and the one-time connect code"
         uk: "Якщо ви підключили Telegram: ваш ідентифікатор користувача Telegram, ім’я користувача (username) та ім’я, а також одноразовий код підключення"
         de: "Wenn du Telegram verbindest: deine Telegram-Nutzer-ID, deinen Benutzernamen und Vornamen sowie den einmaligen Verbindungscode"
         fr: "Si vous connectez Telegram : votre identifiant d’utilisateur Telegram, votre nom d’utilisateur et votre prénom, ainsi que le code de connexion à usage unique"
         es: "Si conectas Telegram: tu ID de usuario de Telegram, tu nombre de usuario y tu nombre, y el código de conexión de un solo uso"
+        ru: "Если вы подключили Telegram: ваш идентификатор пользователя Telegram, имя пользователя (username) и имя, а также одноразовый код подключения"
       - en: "For each pack you published: its title, link name, creation time and a list of its stickers' Telegram IDs (the stickers themselves are stored by Telegram)"
         uk: "Для кожного опублікованого паку: назва, назва посилання, час створення і перелік ідентифікаторів його стікерів у Telegram (самі стікери зберігає Telegram)"
         de: "Für jedes veröffentlichte Pack: Titel, Link-Name, Erstellungszeit und eine Liste der Telegram-IDs seiner Sticker (die Sticker selbst speichert Telegram)"
         fr: "Pour chaque pack publié : son titre, son nom de lien, sa date de création et la liste des identifiants Telegram de ses stickers (les stickers eux-mêmes sont stockés par Telegram)"
         es: "Para cada pack publicado: su título, el nombre del enlace, la fecha de creación y una lista de los ID de Telegram de sus stickers (los stickers en sí los guarda Telegram)"
+        ru: "Для каждого опубликованного пака: название, название ссылки, время создания и список идентификаторов его стикеров в Telegram (сами стикеры хранит Telegram)"
       - en: "Rewarded videos: when you finish one, Google AdMob tells our server so, with your anonymous app ID and a pack ID (no personal data). We keep each reward (time, pack ID, AdMob's transaction ID) to add the stickers and to count 5 videos per 24 hours"
         uk: "Відео з винагородою: коли ви додивилися відео, Google AdMob повідомляє про це наш сервер, передаючи ваш анонімний ідентифікатор застосунку та ідентифікатор паку (без персональних даних). Ми зберігаємо кожну винагороду (час, ідентифікатор паку, ідентифікатор транзакції AdMob), щоб додати стікери й рахувати 5 відео за 24 години"
         de: "Belohnungsvideos: Wenn du eins zu Ende ansiehst, teilt Google AdMob das unserem Server mit, mit deiner anonymen App-ID und einer Pack-ID (keine personenbezogenen Daten). Wir speichern jede Belohnung (Zeit, Pack-ID, Transaktions-ID von AdMob), um die Sticker hinzuzufügen und 5 Videos pro 24 Stunden zu zählen"
         fr: "Vidéos avec récompense : quand vous en terminez une, Google AdMob le signale à notre serveur, avec votre identifiant d’app anonyme et un identifiant de pack (aucune donnée personnelle). Nous conservons chaque récompense (heure, identifiant du pack, identifiant de transaction AdMob) pour ajouter les stickers et compter 5 vidéos par 24 heures"
         es: "Vídeos con recompensa: cuando terminas uno, Google AdMob se lo comunica a nuestro servidor, con tu identificador de app anónimo y un identificador de pack (sin datos personales). Guardamos cada recompensa (hora, identificador del pack, identificador de transacción de AdMob) para añadir los stickers y contar 5 vídeos cada 24 horas"
+        ru: "Видео с вознаграждением: когда вы досмотрели видео, Google AdMob сообщает об этом нашему серверу, передавая ваш анонимный идентификатор приложения и идентификатор пака (без персональных данных). Мы храним каждое вознаграждение (время, идентификатор пака, идентификатор транзакции AdMob), чтобы добавить стикеры и считать 5 видео за 24 часа"
   server_delete:
     en: Clear app data (see above) disconnects Telegram and starts a new anonymous ID on this phone, but the old record stays on our server. To have it deleted, email us and tell us your Telegram username if you connected one. We delete the record within 30 days. Packs you published stay on Telegram until you delete them in the app (do it before clearing app data), or ask us in the same email to delete them.
     uk: «Очистити дані застосунку» (див. вище) відключає Telegram і створює новий анонімний ідентифікатор на цьому телефоні, але старий запис залишається на нашому сервері. Щоб його видалити, напишіть нам і вкажіть ваш username у Telegram, якщо ви його підключали. Ми видалимо запис протягом 30 днів. Опубліковані паки залишаються в Telegram, доки ви не видалите їх у застосунку (зробіть це до очищення даних) або не попросите нас видалити їх у тому самому листі.
     de: „App-Daten löschen“ (siehe oben) trennt Telegram und erzeugt auf diesem Telefon eine neue anonyme ID, der alte Eintrag bleibt aber auf unserem Server. Um ihn löschen zu lassen, schreib uns eine E-Mail und nenne deinen Telegram-Benutzernamen, falls du Telegram verbunden hast. Wir löschen den Eintrag innerhalb von 30 Tagen. Veröffentlichte Packs bleiben auf Telegram, bis du sie in der App löschst (vor dem Löschen der App-Daten) oder uns in derselben E-Mail bittest, sie zu löschen.
     fr: "« Effacer les données » (voir ci-dessus) déconnecte Telegram et crée un nouvel identifiant anonyme sur ce téléphone, mais l’ancien enregistrement reste sur notre serveur. Pour le faire supprimer, écrivez-nous en indiquant votre nom d’utilisateur Telegram si vous en avez connecté un. Nous supprimons l’enregistrement sous 30 jours. Les packs publiés restent sur Telegram jusqu’à ce que vous les supprimiez dans l’app (faites-le avant d’effacer les données) ou que vous nous demandiez de les supprimer dans le même e-mail."
     es: "«Borrar datos» (ver arriba) desconecta Telegram y crea un nuevo identificador anónimo en este teléfono, pero el registro antiguo se queda en nuestro servidor. Para que lo borremos, escríbenos e indica tu nombre de usuario de Telegram si conectaste uno. Borramos el registro en un plazo de 30 días. Los packs que publicaste se quedan en Telegram hasta que los borres en la app (hazlo antes de borrar los datos) o nos pidas en el mismo correo que los borremos."
+    ru: "«Clear app data» (см. выше) отключает Telegram и создаёт новый анонимный идентификатор на этом телефоне, но старая запись остаётся на нашем сервере. Чтобы её удалить, напишите нам и укажите ваш username в Telegram, если вы его подключали. Мы удалим запись в течение 30 дней. Опубликованные паки остаются в Telegram, пока вы не удалите их в приложении (сделайте это до очистки данных) или не попросите нас удалить их в том же письме."
 
   # Telegram linking via the bot; packs are published under the user's account.
   telegram: true
@@ -249,11 +273,12 @@ stickerzzz:
     de: Settings → Telegram → Disconnect
     fr: "Réglages → Telegram → Déconnecter"
     es: "Ajustes → Telegram → Desconectar"
+    ru: "Settings → Telegram → Disconnect"
 
   user_content: true
 
   # "Settings → Clear app data" (lib/ui/screens/settings/clear_app_data_dialog.dart,
-  # lib/core/app_data_service.dart). The app has no German UI, so de shows the English labels;
+  # lib/core/app_data_service.dart). The app has no German UI, so de and ru show the English labels;
   # fr/es use the app's French and Spanish labels.
   delete_data_path:
     en: Settings → Clear app data
@@ -261,6 +286,7 @@ stickerzzz:
     de: Settings → Clear app data
     fr: "Réglages → Effacer les données"
     es: "Ajustes → Borrar datos"
+    ru: "Settings → Clear app data"
 
   data_location:
     en: Drafts and the photos you pick stay on your phone. Published packs live on Telegram under your account. Our server keeps only an anonymous app ID, your Telegram link, the list of packs you published and which plans you own — see the privacy policy.
@@ -268,6 +294,7 @@ stickerzzz:
     de: Entwürfe und die ausgewählten Fotos bleiben auf deinem Telefon. Veröffentlichte Packs liegen auf Telegram in deinem Konto. Unser Server speichert nur eine anonyme App-ID, deine Telegram-Verknüpfung, die Liste deiner veröffentlichten Packs und deine Pläne — siehe Datenschutzerklärung.
     fr: "Les brouillons et les photos que vous choisissez restent sur votre téléphone. Les packs publiés sont hébergés par Telegram sous votre compte. Notre serveur ne conserve qu’un identifiant d’app anonyme, votre liaison Telegram, la liste des packs que vous avez publiés et les offres que vous possédez — voir la politique de confidentialité."
     es: "Los borradores y las fotos que eliges se quedan en tu teléfono. Los packs publicados están en Telegram, en tu cuenta. Nuestro servidor solo guarda un identificador de app anónimo, tu vínculo con Telegram, la lista de packs que publicaste y qué planes tienes; consulta la política de privacidad."
+    ru: "Черновики и выбранные фото остаются на вашем телефоне. Опубликованные паки хранятся в Telegram в вашей учётной записи. Наш сервер хранит только анонимный идентификатор приложения, привязку Telegram, список опубликованных паков и ваши тарифы — см. политику конфиденциальности."
 
   warranty_note:
     en: Publishing depends on Telegram. We do not control Telegram and are not responsible if it is unavailable, changes its limits or removes a pack.
@@ -275,44 +302,45 @@ stickerzzz:
     de: Das Veröffentlichen hängt von Telegram ab. Wir haben keinen Einfluss auf Telegram und sind nicht verantwortlich, wenn es nicht erreichbar ist, seine Limits ändert oder ein Pack entfernt.
     fr: "La publication dépend de Telegram. Nous ne contrôlons pas Telegram et ne sommes pas responsables s’il est indisponible, modifie ses limites ou supprime un pack."
     es: "La publicación depende de Telegram. No controlamos Telegram y no somos responsables si no está disponible, cambia sus límites o elimina un pack."
+    ru: "Публикация зависит от Telegram. Мы не контролируем Telegram и не несём ответственности, если он недоступен, меняет ограничения или удаляет пак."
 
   # Third-party services that process personal data (pubspec.yaml + server).
   sdks:
     - name: Firebase Authentication
       provider: Google LLC
-      purpose: { en: Anonymous app ID, uk: Анонімний ідентифікатор застосунку, de: Anonyme App-ID, fr: "Identifiant d’app anonyme", es: "Identificador de app anónimo" }
+      purpose: { en: Anonymous app ID, uk: Анонімний ідентифікатор застосунку, de: Anonyme App-ID, fr: "Identifiant d’app anonyme", es: "Identificador de app anónimo", ru: "Анонимный идентификатор приложения" }
       privacy_url: https://firebase.google.com/support/privacy
     - name: Firebase Crashlytics
       provider: Google LLC
-      purpose: { en: Crash and error reports, uk: Звіти про збої та помилки, de: Absturz- und Fehlerberichte, fr: "Rapports de plantage et d’erreur", es: "Informes de fallos y errores" }
+      purpose: { en: Crash and error reports, uk: Звіти про збої та помилки, de: Absturz- und Fehlerberichte, fr: "Rapports de plantage et d’erreur", es: "Informes de fallos y errores", ru: "Отчёты о сбоях и ошибках" }
       privacy_url: https://firebase.google.com/support/privacy
     - name: Firebase Remote Config
       provider: Google LLC
-      purpose: { en: App settings, uk: Налаштування застосунку, de: App-Einstellungen, fr: "Réglages de l’app", es: "Ajustes de la app" }
+      purpose: { en: App settings, uk: Налаштування застосунку, de: App-Einstellungen, fr: "Réglages de l’app", es: "Ajustes de la app", ru: "Настройки приложения" }
       privacy_url: https://firebase.google.com/support/privacy
     - name: Google AdMob
       provider: Google Ireland Limited (EEA/UK/CH), Google LLC (elsewhere)
-      purpose: { en: Advertising, uk: Реклама, de: Werbung, fr: "Publicité", es: "Publicidad" }
+      purpose: { en: Advertising, uk: Реклама, de: Werbung, fr: "Publicité", es: "Publicidad", ru: "Реклама" }
       privacy_url: https://policies.google.com/privacy
     - name: Google User Messaging Platform
       provider: Google Ireland Limited / Google LLC
-      purpose: { en: Ad consent, uk: Згода на рекламу, de: Werbe-Einwilligung, fr: "Consentement publicitaire", es: "Consentimiento para anuncios" }
+      purpose: { en: Ad consent, uk: Згода на рекламу, de: Werbe-Einwilligung, fr: "Consentement publicitaire", es: "Consentimiento para anuncios", ru: "Согласие на рекламу" }
       privacy_url: https://policies.google.com/privacy
     - name: Google Play Billing
       provider: Google Ireland Limited / Google LLC
-      purpose: { en: Purchases, uk: Покупки, de: Käufe, fr: "Achats", es: "Compras" }
+      purpose: { en: Purchases, uk: Покупки, de: Käufe, fr: "Achats", es: "Compras", ru: "Покупки" }
       privacy_url: https://policies.google.com/privacy
     - name: Google Play in-app updates
       provider: Google Ireland Limited / Google LLC
-      purpose: { en: Update prompts, uk: Пропозиції оновлення, de: Update-Hinweise, fr: "Propositions de mise à jour", es: "Avisos de actualización" }
+      purpose: { en: Update prompts, uk: Пропозиції оновлення, de: Update-Hinweise, fr: "Propositions de mise à jour", es: "Avisos de actualización", ru: "Предложения обновления" }
       privacy_url: https://policies.google.com/privacy
     - name: Cloudflare (Workers, D1)
       provider: Cloudflare, Inc.
-      purpose: { en: Hosting our server, uk: Хостинг нашого сервера, de: Hosting unseres Servers, fr: "Hébergement de notre serveur", es: "Alojamiento de nuestro servidor" }
+      purpose: { en: Hosting our server, uk: Хостинг нашого сервера, de: Hosting unseres Servers, fr: "Hébergement de notre serveur", es: "Alojamiento de nuestro servidor", ru: "Хостинг нашего сервера" }
       privacy_url: https://www.cloudflare.com/privacypolicy/
     - name: Telegram (Bot API)
       provider: Telegram FZ-LLC / Telegram Messenger Inc.
-      purpose: { en: Connecting your account and publishing your packs, uk: Підключення облікового запису й публікація паків, de: Konto verbinden und Packs veröffentlichen, fr: "Connexion de votre compte et publication de vos packs", es: "Conectar tu cuenta y publicar tus packs" }
+      purpose: { en: Connecting your account and publishing your packs, uk: Підключення облікового запису й публікація паків, de: Konto verbinden und Packs veröffentlichen, fr: "Connexion de votre compte et publication de vos packs", es: "Conectar tu cuenta y publicar tus packs", ru: "Подключение учётной записи и публикация паков" }
       privacy_url: https://telegram.org/privacy
 
   # Data the app stores only on the phone.
@@ -322,21 +350,25 @@ stickerzzz:
       de: Entwürfe — noch nicht veröffentlichte Packs mit Sticker-Bildern, Emojis und Titeln
       fr: "Brouillons — les packs pas encore publiés, avec leurs images de stickers, leurs emoji et leurs titres"
       es: "Borradores: los packs que aún no has publicado, con sus imágenes de stickers, emoji y títulos"
+      ru: "Черновики — ещё не опубликованные паки с изображениями стикеров, эмодзи и названиями"
     - en: Photos you pick or take. They are cropped and turned into stickers on the phone; the original photos are never uploaded
       uk: Фото, які ви вибираєте чи знімаєте. Їх обрізають і перетворюють на стікери на телефоні; оригінальні фото ніколи не завантажуються
       de: Fotos, die du auswählst oder aufnimmst. Sie werden auf dem Telefon zugeschnitten und zu Stickern gemacht; die Originalfotos werden nie hochgeladen
       fr: "Les photos que vous choisissez ou prenez. Elles sont recadrées et transformées en stickers sur le téléphone ; les photos originales ne sont jamais envoyées"
       es: "Las fotos que eliges o haces. Se recortan y se convierten en stickers en el teléfono; las fotos originales nunca se suben"
+      ru: "Фото, которые вы выбираете или снимаете. Их обрезают и превращают в стикеры на телефоне; оригинальные фото никогда не загружаются"
     - en: Cached images of your published stickers
       uk: Кешовані зображення ваших опублікованих стікерів
       de: Zwischengespeicherte Bilder deiner veröffentlichten Sticker
       fr: "Les images en cache de vos stickers publiés"
       es: "Imágenes en caché de tus stickers publicados"
+      ru: "Кешированные изображения ваших опубликованных стикеров"
     - en: Settings (theme, language), recently used emojis and whether you accepted the terms
       uk: Налаштування (тема, мова), нещодавні емодзі та чи прийняли ви умови
       de: Einstellungen (Design, Sprache), zuletzt genutzte Emojis und ob du die Bedingungen akzeptiert hast
       fr: "Réglages (thème, langue), emoji récents et acceptation des conditions"
       es: "Ajustes (tema, idioma), emoji recientes y si aceptaste las condiciones"
+      ru: "Настройки (тема, язык), недавние эмодзи и то, приняли ли вы условия"
 
   faq:
     - q:
@@ -345,36 +377,42 @@ stickerzzz:
         de: Warum muss ich Telegram verbinden?
         fr: "Pourquoi dois-je connecter Telegram ?"
         es: "¿Por qué tengo que conectar Telegram?"
+        ru: "Зачем подключать Telegram?"
       a:
         en: Packs are published on Telegram under your account, and our bot @StickerzzzApp_bot creates them for you. You can make stickers without connecting and connect when you publish (Settings → Telegram).
         uk: Паки публікуються в Telegram у вашому обліковому записі, і створює їх наш бот @StickerzzzApp_bot. Робити стікери можна й без підключення — підключіться, коли публікуватимете (Налаштування → Telegram).
         de: Packs werden auf Telegram in deinem Konto veröffentlicht; unser Bot @StickerzzzApp_bot erstellt sie für dich. Sticker kannst du auch ohne Verbindung machen und erst beim Veröffentlichen verbinden (Settings → Telegram).
         fr: "Les packs sont publiés sur Telegram sous votre compte, et notre bot @StickerzzzApp_bot les crée pour vous. Vous pouvez créer des stickers sans connexion et vous connecter au moment de publier (Réglages → Telegram)."
         es: "Los packs se publican en Telegram en tu cuenta y nuestro bot @StickerzzzApp_bot los crea por ti. Puedes hacer stickers sin conectarte y conectarte cuando publiques (Ajustes → Telegram)."
+        ru: "Паки публикуются в Telegram в вашей учётной записи, а создаёт их наш бот @StickerzzzApp_bot. Делать стикеры можно и без подключения — подключитесь, когда будете публиковать (Settings → Telegram)."
     - q:
         en: I changed phones or cleared app data. Where are my packs?
         uk: Я змінив(-ла) телефон або очистив(-ла) дані. Де мої паки?
         de: Ich habe das Telefon gewechselt oder die App-Daten gelöscht. Wo sind meine Packs?
         fr: "J’ai changé de téléphone ou effacé les données de l’app. Où sont mes packs ?"
         es: "He cambiado de teléfono o he borrado los datos de la app. ¿Dónde están mis packs?"
+        ru: "Я сменил(-а) телефон или очистил(-а) данные. Где мои паки?"
       a:
         en: Published packs stay on Telegram. Connect the same Telegram account again in Settings to see and edit them. Drafts were stored only on the old phone and can't be recovered.
         uk: Опубліковані паки залишаються в Telegram. Підключіть той самий обліковий запис Telegram у Налаштуваннях, щоб бачити й редагувати їх. Чернетки зберігалися лише на старому телефоні, їх не відновити.
         de: Veröffentlichte Packs bleiben auf Telegram. Verbinde in den Settings dasselbe Telegram-Konto erneut, um sie zu sehen und zu bearbeiten. Entwürfe lagen nur auf dem alten Telefon und lassen sich nicht wiederherstellen.
         fr: "Les packs publiés restent sur Telegram. Reconnectez le même compte Telegram dans les Réglages pour les voir et les modifier. Les brouillons n’étaient stockés que sur l’ancien téléphone et ne peuvent pas être récupérés."
         es: "Los packs publicados se quedan en Telegram. Vuelve a conectar la misma cuenta de Telegram en Ajustes para verlos y editarlos. Los borradores solo estaban en el teléfono antiguo y no se pueden recuperar."
+        ru: "Опубликованные паки остаются в Telegram. Подключите ту же учётную запись Telegram снова в Settings, чтобы видеть и редактировать их. Черновики хранились только на старом телефоне, их не восстановить."
     - q:
         en: How do I delete a published pack?
         uk: Як видалити опублікований пак?
         de: Wie lösche ich ein veröffentlichtes Pack?
         fr: "Comment supprimer un pack publié ?"
         es: "¿Cómo borro un pack publicado?"
+        ru: "Как удалить опубликованный пак?"
       a:
         en: Open the pack, tap ⋯ → Delete pack. It is deleted on Telegram too.
         uk: Відкрийте пак, натисніть ⋯ → Видалити пак. Його буде видалено і в Telegram.
         de: Öffne das Pack und tippe auf ⋯ → Delete pack. Es wird auch auf Telegram gelöscht.
         fr: "Ouvrez le pack, touchez ⋯ → Supprimer le pack. Il est aussi supprimé sur Telegram."
         es: "Abre el pack y toca ⋯ → Borrar pack. También se borra en Telegram."
+        ru: "Откройте пак, нажмите ⋯ → Delete pack. Он будет удалён и в Telegram."
 
 rapid-sudoku:
   name: Rapid Sudoku
@@ -384,6 +422,7 @@ rapid-sudoku:
     de: Sudoku gegen die Uhr — Rapid-Level, zwei tägliche Rätsel und klassische Spiele ohne Timer.
     fr: "Le sudoku contre la montre — niveaux Rapid, deux grilles quotidiennes et parties classiques sans chrono."
     es: "Sudoku contrarreloj: niveles Rapid, dos retos diarios y partidas clásicas sin cronómetro."
+    ru: "Судоку на время — уровни Rapid, две ежедневные головоломки в день и классические игры без таймера."
   email_tag: rapidsudoku             # plus-alias tag, used only if studio.support.plus_aliases
   effective_date: 2026-10-30
   stores:
@@ -402,18 +441,21 @@ rapid-sudoku:
     de: Settings → Ad privacy choices
     fr: "Settings → Ad privacy choices"
     es: "Settings → Ad privacy choices"
+    ru: "Settings → Ad privacy choices"
   ad_formats:
     en: full-screen ads after some game results, and rewarded videos you can choose to watch for one extra continue in a game
     uk: повноекранну рекламу після деяких результатів гри та відео з винагородою, які ви можете переглянути, щоб один раз продовжити гру
     de: Vollbildanzeigen nach manchen Spielergebnissen und Videos mit Belohnung, die du freiwillig ansehen kannst, um ein Spiel einmal fortzusetzen
     fr: "des publicités plein écran après certains résultats de partie, et des vidéos avec récompense que vous pouvez choisir de regarder pour continuer une partie une fois"
     es: "anuncios a pantalla completa tras algunos resultados de partida y vídeos con recompensa que puedes elegir ver para continuar una partida una vez"
+    ru: "полноэкранную рекламу после некоторых результатов игры и видео с вознаграждением, которые вы можете посмотреть, чтобы один раз продолжить игру"
   ads_note:
     en: On iPhone the app never asks for permission to track you and requests only non-personalised ads, whatever you answer in the consent message. Google still uses the data above there to show, cap and measure ads and to prevent fraud, but not to personalise them.
     uk: На iPhone застосунок ніколи не просить дозволу на відстеження і запитує лише неперсоналізовану рекламу, хоч би що ви відповіли в запиті на згоду. Google і там використовує наведені вище дані, щоб показувати, обмежувати й вимірювати рекламу та запобігати шахрайству, але не для персоналізації.
     de: Auf dem iPhone fragt die App nie nach der Erlaubnis, dich zu tracken, und fordert nur nicht personalisierte Anzeigen an, egal was du in der Einwilligungsabfrage wählst. Google nutzt die oben genannten Daten dort weiterhin, um Anzeigen auszuliefern, zu begrenzen und zu messen und Betrug zu verhindern, aber nicht zur Personalisierung.
     fr: "Sur iPhone, l’app ne demande jamais l’autorisation de vous suivre et ne demande que des publicités non personnalisées, quelle que soit votre réponse au message de consentement. Google y utilise toujours les données ci-dessus pour diffuser, limiter et mesurer les publicités et prévenir la fraude, mais pas pour les personnaliser."
     es: "En iPhone la app nunca pide permiso para rastrearte y solo solicita anuncios no personalizados, respondas lo que respondas en el mensaje de consentimiento. Google sigue usando allí los datos anteriores para mostrar, limitar y medir anuncios y prevenir el fraude, pero no para personalizarlos."
+    ru: "На iPhone приложение никогда не запрашивает разрешение на отслеживание и запрашивает только неперсонализированную рекламу, что бы вы ни ответили в запросе согласия. Google и там использует указанные выше данные, чтобы показывать, ограничивать и измерять рекламу и предотвращать мошенничество, но не для персонализации."
   # Remove ads turns off the interstitials only; the rewarded continue stays for
   # everyone, so the ad SDK still starts (after consent) for owners too (D4, D5).
   ads_paid_note:
@@ -422,6 +464,7 @@ rapid-sudoku:
     de: "„Remove ads“ schaltet die Vollbildanzeigen ab; Belohnungsvideos laufen nur, wenn du selbst eins ansehen möchtest."
     fr: "« Remove ads » désactive les publicités plein écran ; les vidéos avec récompense ne se lancent que si vous choisissez d’en regarder une."
     es: "«Remove ads» desactiva los anuncios a pantalla completa; los vídeos con recompensa solo se reproducen cuando eliges ver uno."
+    ru: "«Remove ads» отключает полноэкранную рекламу; видео с вознаграждением воспроизводятся, только когда вы сами решите его посмотреть."
 
   # Google Play Billing on Android, StoreKit 2 on iOS: the non-consumable remove_ads and
   # the consumable coin bundles coins_10/20/50/100. Checked on the phone only (no server).
@@ -436,12 +479,14 @@ rapid-sudoku:
     de: Münzpakete sind Verbrauchsartikel. Die Münzen werden nur auf diesem Gerät gutgeschrieben, und die Stores können sie nicht wiederherstellen. Nach einer Neuinstallation kommen sie nur vom Telefon selbst zurück — aus der eigenen Android-Sicherung oder auf dem iPhone aus der Kopie, die die App im Schlüsselbund (Keychain) des Telefons ablegt. Nur „Remove ads“ lässt sich wiederherstellen.
     fr: "Les packs de pièces sont des achats consommables. Les pièces sont ajoutées sur cet appareil uniquement, et les stores ne peuvent pas les restaurer. Après une réinstallation, elles ne reviennent que depuis le téléphone lui-même : la sauvegarde d’Android ou, sur iPhone, la copie que l’app garde dans le trousseau (Keychain) du téléphone. Seul « Remove ads » peut être restauré."
     es: "Los paquetes de monedas son compras consumibles. Las monedas se añaden solo en este dispositivo y las tiendas no pueden restaurarlas. Tras reinstalar, solo vuelven desde el propio teléfono: la copia de seguridad de Android o, en iPhone, la copia que la app guarda en el llavero (Keychain) del teléfono. Solo «Remove ads» se puede restaurar."
+    ru: "Наборы монет — расходуемые покупки. Монеты добавляются только на этом устройстве, и магазины не могут их восстановить. После переустановки они возвращаются только с самого телефона — из собственной резервной копии Android или, на iPhone, из копии, которую приложение хранит в Keychain (Связке ключей) телефона. Восстановить можно только «Remove ads»."
   restore_note:
     en: Open **Settings → Restore purchases**, signed in to the same Apple Account or Google account you bought Remove ads with. Coin bundles can't be restored.
     uk: Відкрийте **Settings → Restore purchases**, увійшовши в той самий обліковий запис Apple або Google, з якого купували «Remove ads». Набори монет відновити не можна.
     de: Öffne **Settings → Restore purchases**, angemeldet mit demselben Apple Account oder Google-Konto, mit dem du „Remove ads“ gekauft hast. Münzpakete lassen sich nicht wiederherstellen.
     fr: "Ouvrez **Settings → Restore purchases**, connecté au même compte Apple ou Google que celui utilisé pour acheter « Remove ads ». Les packs de pièces ne peuvent pas être restaurés."
     es: "Abre **Settings → Restore purchases** con la misma cuenta de Apple o de Google con la que compraste «Remove ads». Los paquetes de monedas no se pueden restaurar."
+    ru: "Откройте **Settings → Restore purchases**, войдя в ту же учётную запись Apple или Google, с которой покупали «Remove ads». Наборы монет восстановить нельзя."
   accounts: false                    # no accounts, no own server (Play Games / Game Center sign-in only for leaderboards)
   analytics: false                   # no analytics, no crash reporting (D15)
 
@@ -455,12 +500,14 @@ rapid-sudoku:
     de: Settings → Delete my data
     fr: "Settings → Delete my data"
     es: "Settings → Delete my data"
+    ru: "Settings → Delete my data"
   delete_data_note:
     en: Uninstalling the app deletes everything as well, except on iPhone, where the small Keychain copy of your coins, login streak and Remove ads stays so that a reinstall gets them back; Delete my data resets that copy too.
     uk: Видалення застосунку також видаляє все, крім iPhone, де лишається невелика копія ваших монет, серії входів і «Remove ads» у Keychain, щоб після перевстановлення їх повернути; «Delete my data» скидає і цю копію.
     de: Auch das Deinstallieren löscht alles, außer auf dem iPhone, wo die kleine Schlüsselbund-Kopie deiner Münzen, deiner Login-Serie und von „Remove ads“ bleibt, damit eine Neuinstallation sie zurückholt; „Delete my data“ setzt auch diese Kopie zurück.
     fr: "Désinstaller l’app supprime aussi tout, sauf sur iPhone, où la petite copie de vos pièces, de votre série de connexions et de « Remove ads » reste dans le trousseau pour qu’une réinstallation les retrouve ; « Delete my data » réinitialise aussi cette copie."
     es: "Desinstalar la app también lo borra todo, salvo en iPhone, donde la pequeña copia de tus monedas, tu racha de inicios y «Remove ads» se queda en el llavero para que una reinstalación las recupere; «Delete my data» también restablece esa copia."
+    ru: "Удаление приложения тоже удаляет всё, кроме iPhone, где остаётся небольшая копия ваших монет, серии входов и «Remove ads» в Keychain, чтобы после переустановки их вернуть; «Delete my data» сбрасывает и эту копию."
 
   data_location:
     en: Everything stays on your phone (and in your phone's own backup, if it is on). Scores you play for the leaderboards go to Google Play Games on Android or Game Center on iPhone, under your profile there. The leaderboard screen also shows the public names and pictures of today's top players from that service; the app doesn't keep them. We have no server.
@@ -468,6 +515,7 @@ rapid-sudoku:
     de: Alles bleibt auf deinem Telefon (und in seiner eigenen Sicherung, falls aktiviert). Ergebnisse für die Bestenlisten gehen auf Android an Google Play Games und auf dem iPhone an Game Center, in dein Profil dort. Die Bestenliste zeigt auch die öffentlichen Namen und Bilder der besten Spieler des Tages aus diesem Dienst; die App speichert sie nicht. Wir haben keinen Server.
     fr: "Tout reste sur votre téléphone (et dans sa propre sauvegarde, si elle est activée). Les scores des classements sont envoyés à Google Play Games sur Android ou à Game Center sur iPhone, dans votre profil. L’écran des classements affiche aussi les noms et images publics des meilleurs joueurs du jour fournis par ce service ; l’app ne les conserve pas. Nous n’avons pas de serveur."
     es: "Todo se queda en tu teléfono (y en su propia copia de seguridad, si está activada). Las puntuaciones de las clasificaciones van a Google Play Juegos en Android o a Game Center en iPhone, a tu perfil allí. La pantalla de clasificación también muestra los nombres e imágenes públicos de los mejores jugadores del día de ese servicio; la app no los guarda. No tenemos servidor."
+    ru: "Всё хранится на вашем телефоне (и в его собственной резервной копии, если она включена). Результаты для таблиц лидеров отправляются в Google Play Games на Android или в Game Center на iPhone, в ваш профиль там. Экран таблицы лидеров также показывает публичные имена и изображения лучших игроков дня из этого сервиса; приложение их не хранит. Собственного сервера у нас нет."
 
   warranty_note:
     en: "Leaderboards and sign-in depend on Google Play Games (Android) and Game Center (iPhone). We do not control them and are not responsible if they are unavailable or change. Your progress and coins live on your device; we cannot recover them if they are lost."
@@ -475,24 +523,25 @@ rapid-sudoku:
     de: "Bestenlisten und Anmeldung hängen von Google Play Games (Android) und Game Center (iPhone) ab. Wir haben keinen Einfluss darauf und sind nicht verantwortlich, wenn sie nicht erreichbar sind oder sich ändern. Dein Fortschritt und deine Münzen liegen auf deinem Gerät; gehen sie verloren, können wir sie nicht wiederherstellen."
     fr: "Les classements et la connexion dépendent de Google Play Games (Android) et de Game Center (iPhone). Nous ne les contrôlons pas et ne sommes pas responsables s’ils sont indisponibles ou changent. Votre progression et vos pièces restent sur votre appareil ; nous ne pouvons pas les récupérer en cas de perte."
     es: "Las clasificaciones y el inicio de sesión dependen de Google Play Juegos (Android) y Game Center (iPhone). No los controlamos y no somos responsables si no están disponibles o cambian. Tu progreso y tus monedas están en tu dispositivo; no podemos recuperarlos si se pierden."
+    ru: "Таблицы лидеров и вход зависят от Google Play Games (Android) и Game Center (iPhone). Мы не контролируем эти сервисы и не несём ответственности, если они недоступны или меняются. Ваш прогресс и монеты хранятся на вашем устройстве; мы не можем восстановить их в случае утраты."
 
   # Third-party SDKs and platform services that process personal data (app repo docs/legal/FACTS.md).
   sdks:
     - name: Google AdMob
       provider: Google Ireland Limited (EEA/UK/CH), Google LLC (elsewhere)
-      purpose: { en: Advertising, uk: Реклама, de: Werbung, fr: "Publicité", es: "Publicidad" }
+      purpose: { en: Advertising, uk: Реклама, de: Werbung, fr: "Publicité", es: "Publicidad", ru: "Реклама" }
       privacy_url: https://policies.google.com/privacy
     - name: Google User Messaging Platform
       provider: Google Ireland Limited / Google LLC
-      purpose: { en: Ad consent, uk: Згода на рекламу, de: Werbe-Einwilligung, fr: "Consentement publicitaire", es: "Consentimiento para anuncios" }
+      purpose: { en: Ad consent, uk: Згода на рекламу, de: Werbe-Einwilligung, fr: "Consentement publicitaire", es: "Consentimiento para anuncios", ru: "Согласие на рекламу" }
       privacy_url: https://policies.google.com/privacy
     - name: Google Play Games Services
       provider: Google Ireland Limited (EEA/UK/CH), Google LLC (elsewhere)
-      purpose: { en: Sign-in and leaderboards (Android), uk: Вхід і таблиці лідерів (Android), de: Anmeldung und Bestenlisten (Android), fr: "Connexion et classements (Android)", es: "Inicio de sesión y clasificaciones (Android)" }
+      purpose: { en: Sign-in and leaderboards (Android), uk: Вхід і таблиці лідерів (Android), de: Anmeldung und Bestenlisten (Android), fr: "Connexion et classements (Android)", es: "Inicio de sesión y clasificaciones (Android)", ru: "Вход и таблицы лидеров (Android)" }
       privacy_url: https://policies.google.com/privacy
     - name: Apple Game Center
       provider: Apple Distribution International Ltd. (EEA/UK/CH), Apple Inc. (elsewhere)
-      purpose: { en: Sign-in and leaderboards (iPhone), uk: Вхід і таблиці лідерів (iPhone), de: Anmeldung und Bestenlisten (iPhone), fr: "Connexion et classements (iPhone)", es: "Inicio de sesión y clasificaciones (iPhone)" }
+      purpose: { en: Sign-in and leaderboards (iPhone), uk: Вхід і таблиці лідерів (iPhone), de: Anmeldung und Bestenlisten (iPhone), fr: "Connexion et classements (iPhone)", es: "Inicio de sesión y clasificaciones (iPhone)", ru: "Вход и таблицы лидеров (iPhone)" }
       privacy_url: https://www.apple.com/legal/privacy/
 
   # Data the app stores locally (never sent to us).
@@ -502,26 +551,31 @@ rapid-sudoku:
       de: Deine laufenden Spiele, Level und täglichen Rätsel
       fr: "Vos parties en cours, niveaux et grilles quotidiennes"
       es: "Tus partidas en curso, niveles y retos diarios"
+      ru: "Ваши незавершённые игры, уровни и ежедневные головоломки"
     - en: Your coins and their history (a coin purchase is recorded with the store's order or transaction number)
       uk: Ваші монети та їхня історія (покупка монет записується з номером замовлення чи транзакції магазину)
       de: Deine Münzen und ihr Verlauf (ein Münzkauf wird mit der Bestell- oder Transaktionsnummer des Stores gespeichert)
       fr: "Vos pièces et leur historique (un achat de pièces est enregistré avec le numéro de commande ou de transaction du store)"
       es: "Tus monedas y su historial (una compra de monedas se guarda con el número de pedido o de transacción de la tienda)"
+      ru: "Ваши монеты и их история (покупка монет записывается с номером заказа или транзакции магазина)"
     - en: Best scores, daily results and scores waiting to be sent to the leaderboards
       uk: Найкращі результати, щоденні результати та результати, що чекають на надсилання в таблиці лідерів
       de: Bestwerte, Tagesergebnisse und Ergebnisse, die noch an die Bestenlisten gesendet werden
       fr: "Meilleurs scores, résultats quotidiens et scores en attente d’envoi aux classements"
       es: "Mejores puntuaciones, resultados diarios y puntuaciones pendientes de enviar a las clasificaciones"
+      ru: "Лучшие результаты, ежедневные результаты и результаты, ожидающие отправки в таблицы лидеров"
     - en: Settings, your login streak and whether Remove ads is owned
       uk: Налаштування, ваша серія входів і чи придбано «Remove ads»
       de: Einstellungen, deine Login-Serie und ob „Remove ads“ gekauft ist
       fr: "Réglages, votre série de connexions et l’achat éventuel de « Remove ads »"
       es: "Ajustes, tu racha de inicios y si tienes «Remove ads»"
+      ru: "Настройки, ваша серия входов и то, куплено ли «Remove ads»"
     - en: "On iPhone only: a small copy of your coin balance, login streak and Remove ads in the phone's Keychain, so that a reinstall gets them back. It stays on the iPhone when you delete the app (it is not synced to iCloud Keychain); Delete my data resets it."
       uk: "Лише на iPhone: невелика копія балансу монет, серії входів і «Remove ads» у Keychain (Зв’язці ключів) телефона, щоб після перевстановлення їх повернути. Вона лишається на iPhone після видалення застосунку (не синхронізується з iCloud Keychain); «Delete my data» її скидає."
       de: "Nur auf dem iPhone: eine kleine Kopie deines Münzstands, deiner Login-Serie und von „Remove ads“ im Schlüsselbund (Keychain) des Telefons, damit eine Neuinstallation sie zurückholt. Sie bleibt auf dem iPhone, wenn du die App löschst (sie wird nicht mit dem iCloud-Schlüsselbund synchronisiert); „Delete my data“ setzt sie zurück."
       fr: "Sur iPhone uniquement : une petite copie de votre solde de pièces, de votre série de connexions et de « Remove ads » dans le trousseau (Keychain) du téléphone, pour qu’une réinstallation les retrouve. Elle reste sur l’iPhone quand vous supprimez l’app (elle n’est pas synchronisée avec le trousseau iCloud) ; « Delete my data » la réinitialise."
       es: "Solo en iPhone: una pequeña copia de tu saldo de monedas, tu racha de inicios y «Remove ads» en el llavero (Keychain) del teléfono, para que una reinstalación los recupere. Se queda en el iPhone al borrar la app (no se sincroniza con el llavero de iCloud); «Delete my data» la restablece."
+      ru: "Только на iPhone: небольшая копия баланса монет, серии входов и «Remove ads» в Keychain (Связке ключей) телефона, чтобы после переустановки их вернуть. Она остаётся на iPhone после удаления приложения (не синхронизируется с iCloud Keychain); «Delete my data» её сбрасывает."
 
   # App-specific FAQ for the support page (generic purchase/data/ads answers
   # are added automatically from the flags above).
@@ -532,36 +586,42 @@ rapid-sudoku:
         de: Bekomme ich meine Münzen nach einer Neuinstallation oder einem Telefonwechsel zurück?
         fr: "Mes pièces reviennent-elles si je réinstalle l’app ou change de téléphone ?"
         es: "¿Recupero mis monedas si reinstalo la app o cambio de teléfono?"
+        ru: "Вернутся ли мои монеты после переустановки приложения или смены телефона?"
       a:
         en: On Android, yes, if backup is on in your phone's settings — they come back from your phone's Google backup as of the last backup (at most about a day old). On iPhone, yes after a reinstall on the same iPhone, from the copy the app keeps in the Keychain; on a new iPhone, if you set it up from an encrypted iCloud or computer backup. The stores can't restore coin purchases, and we can't either, because we have no server.
         uk: "На Android — так, якщо в налаштуваннях телефона ввімкнено резервне копіювання: монети повернуться з резервної копії Google станом на останнє копіювання (щонайбільше приблизно добової давності). На iPhone — так після перевстановлення на тому самому iPhone, з копії, яку застосунок зберігає в Keychain; на новому iPhone — якщо ви налаштували його із зашифрованої резервної копії iCloud або комп’ютера. Магазини не можуть відновити покупки монет, і ми теж, бо в нас немає сервера."
         de: Auf Android ja, wenn die Sicherung in den Telefoneinstellungen aktiv ist — sie kommen aus der Google-Sicherung deines Telefons zurück, Stand der letzten Sicherung (höchstens etwa einen Tag alt). Auf dem iPhone ja nach einer Neuinstallation auf demselben iPhone, aus der Kopie, die die App im Schlüsselbund ablegt; auf einem neuen iPhone, wenn du es aus einer verschlüsselten iCloud- oder Computer-Sicherung einrichtest. Die Stores können Münzkäufe nicht wiederherstellen, und wir auch nicht, da wir keinen Server haben.
         fr: "Sur Android, oui, si la sauvegarde est activée dans les réglages du téléphone : elles reviennent depuis la sauvegarde Google du téléphone, dans l’état de la dernière sauvegarde (au plus environ un jour). Sur iPhone, oui après une réinstallation sur le même iPhone, depuis la copie que l’app garde dans le trousseau ; sur un nouvel iPhone, si vous le configurez depuis une sauvegarde chiffrée iCloud ou sur ordinateur. Les stores ne peuvent pas restaurer les achats de pièces, et nous non plus, car nous n’avons pas de serveur."
         es: "En Android, sí, si la copia de seguridad está activada en los ajustes del teléfono: vuelven desde la copia de Google del teléfono, tal como estaban en la última copia (como mucho de hace un día). En iPhone, sí tras reinstalar en el mismo iPhone, desde la copia que la app guarda en el llavero; en un iPhone nuevo, si lo configuras desde una copia cifrada de iCloud o del ordenador. Las tiendas no pueden restaurar compras de monedas, ni nosotros, porque no tenemos servidor."
+        ru: "На Android — да, если в настройках телефона включено резервное копирование: монеты вернутся из резервной копии Google на момент последнего копирования (давностью не более примерно суток). На iPhone — да после переустановки на том же iPhone, из копии, которую приложение хранит в Keychain; на новом iPhone — если вы настроили его из зашифрованной резервной копии iCloud или компьютера. Магазины не могут восстановить покупки монет, и мы тоже, потому что у нас нет сервера."
     - q:
         en: When do the daily puzzles change?
         uk: Коли змінюються щоденні пазли?
         de: Wann wechseln die täglichen Rätsel?
         fr: "Quand les grilles quotidiennes changent-elles ?"
         es: "¿Cuándo cambian los retos diarios?"
+        ru: "Когда меняются ежедневные головоломки?"
       a:
         en: Every day at midnight Pacific time (Los Angeles), when the daily leaderboards on Google Play Games and Game Center reset. Daily coins and the login streak use the same day. New dailies need an internet connection; one you already started can be finished offline.
         uk: Щодня опівночі за тихоокеанським часом (Лос-Анджелес), коли оновлюються щоденні таблиці лідерів у Google Play Games і Game Center. Щоденні монети та серія входів рахуються за тим самим днем. Для нових щоденних пазлів потрібен інтернет; уже розпочатий можна завершити офлайн.
         de: Jeden Tag um Mitternacht pazifischer Zeit (Los Angeles), wenn die Tagesbestenlisten bei Google Play Games und Game Center zurückgesetzt werden. Tägliche Münzen und die Login-Serie nutzen denselben Tag. Neue Tagesrätsel brauchen eine Internetverbindung; ein begonnenes kannst du offline beenden.
         fr: "Chaque jour à minuit, heure du Pacifique (Los Angeles), quand les classements du jour de Google Play Games et de Game Center sont réinitialisés. Les pièces quotidiennes et la série de connexions suivent le même jour. Les nouvelles grilles demandent une connexion ; une grille déjà commencée peut être terminée hors ligne."
         es: "Cada día a medianoche, hora del Pacífico (Los Ángeles), cuando se reinician las clasificaciones diarias de Google Play Juegos y Game Center. Las monedas diarias y la racha de inicios usan el mismo día. Los retos nuevos necesitan conexión; uno ya empezado se puede terminar sin conexión."
+        ru: "Каждый день в полночь по тихоокеанскому времени (Лос-Анджелес), когда обнуляются ежедневные таблицы лидеров в Google Play Games и Game Center. Ежедневные монеты и серия входов считаются по тому же дню. Для новых ежедневных головоломок нужен интернет; уже начатую можно завершить офлайн."
     - q:
         en: How do I remove my scores from the leaderboards?
         uk: Як видалити мої результати з таблиць лідерів?
         de: Wie entferne ich meine Ergebnisse aus den Bestenlisten?
         fr: "Comment supprimer mes scores des classements ?"
         es: "¿Cómo borro mis puntuaciones de las clasificaciones?"
+        ru: "Как удалить мои результаты из таблиц лидеров?"
       a:
         en: Leaderboard scores are kept by Google Play Games (in your Play Games profile) or by Apple's Game Center (with your Apple Account), not by us, so Settings → Delete my data doesn't remove them. On Android, manage or delete your Play Games data in the Google Play Games app's settings; on iPhone, Apple's Data and Privacy page (privacy.apple.com) handles Game Center data.
         uk: Результати в таблицях лідерів зберігає Google Play Games (у вашому профілі Play Games) або Game Center від Apple (з вашим обліковим записом Apple), а не ми, тому Settings → Delete my data їх не видаляє. На Android керуйте даними Play Games або видаліть їх у налаштуваннях застосунку Google Play Games; на iPhone даними Game Center керує сторінка Apple «Дані та конфіденційність» (privacy.apple.com).
         de: Die Ergebnisse der Bestenlisten speichert Google Play Games (in deinem Play-Games-Profil) oder Apples Game Center (mit deinem Apple Account), nicht wir, daher entfernt Settings → Delete my data sie nicht. Auf Android verwaltest oder löschst du deine Play-Games-Daten in den Einstellungen der Google-Play-Games-App; auf dem iPhone kümmert sich Apples Seite „Daten und Datenschutz“ (privacy.apple.com) um Game-Center-Daten.
         fr: "Les scores des classements sont conservés par Google Play Games (dans votre profil Play Jeux) ou par Game Center d’Apple (avec votre compte Apple), pas par nous ; Settings → Delete my data ne les supprime donc pas. Sur Android, gérez ou supprimez vos données Play Jeux dans les réglages de l’app Google Play Jeux ; sur iPhone, la page « Données et confidentialité » d’Apple (privacy.apple.com) gère les données Game Center."
         es: "Las puntuaciones las guarda Google Play Juegos (en tu perfil de Play Juegos) o Game Center de Apple (con tu cuenta de Apple), no nosotros, así que Settings → Delete my data no las borra. En Android, gestiona o borra tus datos de Play Juegos en los ajustes de la app Google Play Juegos; en iPhone, la página «Datos y privacidad» de Apple (privacy.apple.com) gestiona los datos de Game Center."
+        ru: "Результаты в таблицах лидеров хранит Google Play Games (в вашем профиле Play Games) или Game Center от Apple (с вашей учётной записью Apple), а не мы, поэтому Settings → Delete my data их не удаляет. На Android управляйте данными Play Games или удалите их в настройках приложения Google Play Games; на iPhone данными Game Center управляет страница Apple «Данные и конфиденциальность» (privacy.apple.com)."
 
 ghost-trader:
   name: Ghost Trader                 # app repo D32 (was the working name papertrading); change here and in the app together
@@ -571,8 +631,9 @@ ghost-trader:
     de: Paper-Trading-Simulator für Krypto-Spot und -Futures — virtuelles Geld, echte Marktpreise in Echtzeit.
     fr: "Simulateur de trading fictif de cryptos au comptant et en contrats à terme — argent virtuel, prix du marché en direct."
     es: "Simulador de trading ficticio de criptomonedas al contado y en futuros: dinero virtual y precios de mercado en directo."
+    ru: "Симулятор бумажной торговли криптовалютой на спотовом и фьючерсном рынках — виртуальные деньги, живые рыночные цены."
   email_tag: ghosttrader             # plus-alias tag, used only if studio.support.plus_aliases
-  effective_date: 2026-11-03
+  effective_date: 2026-11-13
   stores:
     ios: ""                          # App Store URL once live (iPhone and iPad)
     android: ""                      # https://play.google.com/store/apps/details?id=com.eizdev.ghosttrader
@@ -580,7 +641,8 @@ ghost-trader:
   # Facts: app repo eizdev/ghost-trader docs/legal/FACTS.md (2026-11-02; coin logos 2026-11-03). No accounts, no server,
   # no analytics (D2, D3, D21). Live prices come from Binance's public market-data API
   # (no account, no key), so Binance sees the IP address: third_party_note.
-  # The app is English only (D19), so every language shows the English in-app labels.
+  # The app ships en, uk, de, fr, es and ru (D33, 2026-11-13), so each language names the app's own labels
+  # (app repo lib/l10n/app_<lang>.arb) and its warranty/FAQ opening is design/store/disclaimer.<lang>.txt word for word.
 
   # AdMob for free users only, after UMP consent (T8.3/T8.4); Premium at start never starts the
   # ad SDK. On iOS the UMP IDFA explainer is followed by the ATT prompt (personalised ads only
@@ -588,22 +650,25 @@ ghost-trader:
   ads: true
   ad_formats:
     en: a banner at the bottom of the Portfolio, Markets and Stats tabs, at most one full-screen ad after some of the positions you close (never more than one every three minutes), and rewarded videos you can choose to watch for 10 extra trades
-    uk: банер унизу вкладок Portfolio, Markets і Stats, щонайбільше одну повноекранну рекламу після деяких закритих вами позицій (не частіше ніж раз на три хвилини) та відео з винагородою, які ви можете переглянути, щоб отримати 10 додаткових угод
-    de: ein Banner unten auf den Tabs Portfolio, Markets und Stats, höchstens eine Vollbildanzeige nach manchen Positionen, die du schließt (nie öfter als einmal in drei Minuten), und Videos mit Belohnung, die du freiwillig ansehen kannst, um 10 zusätzliche Trades zu bekommen
-    fr: "une bannière en bas des onglets Portfolio, Markets et Stats, au plus une publicité plein écran après certaines positions que vous fermez (jamais plus d’une toutes les trois minutes), et des vidéos avec récompense que vous pouvez choisir de regarder pour obtenir 10 transactions supplémentaires"
-    es: "un banner en la parte inferior de las pestañas Portfolio, Markets y Stats, como mucho un anuncio a pantalla completa tras algunas de las posiciones que cierras (nunca más de uno cada tres minutos) y vídeos con recompensa que puedes elegir ver para conseguir 10 operaciones más"
+    uk: банер унизу вкладок Портфель, Ринки і Статистика, щонайбільше одну повноекранну рекламу після деяких закритих вами позицій (не частіше ніж раз на три хвилини) та відео з винагородою, які ви можете переглянути, щоб отримати 10 додаткових угод
+    de: ein Banner unten auf den Tabs Portfolio, Märkte und Statistik, höchstens eine Vollbildanzeige nach manchen Positionen, die du schließt (nie öfter als einmal in drei Minuten), und Videos mit Belohnung, die du freiwillig ansehen kannst, um 10 zusätzliche Trades zu bekommen
+    fr: "une bannière en bas des onglets Portefeuille, Marchés et Stats, au plus une publicité plein écran après certaines positions que vous fermez (jamais plus d’une toutes les trois minutes), et des vidéos avec récompense que vous pouvez choisir de regarder pour obtenir 10 transactions supplémentaires"
+    es: "un banner en la parte inferior de las pestañas Cartera, Mercados y Análisis, como mucho un anuncio a pantalla completa tras algunas de las posiciones que cierras (nunca más de uno cada tres minutos) y vídeos con recompensa que puedes elegir ver para conseguir 10 operaciones más"
+    ru: "баннер внизу вкладок Портфель, Рынки и Статистика, не больше одной полноэкранной рекламы после некоторых закрытых вами позиций (не чаще раза в три минуты) и видео с вознаграждением, которые вы можете посмотреть, чтобы получить 10 дополнительных сделок"
   ads_privacy_path:
     en: Settings → Data & account → Ad privacy choices
-    uk: Settings → Data & account → Ad privacy choices
-    de: Settings → Data & account → Ad privacy choices
-    fr: "Settings → Data & account → Ad privacy choices"
-    es: "Settings → Data & account → Ad privacy choices"
+    uk: Налаштування → Дані та акаунт → Налаштування реклами
+    de: Einstellungen → Daten & Konto → Datenschutz bei Werbung
+    fr: "Réglages → Données et compte → Confidentialité des publicités"
+    es: "Ajustes → Datos y cuenta → Opciones de privacidad de anuncios"
+    ru: "Настройки → Данные и аккаунт → Настройки конфиденциальности рекламы"
   ads_note:
     en: On iPhone and iPad, after the consent message, the app may show Apple's request to allow tracking. Google uses the device's advertising identifier (IDFA) only if you allow it. You see the same number of ads either way and every feature works the same; you can change your answer at any time in the device's Settings → Privacy & Security → Tracking.
     uk: На iPhone та iPad після запиту на згоду застосунок може показати запит Apple на дозвіл відстеження. Google використовує рекламний ідентифікатор пристрою (IDFA) лише якщо ви це дозволите. Кількість реклами однакова в обох випадках, і всі функції працюють так само; змінити відповідь можна будь-коли в Параметрах пристрою → Приватність і безпека → Відстеження.
     de: Auf iPhone und iPad kann die App nach der Einwilligungsabfrage Apples Anfrage zur Erlaubnis des Trackings zeigen. Google nutzt die Werbe-ID des Geräts (IDFA) nur, wenn du es erlaubst. Du siehst in beiden Fällen gleich viele Anzeigen, und jede Funktion arbeitet gleich; deine Antwort kannst du jederzeit in den Einstellungen des Geräts → Datenschutz & Sicherheit → Tracking ändern.
     fr: "Sur iPhone et iPad, après le message de consentement, l’app peut afficher la demande d’Apple pour autoriser le suivi. Google n’utilise l’identifiant publicitaire de l’appareil (IDFA) que si vous l’autorisez. Vous voyez autant de publicités dans les deux cas et toutes les fonctions marchent de la même façon ; vous pouvez changer votre réponse à tout moment dans Réglages de l’appareil → Confidentialité et sécurité → Suivi."
     es: "En iPhone y iPad, tras el mensaje de consentimiento, la app puede mostrar la solicitud de Apple para permitir el rastreo. Google solo usa el identificador de publicidad del dispositivo (IDFA) si lo permites. Ves los mismos anuncios en ambos casos y todas las funciones son iguales; puedes cambiar tu respuesta en cualquier momento en Ajustes del dispositivo → Privacidad y seguridad → Rastreo."
+    ru: "На iPhone и iPad после запроса согласия приложение может показать запрос Apple на разрешение отслеживания. Google использует рекламный идентификатор устройства (IDFA), только если вы это разрешите. Количество рекламы в обоих случаях одинаковое, и все функции работают так же; изменить ответ можно в любой момент в Настройках устройства → Конфиденциальность и безопасность → Отслеживание."
 
   # One non-consumable `premium_lifetime` (D4): unlimited portfolios and trades, full statistics,
   # no ads. Checked on the phone with the store (no server, D7). No subscriptions, no consumables.
@@ -612,10 +677,11 @@ ghost-trader:
   premium_name: Premium
   restore_note:
     en: Open **Settings → Data & account → Restore purchases** (or Restore purchases on the Premium screen), signed in to the same Apple Account or Google account you bought Premium with.
-    uk: Відкрийте **Settings → Data & account → Restore purchases** (або Restore purchases на екрані Premium), увійшовши в той самий обліковий запис Apple або Google, з якого купували Premium.
-    de: Öffne **Settings → Data & account → Restore purchases** (oder Restore purchases auf dem Premium-Bildschirm), angemeldet mit demselben Apple Account oder Google-Konto, mit dem du Premium gekauft hast.
-    fr: "Ouvrez **Settings → Data & account → Restore purchases** (ou Restore purchases sur l’écran Premium), connecté au même compte Apple ou Google que celui utilisé pour acheter Premium."
-    es: "Abre **Settings → Data & account → Restore purchases** (o Restore purchases en la pantalla Premium) con la misma cuenta de Apple o de Google con la que compraste Premium."
+    uk: Відкрийте **Налаштування → Дані та акаунт → Відновити покупки** (або Відновити покупки на екрані Premium), увійшовши в той самий обліковий запис Apple або Google, з якого купували Premium.
+    de: Öffne **Einstellungen → Daten & Konto → Käufe wiederherstellen** (oder Käufe wiederherstellen auf dem Premium-Bildschirm), angemeldet mit demselben Apple Account oder Google-Konto, mit dem du Premium gekauft hast.
+    fr: "Ouvrez **Réglages → Données et compte → Restaurer les achats** (ou Restaurer les achats sur l’écran Premium), connecté au même compte Apple ou Google que celui utilisé pour acheter Premium."
+    es: "Abre **Ajustes → Datos y cuenta → Restaurar compras** (o Restaurar compras en la pantalla Premium) con la misma cuenta de Apple o de Google con la que compraste Premium."
+    ru: "Откройте **Настройки → Данные и аккаунт → Восстановить покупки** (или Восстановить покупки на экране Premium), войдя в ту же учётную запись Apple или Google, с которой покупали Premium."
   accounts: false                    # no accounts, no own server (D2, D3)
   analytics: false                   # no analytics, no crash reporting (D21)
 
@@ -628,25 +694,27 @@ ghost-trader:
     de: Alles bleibt auf deinem Telefon (und in seiner eigenen Sicherung, falls aktiviert). Sicherungsdateien, die du exportierst, landen nur dort, wo du sie speicherst oder teilst. Für die Preise lädt die App öffentliche Marktdaten von Binance; deine Portfolios und Trades sendet sie nirgendwohin. Wir haben keinen Server.
     fr: "Tout reste sur votre téléphone (et dans sa propre sauvegarde, si elle est activée). Les fichiers de sauvegarde que vous exportez vont uniquement là où vous les enregistrez ou les partagez. Pour afficher les prix, l’app télécharge les données de marché publiques de Binance ; elle n’envoie jamais vos portefeuilles ni vos transactions. Nous n’avons pas de serveur."
     es: "Todo se queda en tu teléfono (y en su propia copia de seguridad, si está activada). Los archivos de copia de seguridad que exportas van solo adonde los guardes o compartas. Para mostrar precios, la app descarga datos de mercado públicos de Binance; nunca envía tus carteras ni tus operaciones. No tenemos servidor."
+    ru: "Всё хранится на вашем телефоне (и в его собственной резервной копии, если она включена). Файлы резервных копий, которые вы экспортируете, попадают только туда, куда вы их сохраните или отправите. Чтобы показывать цены, приложение загружает публичные рыночные данные с Binance; ваши портфели и сделки оно никуда не отправляет. Собственного сервера у нас нет."
 
   # The English sentences up to "financial advice" are the app's in-app and store-listing
   # disclaimer word for word (app repo design/store/disclaimer.en.txt); keep them in step.
   warranty_note:
     en: "This is a simulation. All money in the app is virtual. The app never connects to an exchange account and never handles real funds. Nothing in it is financial advice. Prices come from Binance's public market data, which we do not control: they may be delayed, incomplete or unavailable (in some regions Binance blocks its futures data), and simulated fills, fees, funding and liquidations follow simplified rules, so results can differ from real trading. Do not base real-money decisions on the app."
-    uk: "Це симуляція. Усі гроші в застосунку віртуальні. Застосунок ніколи не під’єднується до облікового запису на біржі і ніколи не працює з реальними коштами. Ніщо в ньому не є фінансовою порадою. Ціни надходять із публічних ринкових даних Binance, які ми не контролюємо: вони можуть запізнюватися, бути неповними або недоступними (у деяких регіонах Binance блокує свої ф’ючерсні дані), а симульовані виконання ордерів, комісії, фандинг і ліквідації рахуються за спрощеними правилами, тож результати можуть відрізнятися від реальної торгівлі. Не ухвалюйте рішень щодо реальних грошей на підставі застосунку."
-    de: "Dies ist eine Simulation. Alles Geld in der App ist virtuell. Die App verbindet sich nie mit einem Börsenkonto und verwaltet nie echtes Geld. Nichts darin ist eine Finanzberatung. Die Preise stammen aus den öffentlichen Marktdaten von Binance, auf die wir keinen Einfluss haben: Sie können verzögert, unvollständig oder nicht verfügbar sein (in manchen Regionen sperrt Binance seine Futures-Daten), und simulierte Ausführungen, Gebühren, Funding und Liquidationen folgen vereinfachten Regeln, daher können die Ergebnisse vom echten Handel abweichen. Triff keine Entscheidungen über echtes Geld auf Grundlage der App."
-    fr: "Ceci est une simulation. Tout l’argent dans l’app est virtuel. L’app ne se connecte jamais à un compte sur une plateforme d’échange et ne gère jamais de fonds réels. Rien dans l’app ne constitue un conseil financier. Les prix proviennent des données de marché publiques de Binance, que nous ne contrôlons pas : ils peuvent être retardés, incomplets ou indisponibles (dans certaines régions, Binance bloque ses données de contrats à terme), et les exécutions, frais, financements et liquidations simulés suivent des règles simplifiées ; les résultats peuvent donc différer du trading réel. Ne prenez pas de décisions concernant de l’argent réel sur la base de l’app."
-    es: "Esto es una simulación. Todo el dinero de la app es virtual. La app nunca se conecta a una cuenta de un exchange y nunca maneja fondos reales. Nada en ella es asesoramiento financiero. Los precios proceden de los datos de mercado públicos de Binance, que no controlamos: pueden llegar con retraso, estar incompletos o no estar disponibles (en algunas regiones Binance bloquea sus datos de futuros), y las ejecuciones, comisiones, financiación y liquidaciones simuladas siguen reglas simplificadas, así que los resultados pueden diferir del trading real. No tomes decisiones sobre dinero real basándote en la app."
+    uk: "Це симуляція. Усі гроші в застосунку віртуальні. Застосунок ніколи не підключається до акаунта на біржі й ніколи не працює з реальними коштами. Ніщо в ньому не є фінансовою порадою. Ціни надходять із публічних ринкових даних Binance, які ми не контролюємо: вони можуть запізнюватися, бути неповними або недоступними (у деяких регіонах Binance блокує свої ф’ючерсні дані), а симульовані виконання ордерів, комісії, фандинг і ліквідації рахуються за спрощеними правилами, тож результати можуть відрізнятися від реальної торгівлі. Не ухвалюйте рішень щодо реальних грошей на підставі застосунку."
+    de: "Das ist eine Simulation. Alles Geld in der App ist virtuell. Die App verbindet sich nie mit einem Börsenkonto und verwaltet nie echtes Geld. Nichts darin ist eine Finanzberatung. Die Preise stammen aus den öffentlichen Marktdaten von Binance, auf die wir keinen Einfluss haben: Sie können verzögert, unvollständig oder nicht verfügbar sein (in manchen Regionen sperrt Binance seine Futures-Daten), und simulierte Ausführungen, Gebühren, Funding und Liquidationen folgen vereinfachten Regeln, daher können die Ergebnisse vom echten Handel abweichen. Triff keine Entscheidungen über echtes Geld auf Grundlage der App."
+    fr: "Ceci est une simulation. Tout l’argent dans l’app est virtuel. L’app ne se connecte jamais à un compte de plateforme d’échange et ne gère jamais de fonds réels. Rien dans l’app ne constitue un conseil financier. Les prix proviennent des données de marché publiques de Binance, que nous ne contrôlons pas : ils peuvent être retardés, incomplets ou indisponibles (dans certaines régions, Binance bloque ses données de contrats à terme), et les exécutions, frais, financements et liquidations simulés suivent des règles simplifiées ; les résultats peuvent donc différer du trading réel. Ne prenez pas de décisions concernant de l’argent réel sur la base de l’app."
+    es: "Esto es una simulación. Todo el dinero de la app es virtual. La app nunca se conecta a una cuenta de exchange ni maneja fondos reales. Nada de lo que contiene es asesoramiento financiero. Los precios proceden de los datos de mercado públicos de Binance, que no controlamos: pueden llegar con retraso, estar incompletos o no estar disponibles (en algunas regiones Binance bloquea sus datos de futuros), y las ejecuciones, comisiones, financiación y liquidaciones simuladas siguen reglas simplificadas, así que los resultados pueden diferir del trading real. No tomes decisiones sobre dinero real basándote en la app."
+    ru: "Это симуляция. Все деньги в приложении виртуальные. Приложение никогда не подключается к аккаунту на бирже и не работает с реальными средствами. Ничто в нём не является финансовой рекомендацией. Цены берутся из публичных рыночных данных Binance, которые мы не контролируем: они могут запаздывать, быть неполными или недоступными (в некоторых регионах Binance блокирует свои фьючерсные данные), а симулированные исполнения ордеров, комиссии, фандинг и ликвидации рассчитываются по упрощённым правилам, поэтому результаты могут отличаться от реальной торговли. Не принимайте решений о реальных деньгах на основе приложения."
 
   # Third-party SDKs that process personal data (app repo docs/legal/FACTS.md).
   sdks:
     - name: Google AdMob
       provider: Google Ireland Limited (EEA/UK/CH), Google LLC (elsewhere)
-      purpose: { en: Advertising (free version), uk: Реклама (безкоштовна версія), de: Werbung (kostenlose Version), fr: "Publicité (version gratuite)", es: "Publicidad (versión gratuita)" }
+      purpose: { en: Advertising (free version), uk: Реклама (безкоштовна версія), de: Werbung (kostenlose Version), fr: "Publicité (version gratuite)", es: "Publicidad (versión gratuita)", ru: "Реклама (бесплатная версия)" }
       privacy_url: https://policies.google.com/privacy
     - name: Google User Messaging Platform
       provider: Google Ireland Limited / Google LLC
-      purpose: { en: Ad consent, uk: Згода на рекламу, de: Werbe-Einwilligung, fr: "Consentement publicitaire", es: "Consentimiento para anuncios" }
+      purpose: { en: Ad consent, uk: Згода на рекламу, de: Werbe-Einwilligung, fr: "Consentement publicitaire", es: "Consentimiento para anuncios", ru: "Согласие на рекламу" }
       privacy_url: https://policies.google.com/privacy
 
   # Binance is not an SDK: the app calls its public market-data API directly (FACTS "Requests to third parties").
@@ -657,6 +725,7 @@ ghost-trader:
     de: "**Marktdaten.** Für Live-Preise lädt die App öffentliche Marktdaten (Preise, bestes Gebot und bester Briefkurs, Funding-Raten, Kursverlauf und Handelsregeln) direkt von den öffentlichen Servern von Binance. Sie sendet kein Konto, keinen Schlüssel und keine Kennung und niemals deine Portfolios oder Trades. Wie bei jeder Anfrage im Internet erhält Binance deine IP-Adresse, die Uhrzeit und welche Märkte abgefragt werden, und verarbeitet sie als eigenständiger Verantwortlicher nach seiner eigenen [Datenschutzerklärung](https://www.binance.com/en/privacy). Die App hat kein Binance-Konto und keine Anmeldung bei Binance.\n\n**Coin-Logos.** Um das Logo jeder Kryptowährung zu zeigen, lädt die App das Bild vom öffentlichen Icon-Server von CoinCap (assets.coincap.io, betrieben von Haiku Strategies LLC, ausgeliefert über Cloudflare). Die Anfrage ist ein einfacher Bild-Download ohne Konto, Schlüssel oder Kennung und ohne Angaben über dich oder deine Portfolios; CoinCap erhält deine IP-Adresse, die Uhrzeit und welche Coin-Logos abgefragt werden, nach seiner eigenen [Datenschutzerklärung](https://coincap.io/terms-of-service?tab=privacy). Geladene Logos bleiben auf deinem Telefon gespeichert und werden nicht erneut abgerufen. Coin-Logos sind Marken ihrer Projekte und dienen nur dazu, die jeweilige Kryptowährung zu erkennen."
     fr: "**Données de marché.** Pour afficher les prix en direct, l’app télécharge des données de marché publiques (prix, meilleurs prix acheteur et vendeur, taux de financement, historique des prix et règles de trading) directement depuis les serveurs publics de Binance. Elle n’envoie aucun compte, clé ni identifiant, et jamais vos portefeuilles ni vos transactions. Comme pour toute requête sur Internet, Binance reçoit votre adresse IP, l’heure et les marchés demandés, et les traite en tant que responsable de traitement indépendant selon sa propre [politique de confidentialité](https://www.binance.com/en/privacy). L’app n’a ni compte ni connexion Binance.\n\n**Logos des cryptos.** Pour afficher le logo de chaque crypto, l’app télécharge l’image depuis le serveur d’icônes public de CoinCap (assets.coincap.io, exploité par Haiku Strategies LLC et distribué via Cloudflare). La requête est un simple téléchargement d’image, sans compte, clé ni identifiant, et sans rien sur vous ou vos portefeuilles ; CoinCap reçoit votre adresse IP, l’heure et les logos demandés, selon sa propre [politique de confidentialité](https://coincap.io/terms-of-service?tab=privacy). Les logos téléchargés sont conservés sur votre téléphone pour ne pas être récupérés à nouveau. Les logos des cryptos sont des marques de leurs projets et ne servent qu’à identifier chaque crypto."
     es: "**Datos de mercado.** Para mostrar precios en directo, la app descarga datos de mercado públicos (precios, mejor oferta de compra y de venta, tasas de financiación, historial de precios y reglas de trading) directamente de los servidores públicos de Binance. No envía ninguna cuenta, clave ni identificador, y nunca tus carteras ni tus operaciones. Como con cualquier solicitud en internet, Binance recibe tu dirección IP, la hora y qué mercados se consultan, y los trata como responsable independiente según su propia [política de privacidad](https://www.binance.com/en/privacy). La app no tiene cuenta ni inicio de sesión de Binance.\n\n**Logotipos de las criptomonedas.** Para mostrar el logotipo de cada criptomoneda, la app descarga la imagen del servidor público de iconos de CoinCap (assets.coincap.io, gestionado por Haiku Strategies LLC y servido a través de Cloudflare). La solicitud es una simple descarga de imagen, sin cuenta, clave ni identificador, y sin nada sobre ti o tus carteras; CoinCap recibe tu dirección IP, la hora y qué logotipos se solicitan, según su propia [política de privacidad](https://coincap.io/terms-of-service?tab=privacy). Los logotipos descargados se guardan en tu teléfono para no volver a descargarlos. Los logotipos de las criptomonedas son marcas de sus proyectos y solo se muestran para identificar cada criptomoneda."
+    ru: "**Рыночные данные.** Чтобы показывать живые цены, приложение загружает публичные рыночные данные (цены, лучшие цены покупки и продажи, ставки фандинга, историю цен и правила торговли) напрямую с публичных серверов Binance. Оно не отправляет никакой учётной записи, ключа или идентификатора и никогда — ваших портфелей или сделок. Как и при любом запросе в интернете, Binance получает ваш IP-адрес, время и то, какие рынки запрашиваются, и обрабатывает их как самостоятельный контролёр в соответствии со своей [политикой конфиденциальности](https://www.binance.com/en/privacy). У приложения нет учётной записи или входа в Binance.\n\n**Логотипы монет.** Чтобы показать логотип каждой монеты, приложение загружает изображение с публичного сервера иконок CoinCap (assets.coincap.io, которым управляет Haiku Strategies LLC, доставка через Cloudflare). Запрос — это обычная загрузка изображения без учётной записи, ключа или идентификатора и без каких-либо данных о вас или ваших портфелях; CoinCap получает ваш IP-адрес, время и то, логотипы каких монет запрашиваются, в соответствии со своей [политикой конфиденциальности](https://coincap.io/terms-of-service?tab=privacy). Загруженные логотипы хранятся на вашем телефоне, поэтому повторно не загружаются. Логотипы монет являются товарными знаками их проектов и показываются только для того, чтобы узнать монету."
 
   # Data the app stores locally (never sent to us).
   local_data:
@@ -665,26 +734,31 @@ ghost-trader:
       de: Deine Portfolios (die Namen, die du eingibst), Einzahlungen, Orders, Trades, Positionen und Bestände mit ihrem Verlauf (Gebühren, Funding, Gewinn und Verlust, tägliche Salden)
       fr: "Vos portefeuilles (les noms que vous saisissez), dépôts, ordres, transactions, positions et avoirs, avec leur historique (frais, financement, gains et pertes, soldes quotidiens)"
       es: "Tus carteras (los nombres que escribes), depósitos, órdenes, operaciones, posiciones y saldos, con su historial (comisiones, financiación, pérdidas y ganancias, saldos diarios)"
+      ru: "Ваши портфели (названия, которые вы вводите), пополнения, ордера, сделки, позиции и активы вместе с их историей (комиссии, фандинг, прибыль и убыток, ежедневные балансы)"
     - en: A copy of Binance's public trading rules for each market, so the app can check orders
       uk: Копія публічних правил торгівлі Binance для кожного ринку, щоб застосунок міг перевіряти ордери
       de: Eine Kopie der öffentlichen Handelsregeln von Binance für jeden Markt, damit die App Orders prüfen kann
       fr: "Une copie des règles de trading publiques de Binance pour chaque marché, pour que l’app puisse vérifier les ordres"
       es: "Una copia de las reglas de trading públicas de Binance para cada mercado, para que la app pueda comprobar las órdenes"
+      ru: "Копия публичных правил торговли Binance для каждого рынка, чтобы приложение могло проверять ордера"
     - en: Settings, your trade counts and the extra trades earned from ads, and whether Premium is unlocked
       uk: Налаштування, лічильники угод і додаткові угоди, отримані за рекламу, та чи розблоковано Premium
       de: Einstellungen, deine Trade-Zähler und die durch Werbung verdienten Zusatz-Trades sowie ob Premium freigeschaltet ist
       fr: "Réglages, vos compteurs de transactions et les transactions supplémentaires gagnées grâce aux publicités, et le déblocage éventuel de Premium"
       es: "Ajustes, tus contadores de operaciones y las operaciones extra ganadas con anuncios, y si Premium está desbloqueado"
+      ru: "Настройки, счётчики сделок и дополнительные сделки, полученные за рекламу, а также разблокирован ли Premium"
     - en: Whether the ad consent message has run and when the last full-screen ad showed (your consent choice itself is stored by Google's consent software on the device)
       uk: Чи показувався запит на згоду щодо реклами і коли востаннє показувалася повноекранна реклама (саму вашу відповідь зберігає на пристрої програмне забезпечення Google для згоди)
       de: Ob die Werbe-Einwilligungsabfrage gelaufen ist und wann die letzte Vollbildanzeige kam (deine Einwilligung selbst speichert Googles Einwilligungssoftware auf dem Gerät)
       fr: "Si le message de consentement publicitaire a été affiché et quand la dernière publicité plein écran est apparue (votre choix de consentement lui-même est enregistré sur l’appareil par le logiciel de consentement de Google)"
       es: "Si se mostró el mensaje de consentimiento para anuncios y cuándo apareció el último anuncio a pantalla completa (tu elección de consentimiento la guarda en el dispositivo el software de consentimiento de Google)"
+      ru: "Показывался ли запрос согласия на рекламу и когда в последний раз показывалась полноэкранная реклама (сам ваш ответ хранит на устройстве программа Google для получения согласия)"
     - en: "Backup files you export (Settings → Data & account → Back up to file) are not encrypted and go only where you save or share them; the app keeps no copy"
-      uk: "Файли резервних копій, які ви експортуєте (Settings → Data & account → Back up to file), не зашифровані й потрапляють лише туди, куди ви їх збережете чи надішлете; застосунок не зберігає їхньої копії"
-      de: "Sicherungsdateien, die du exportierst (Settings → Data & account → Back up to file), sind nicht verschlüsselt und landen nur dort, wo du sie speicherst oder teilst; die App behält keine Kopie"
-      fr: "Les fichiers de sauvegarde que vous exportez (Settings → Data & account → Back up to file) ne sont pas chiffrés et vont uniquement là où vous les enregistrez ou les partagez ; l’app n’en garde aucune copie"
-      es: "Los archivos de copia de seguridad que exportas (Settings → Data & account → Back up to file) no están cifrados y van solo adonde los guardes o compartas; la app no guarda ninguna copia"
+      uk: "Файли резервних копій, які ви експортуєте (Налаштування → Дані та акаунт → Резервна копія у файл), не зашифровані й потрапляють лише туди, куди ви їх збережете чи надішлете; застосунок не зберігає їхньої копії"
+      de: "Sicherungsdateien, die du exportierst (Einstellungen → Daten & Konto → In Datei sichern), sind nicht verschlüsselt und landen nur dort, wo du sie speicherst oder teilst; die App behält keine Kopie"
+      fr: "Les fichiers de sauvegarde que vous exportez (Réglages → Données et compte → Sauvegarder dans un fichier) ne sont pas chiffrés et vont uniquement là où vous les enregistrez ou les partagez ; l’app n’en garde aucune copie"
+      es: "Los archivos de copia de seguridad que exportas (Ajustes → Datos y cuenta → Copia de seguridad en archivo) no están cifrados y van solo adonde los guardes o compartas; la app no guarda ninguna copia"
+      ru: "Файлы резервных копий, которые вы экспортируете (Настройки → Данные и аккаунт → Резервная копия в файл), не зашифрованы и попадают только туда, куда вы их сохраните или отправите; приложение не хранит их копию"
 
   # App-specific FAQ for the support page (generic purchase/data/ads answers
   # are added automatically from the flags above).
@@ -695,36 +769,42 @@ ghost-trader:
         de: Ist das echter Handel? Kann ich echtes Geld gewinnen oder verlieren?
         fr: "Est-ce du vrai trading ? Puis-je gagner ou perdre de l’argent réel ?"
         es: "¿Es trading real? ¿Puedo ganar o perder dinero real?"
+        ru: "Это настоящая торговля? Могу ли я выиграть или потерять реальные деньги?"
       a:
         en: No. This is a simulation. All money in the app is virtual. The app never connects to an exchange account and never handles real funds. Nothing in it is financial advice. Virtual balances can't be paid out, bought or exchanged for anything.
-        uk: Ні. Це симуляція. Усі гроші в застосунку віртуальні. Застосунок ніколи не під’єднується до облікового запису на біржі і ніколи не працює з реальними коштами. Ніщо в ньому не є фінансовою порадою. Віртуальні баланси не можна вивести, купити чи обміняти на щось.
-        de: Nein. Dies ist eine Simulation. Alles Geld in der App ist virtuell. Die App verbindet sich nie mit einem Börsenkonto und verwaltet nie echtes Geld. Nichts darin ist eine Finanzberatung. Virtuelle Guthaben können weder ausgezahlt noch gekauft oder gegen etwas eingetauscht werden.
-        fr: "Non. Ceci est une simulation. Tout l’argent dans l’app est virtuel. L’app ne se connecte jamais à un compte sur une plateforme d’échange et ne gère jamais de fonds réels. Rien dans l’app ne constitue un conseil financier. Les soldes virtuels ne peuvent être ni retirés, ni achetés, ni échangés contre quoi que ce soit."
-        es: "No. Esto es una simulación. Todo el dinero de la app es virtual. La app nunca se conecta a una cuenta de un exchange y nunca maneja fondos reales. Nada en ella es asesoramiento financiero. Los saldos virtuales no se pueden retirar, comprar ni cambiar por nada."
+        uk: Ні. Це симуляція. Усі гроші в застосунку віртуальні. Застосунок ніколи не підключається до акаунта на біржі й ніколи не працює з реальними коштами. Ніщо в ньому не є фінансовою порадою. Віртуальні баланси не можна вивести, купити чи обміняти на щось.
+        de: Nein. Das ist eine Simulation. Alles Geld in der App ist virtuell. Die App verbindet sich nie mit einem Börsenkonto und verwaltet nie echtes Geld. Nichts darin ist eine Finanzberatung. Virtuelle Guthaben können weder ausgezahlt noch gekauft oder gegen etwas eingetauscht werden.
+        fr: "Non. Ceci est une simulation. Tout l’argent dans l’app est virtuel. L’app ne se connecte jamais à un compte de plateforme d’échange et ne gère jamais de fonds réels. Rien dans l’app ne constitue un conseil financier. Les soldes virtuels ne peuvent être ni retirés, ni achetés, ni échangés contre quoi que ce soit."
+        es: "No. Esto es una simulación. Todo el dinero de la app es virtual. La app nunca se conecta a una cuenta de exchange ni maneja fondos reales. Nada de lo que contiene es asesoramiento financiero. Los saldos virtuales no se pueden retirar, comprar ni cambiar por nada."
+        ru: "Нет. Это симуляция. Все деньги в приложении виртуальные. Приложение никогда не подключается к аккаунту на бирже и не работает с реальными средствами. Ничто в нём не является финансовой рекомендацией. Виртуальные балансы нельзя вывести, купить или обменять на что-либо."
     - q:
         en: Futures prices don't load in my country.
         uk: У моїй країні не завантажуються ціни ф’ючерсів.
         de: In meinem Land laden die Futures-Preise nicht.
         fr: "Les prix des contrats à terme ne se chargent pas dans mon pays."
         es: "En mi país no cargan los precios de futuros."
+        ru: "В моей стране не загружаются цены фьючерсов."
       a:
         en: Binance blocks its futures market data in some regions. The app then says "Futures data unavailable in your region". Spot prices still work there, so on the free plan you can create a spot portfolio instead. Prices need an internet connection; when you come back online, the app catches up on what happened to your orders while it was closed.
-        uk: У деяких регіонах Binance блокує свої ф’ючерсні ринкові дані. Тоді застосунок показує «Futures data unavailable in your region». Спот-ціни там працюють, тож на безкоштовному плані ви можете натомість створити спот-портфель. Для цін потрібен інтернет; коли ви знову онлайн, застосунок наздоганяє те, що сталося з вашими ордерами, поки він був закритий.
-        de: In manchen Regionen sperrt Binance seine Futures-Marktdaten. Die App zeigt dann „Futures data unavailable in your region“. Spot-Preise funktionieren dort weiterhin, daher kannst du im kostenlosen Plan stattdessen ein Spot-Portfolio anlegen. Preise brauchen eine Internetverbindung; bist du wieder online, holt die App nach, was mit deinen Orders passiert ist, während sie geschlossen war.
-        fr: "Dans certaines régions, Binance bloque ses données de marché des contrats à terme. L’app affiche alors « Futures data unavailable in your region ». Les prix au comptant fonctionnent toujours, donc avec l’offre gratuite vous pouvez créer un portefeuille au comptant à la place. Les prix demandent une connexion ; une fois de retour en ligne, l’app rattrape ce qui est arrivé à vos ordres pendant qu’elle était fermée."
-        es: "En algunas regiones Binance bloquea sus datos de mercado de futuros. La app muestra entonces «Futures data unavailable in your region». Los precios al contado siguen funcionando, así que con el plan gratuito puedes crear una cartera al contado en su lugar. Los precios necesitan conexión; cuando vuelves a estar en línea, la app pone al día lo que pasó con tus órdenes mientras estaba cerrada."
+        uk: У деяких регіонах Binance блокує свої ф’ючерсні ринкові дані. Тоді застосунок показує «Дані ф’ючерсів недоступні у вашому регіоні». Спот-ціни там працюють, тож на безкоштовному плані ви можете натомість створити спот-портфель. Для цін потрібен інтернет; коли ви знову онлайн, застосунок наздоганяє те, що сталося з вашими ордерами, поки він був закритий.
+        de: In manchen Regionen sperrt Binance seine Futures-Marktdaten. Die App zeigt dann „Futures-Daten sind in deiner Region nicht verfügbar“. Spot-Preise funktionieren dort weiterhin, daher kannst du im kostenlosen Plan stattdessen ein Spot-Portfolio anlegen. Preise brauchen eine Internetverbindung; bist du wieder online, holt die App nach, was mit deinen Orders passiert ist, während sie geschlossen war.
+        fr: "Dans certaines régions, Binance bloque ses données de marché des contrats à terme. L’app affiche alors « Données futures indisponibles dans votre région ». Les prix au comptant fonctionnent toujours, donc avec l’offre gratuite vous pouvez créer un portefeuille au comptant à la place. Les prix demandent une connexion ; une fois de retour en ligne, l’app rattrape ce qui est arrivé à vos ordres pendant qu’elle était fermée."
+        es: "En algunas regiones Binance bloquea sus datos de mercado de futuros. La app muestra entonces «Datos de futuros no disponibles en tu región». Los precios al contado siguen funcionando, así que con el plan gratuito puedes crear una cartera al contado en su lugar. Los precios necesitan conexión; cuando vuelves a estar en línea, la app pone al día lo que pasó con tus órdenes mientras estaba cerrada."
+        ru: "В некоторых регионах Binance блокирует свои фьючерсные рыночные данные. Тогда приложение показывает «Данные фьючерсов недоступны в вашем регионе». Спотовые цены там работают, поэтому на бесплатном плане вы можете вместо этого создать спотовый портфель. Для цен нужен интернет; когда вы снова в сети, приложение нагоняет то, что произошло с вашими ордерами, пока оно было закрыто."
     - q:
         en: How do I delete my data?
         uk: Як видалити мої дані?
         de: Wie lösche ich meine Daten?
         fr: "Comment supprimer mes données ?"
         es: "¿Cómo borro mis datos?"
+        ru: "Как удалить мои данные?"
       a:
         en: There is no account and nothing is stored on a server, so all your data is on your phone. To delete one portfolio with its orders, trades and history, open Portfolio, tap the portfolio name and choose Delete portfolio (Reset and start over clears its history instead). Uninstalling the app deletes everything. Backup files you exported and your phone's own backups are yours to delete.
-        uk: Облікового запису немає, і на сервері нічого не зберігається, тож усі ваші дані — на вашому телефоні. Щоб видалити один портфель з його ордерами, угодами та історією, відкрийте Portfolio, торкніться назви портфеля й виберіть Delete portfolio (Reset and start over натомість очищає його історію). Видалення застосунку видаляє все. Експортовані файли резервних копій і власні резервні копії телефона ви видаляєте самі.
-        de: Es gibt kein Konto, und nichts wird auf einem Server gespeichert, daher liegen alle deine Daten auf deinem Telefon. Um ein Portfolio mit seinen Orders, Trades und seinem Verlauf zu löschen, öffne Portfolio, tippe auf den Portfolionamen und wähle Delete portfolio (Reset and start over leert stattdessen nur den Verlauf). Das Deinstallieren der App löscht alles. Exportierte Sicherungsdateien und die eigenen Sicherungen deines Telefons löschst du selbst.
-        fr: "Il n’y a pas de compte et rien n’est stocké sur un serveur : toutes vos données sont sur votre téléphone. Pour supprimer un portefeuille avec ses ordres, transactions et historique, ouvrez Portfolio, touchez le nom du portefeuille et choisissez Delete portfolio (Reset and start over efface plutôt son historique). Désinstaller l’app supprime tout. Les fichiers de sauvegarde exportés et les sauvegardes du téléphone, c’est à vous de les supprimer."
-        es: "No hay cuenta y no se guarda nada en un servidor, así que todos tus datos están en tu teléfono. Para borrar una cartera con sus órdenes, operaciones e historial, abre Portfolio, toca el nombre de la cartera y elige Delete portfolio (Reset and start over borra solo su historial). Desinstalar la app lo borra todo. Los archivos de copia de seguridad que exportaste y las copias del propio teléfono los borras tú."
+        uk: Облікового запису немає, і на сервері нічого не зберігається, тож усі ваші дані — на вашому телефоні. Щоб видалити один портфель з його ордерами, угодами та історією, відкрийте Портфель, торкніться назви портфеля й виберіть Видалити портфель (Скинути й почати знову натомість очищає його історію). Видалення застосунку видаляє все. Експортовані файли резервних копій і власні резервні копії телефона ви видаляєте самі.
+        de: Es gibt kein Konto, und nichts wird auf einem Server gespeichert, daher liegen alle deine Daten auf deinem Telefon. Um ein Portfolio mit seinen Orders, Trades und seinem Verlauf zu löschen, öffne Portfolio, tippe auf den Portfolionamen und wähle Portfolio löschen (Zurücksetzen und neu starten leert stattdessen nur den Verlauf). Das Deinstallieren der App löscht alles. Exportierte Sicherungsdateien und die eigenen Sicherungen deines Telefons löschst du selbst.
+        fr: "Il n’y a pas de compte et rien n’est stocké sur un serveur : toutes vos données sont sur votre téléphone. Pour supprimer un portefeuille avec ses ordres, transactions et historique, ouvrez Portefeuille, touchez le nom du portefeuille et choisissez Supprimer le portefeuille (Réinitialiser et recommencer efface plutôt son historique). Désinstaller l’app supprime tout. Les fichiers de sauvegarde exportés et les sauvegardes du téléphone, c’est à vous de les supprimer."
+        es: "No hay cuenta y no se guarda nada en un servidor, así que todos tus datos están en tu teléfono. Para borrar una cartera con sus órdenes, operaciones e historial, abre Cartera, toca el nombre de la cartera y elige Eliminar cartera (Reiniciar desde cero borra solo su historial). Desinstalar la app lo borra todo. Los archivos de copia de seguridad que exportaste y las copias del propio teléfono los borras tú."
+        ru: "Учётной записи нет, и на сервере ничего не хранится, поэтому все ваши данные — на вашем телефоне. Чтобы удалить один портфель с его ордерами, сделками и историей, откройте Портфель, нажмите на название портфеля и выберите Удалить портфель (Сбросить и начать заново вместо этого очищает его историю). Удаление приложения удаляет всё. Экспортированные файлы резервных копий и собственные резервные копии телефона вы удаляете сами."
 
 fridge-widget:
   name: Our Fridge Door              # app repo D15; must equal LegalConfig.SUPPORT_SUBJECT_APP_NAME
@@ -734,6 +814,7 @@ fridge-widget:
     de: Ein Widget für den Startbildschirm, das wie eine Kühlschranktür mit Papier-Stickern und Etiketten aussieht.
     fr: "Un widget d’écran d’accueil qui ressemble à une porte de frigo avec des stickers en papier et des étiquettes."
     es: "Un widget para la pantalla de inicio que parece la puerta de una nevera con pegatinas de papel y etiquetas."
+    ru: "Виджет для главного экрана, похожий на дверцу холодильника с бумажными стикерами и этикетками."
   email_tag: fridgewidget            # plus-alias tag, used only if studio.support.plus_aliases
   effective_date: 2026-11-10
   stores:
@@ -745,7 +826,7 @@ fridge-widget:
   # no ads and no IAP in v1 (D4), no analytics, no third-party SDKs that process personal data.
   # Android Auto Backup stays on (D11): data_location says so.
   # The app ships en and uk (D5). In-app paths (app T5.2): fridge list ⋮ → About (uk: ⋮ → Про застосунок);
-  # a fridge is deleted with ⋮ next to it → Delete. de/fr/es users see the English app, so those texts use the
+  # a fridge is deleted with ⋮ next to it → Delete. de/fr/es/ru users see the English app, so those texts use the
   # English labels. Android only: summary_note, backup_note, local_delete_note, processing_note and store_terms
   # replace the generic iOS + Android wording of the shared templates.
   ads: false
@@ -763,6 +844,7 @@ fridge-widget:
     de: "Ist auf deinem Telefon die Sicherung aktiviert, kann Android außerdem eine Kopie in deiner eigenen Google-Sicherung ablegen (siehe unten)."
     fr: "Si la sauvegarde est activée sur votre téléphone, Android peut aussi en garder une copie dans votre propre sauvegarde Google (voir ci-dessous)."
     es: "Si la copia de seguridad está activada en tu teléfono, Android también puede guardar una copia en tu propia copia de seguridad de Google (ver más abajo)."
+    ru: "Если на телефоне включено резервное копирование, Android также может хранить копию в вашей собственной резервной копии Google (см. ниже)."
   # App D11 (Auto Backup on, database only) and D12 / M6 F2 (deleted text is overwritten and checkpointed).
   backup_note:
     en: "If backup is on for your phone, Android can include these data in your own Google device backup and restore them when you set up a new phone. Android makes that backup for your Google account; it is not sent to us and we cannot see it. Text you delete in the app is erased from the app's storage, so later backups no longer contain it."
@@ -770,24 +852,28 @@ fridge-widget:
     de: "Ist auf deinem Telefon die Sicherung aktiviert, kann Android diese Daten in deine eigene Google-Gerätesicherung aufnehmen und sie wiederherstellen, wenn du ein neues Telefon einrichtest. Diese Sicherung erstellt Android für dein Google-Konto; sie wird nicht an uns gesendet, und wir können sie nicht sehen. Text, den du in der App löschst, wird aus dem Speicher der App entfernt, spätere Sicherungen enthalten ihn also nicht mehr."
     fr: "Si la sauvegarde est activée sur votre téléphone, Android peut inclure ces données dans votre propre sauvegarde Google de l’appareil et les restaurer quand vous configurez un nouveau téléphone. Android réalise cette sauvegarde pour votre compte Google ; elle ne nous est pas envoyée et nous ne pouvons pas la voir. Le texte que vous supprimez dans l’app est effacé du stockage de l’app : les sauvegardes suivantes ne le contiennent plus."
     es: "Si la copia de seguridad está activada en tu teléfono, Android puede incluir estos datos en tu propia copia de seguridad de Google del dispositivo y restaurarlos cuando configures un teléfono nuevo. Android hace esa copia para tu cuenta de Google; no se nos envía y no podemos verla. El texto que borras en la app se elimina del almacenamiento de la app, así que las copias posteriores ya no lo contienen."
+    ru: "Если на телефоне включено резервное копирование, Android может добавить эти данные в вашу собственную резервную копию устройства в Google и восстановить их, когда вы будете настраивать новый телефон. Эту копию создаёт Android для вашей учётной записи Google; её не отправляют нам, и мы её не видим. Текст, который вы удаляете в приложении, стирается из хранилища приложения, поэтому последующие резервные копии его уже не содержат."
   local_delete_note:
     en: "To delete a fridge with its stickers and labels, tap ⋮ next to it in the app's list of fridges, then **Delete**; its text is erased from your device. Uninstalling the app, or clearing its storage in your phone's Settings → Apps, erases everything."
     uk: "Щоб видалити холодильник разом зі стікерами й етикетками, торкніться ⋮ біля нього в списку холодильників у застосунку, а потім **Видалити**; його текст буде стерто з пристрою. Якщо видалити застосунок або очистити його сховище в Налаштуваннях телефона → Застосунки, буде стерто все."
     de: "Um einen Kühlschrank mit seinen Stickern und Etiketten zu löschen, tippe in der Liste der Kühlschränke in der App neben ihm auf ⋮ und dann auf **Delete**; sein Text wird von deinem Gerät gelöscht. Wenn du die App deinstallierst oder ihren Speicher in den Einstellungen deines Telefons → Apps löschst, wird alles gelöscht."
     fr: "Pour supprimer un frigo avec ses stickers et étiquettes, touchez ⋮ à côté de lui dans la liste des frigos de l’app, puis **Delete** ; son texte est effacé de votre appareil. Désinstaller l’app, ou vider son stockage dans les Paramètres du téléphone → Applications, efface tout."
     es: "Para borrar una nevera con sus pegatinas y etiquetas, toca ⋮ junto a ella en la lista de neveras de la app y luego **Delete**; su texto se borra de tu dispositivo. Desinstalar la app, o borrar su almacenamiento en Ajustes del teléfono → Aplicaciones, lo borra todo."
+    ru: "Чтобы удалить холодильник вместе со стикерами и этикетками, нажмите ⋮ рядом с ним в списке холодильников в приложении, а затем **Delete**; его текст будет стёрт с устройства. Если удалить приложение или очистить его хранилище в Настройках телефона → Приложения, будет стёрто всё."
   processing_note:
     en: "The app has no internet access, so its data stays on your device and, if backup is on, in your own Google device backup, which Android keeps for your Google account."
     uk: "Застосунок не має доступу до інтернету, тож його дані залишаються на вашому пристрої та, якщо ввімкнено резервне копіювання, у вашій власній резервній копії пристрою в Google, яку Android зберігає для вашого облікового запису Google."
     de: "Die App hat keinen Internetzugriff, ihre Daten bleiben also auf deinem Gerät und, wenn die Sicherung aktiviert ist, in deiner eigenen Google-Gerätesicherung, die Android für dein Google-Konto speichert."
     fr: "L’app n’a pas accès à Internet : ses données restent sur votre appareil et, si la sauvegarde est activée, dans votre propre sauvegarde Google de l’appareil, qu’Android conserve pour votre compte Google."
     es: "La app no tiene acceso a internet, así que sus datos se quedan en tu dispositivo y, si la copia de seguridad está activada, en tu propia copia de seguridad de Google del dispositivo, que Android guarda para tu cuenta de Google."
+    ru: "У приложения нет доступа к интернету, поэтому его данные остаются на вашем устройстве и, если включено резервное копирование, в вашей собственной резервной копии устройства в Google, которую Android хранит для вашей учётной записи Google."
   store_terms:                       # Android only (app D1)
     en: Google Play Terms of Service
     uk: Умови використання Google Play
     de: Google Play-Nutzungsbedingungen
     fr: "Conditions d’utilisation de Google Play"
     es: "Términos del Servicio de Google Play"
+    ru: "Условия использования Google Play"
 
   data_location:
     en: Only on your phone, in the app's own storage. The app has no internet access and we have no server. If backup is on for your phone, Android can include the app's data in your own Google device backup and restore it when you set up a new phone; that backup belongs to your Google account and we cannot see it.
@@ -795,6 +881,7 @@ fridge-widget:
     de: Nur auf deinem Telefon, im eigenen Speicher der App. Die App hat keinen Internetzugriff, und wir haben keinen Server. Ist auf deinem Telefon die Sicherung aktiviert, kann Android die Daten der App in deine eigene Google-Gerätesicherung aufnehmen und sie wiederherstellen, wenn du ein neues Telefon einrichtest; diese Sicherung gehört zu deinem Google-Konto, und wir können sie nicht sehen.
     fr: "Uniquement sur votre téléphone, dans le stockage propre de l’app. L’app n’a pas accès à Internet et nous n’avons pas de serveur. Si la sauvegarde est activée sur votre téléphone, Android peut inclure les données de l’app dans votre propre sauvegarde Google de l’appareil et les restaurer quand vous configurez un nouveau téléphone ; cette sauvegarde appartient à votre compte Google et nous ne pouvons pas la voir."
     es: "Solo en tu teléfono, en el almacenamiento propio de la app. La app no tiene acceso a internet y no tenemos servidor. Si la copia de seguridad está activada en tu teléfono, Android puede incluir los datos de la app en tu propia copia de seguridad de Google del dispositivo y restaurarlos cuando configures un teléfono nuevo; esa copia pertenece a tu cuenta de Google y no podemos verla."
+    ru: "Только на вашем телефоне, в собственном хранилище приложения. У приложения нет доступа к интернету, а собственного сервера у нас нет. Если на телефоне включено резервное копирование, Android может добавить данные приложения в вашу собственную резервную копию устройства в Google и восстановить их, когда вы будете настраивать новый телефон; эта копия принадлежит вашей учётной записи Google, и мы её не видим."
 
   warranty_note:
     en: "The widget is shown by your phone's home-screen app (the launcher): how often it refreshes, which sizes it allows and how it looks can differ between phones and launchers, and we do not control them. Your fridges are stored on your device (and in your own Google device backup if backup is on); we cannot recover them if they are lost."
@@ -802,6 +889,7 @@ fridge-widget:
     de: "Das Widget wird von der Startbildschirm-App deines Telefons (dem Launcher) angezeigt: Wie oft es sich aktualisiert, welche Größen möglich sind und wie es aussieht, kann je nach Telefon und Launcher verschieden sein, und darauf haben wir keinen Einfluss. Deine Kühlschränke liegen auf deinem Gerät (und in deiner eigenen Google-Gerätesicherung, wenn die Sicherung aktiviert ist); gehen sie verloren, können wir sie nicht wiederherstellen."
     fr: "Le widget est affiché par l’application d’écran d’accueil de votre téléphone (le launcher) : sa fréquence de mise à jour, les tailles possibles et son apparence peuvent varier selon le téléphone et le launcher, et nous ne les contrôlons pas. Vos frigos sont stockés sur votre appareil (et dans votre propre sauvegarde Google de l’appareil si la sauvegarde est activée) ; nous ne pouvons pas les récupérer en cas de perte."
     es: "El widget lo muestra la app de pantalla de inicio de tu teléfono (el launcher): la frecuencia con la que se actualiza, los tamaños posibles y su aspecto pueden variar según el teléfono y el launcher, y no los controlamos. Tus neveras se guardan en tu dispositivo (y en tu propia copia de seguridad de Google del dispositivo si la copia está activada); no podemos recuperarlas si se pierden."
+    ru: "Виджет показывает приложение главного экрана вашего телефона (лаунчер): как часто виджет обновляется, какие размеры допустимы и как он выглядит, может отличаться в зависимости от телефона и лаунчера, и мы это не контролируем. Ваши холодильники хранятся на вашем устройстве (и в вашей собственной резервной копии устройства в Google, если она включена); мы не можем восстановить их в случае утраты."
 
   sdks: []                           # no third-party SDKs that process personal data (FACTS.md)
 
@@ -812,16 +900,19 @@ fridge-widget:
       de: Deine Kühlschränke (ihr Stil, der optionale Name, den du ihnen gibst, und ob die Uhr angezeigt wird)
       fr: "Vos frigos (leur style, le nom facultatif que vous leur donnez et si l’horloge est affichée)"
       es: "Tus neveras (su estilo, el nombre opcional que les pongas y si se muestra el reloj)"
+      ru: "Ваши холодильники (их стиль, необязательное название, которое вы им даёте, и то, показаны ли часы)"
     - en: "The stickers and labels on them: the text you type, color, position, size and rotation"
       uk: "Стікери та етикетки на них: текст, який ви вводите, колір, положення, розмір і поворот"
       de: "Die Sticker und Etiketten darauf: der Text, den du eingibst, Farbe, Position, Größe und Drehung"
       fr: "Les stickers et étiquettes qui s’y trouvent : le texte que vous saisissez, la couleur, la position, la taille et la rotation"
       es: "Las pegatinas y etiquetas que tienen: el texto que escribes, el color, la posición, el tamaño y el giro"
+      ru: "Стикеры и этикетки на них: текст, который вы вводите, цвет, положение, размер и поворот"
     - en: Which fridge each home-screen widget shows, and the widget's last size
       uk: Який холодильник показує кожен віджет на головному екрані, та останній розмір віджета
       de: Welchen Kühlschrank jedes Widget auf dem Startbildschirm zeigt, und die letzte Größe des Widgets
       fr: "Quel frigo affiche chaque widget de l’écran d’accueil, et la dernière taille du widget"
       es: "Qué nevera muestra cada widget de la pantalla de inicio y el último tamaño del widget"
+      ru: "Какой холодильник показывает каждый виджет на главном экране, и последний размер виджета"
 
   # App-specific FAQ for the support page ("Where is my data stored?" comes from data_location).
   faq:
@@ -831,57 +922,67 @@ fridge-widget:
         de: Das Widget ist leer oder aktualisiert sich nicht.
         fr: "Le widget est vide ou ne se met pas à jour."
         es: "El widget está en blanco o no se actualiza."
+        ru: "Виджет пустой или не обновляется."
       a:
         en: Open the app once, then look at the widget again. If it is still blank, remove the widget from the home screen and add it again, picking your existing fridge; your stickers are kept. Some launchers limit how often widgets are updated, so there the widget can take a moment to catch up.
         uk: Відкрийте застосунок один раз і знову подивіться на віджет. Якщо він досі порожній, приберіть віджет із головного екрана й додайте його знову, вибравши свій наявний холодильник; ваші стікери збережуться. Деякі лаунчери обмежують, як часто оновлюються віджети, тож там віджету може знадобитися трохи часу, щоб оновитися.
         de: Öffne die App einmal und sieh dir das Widget dann noch einmal an. Ist es weiterhin leer, entferne das Widget vom Startbildschirm und füge es erneut hinzu, wobei du deinen vorhandenen Kühlschrank auswählst; deine Sticker bleiben erhalten. Manche Launcher begrenzen, wie oft Widgets aktualisiert werden, daher kann das Widget dort einen Moment brauchen.
         fr: "Ouvrez l’app une fois, puis regardez à nouveau le widget. S’il est toujours vide, retirez le widget de l’écran d’accueil et ajoutez-le à nouveau en choisissant votre frigo existant ; vos stickers sont conservés. Certains launchers limitent la fréquence de mise à jour des widgets, donc le widget peut y mettre un moment à se mettre à jour."
         es: "Abre la app una vez y vuelve a mirar el widget. Si sigue en blanco, quita el widget de la pantalla de inicio y vuelve a añadirlo eligiendo tu nevera existente; tus pegatinas se conservan. Algunos launchers limitan la frecuencia con la que se actualizan los widgets, así que allí el widget puede tardar un momento en ponerse al día."
+        ru: "Откройте приложение один раз и снова посмотрите на виджет. Если он всё ещё пустой, уберите виджет с главного экрана и добавьте его снова, выбрав свой существующий холодильник; ваши стикеры сохранятся. Некоторые лаунчеры ограничивают, как часто обновляются виджеты, поэтому там виджету может потребоваться немного времени, чтобы обновиться."
     - q:
         en: I removed the widget. Are my stickers gone? Can I move a fridge to another widget?
         uk: Віджет прибрано. Мої стікери зникли? Чи можна перенести холодильник на інший віджет?
         de: Ich habe das Widget entfernt. Sind meine Sticker weg? Kann ich einen Kühlschrank auf ein anderes Widget bringen?
         fr: "J’ai retiré le widget. Mes stickers ont-ils disparu ? Puis-je déplacer un frigo vers un autre widget ?"
         es: "He quitado el widget. ¿Se han perdido mis pegatinas? ¿Puedo pasar una nevera a otro widget?"
+        ru: "Я убрал(-а) виджет. Мои стикеры пропали? Можно ли перенести холодильник на другой виджет?"
       a:
         en: No, they are not gone. Removing a widget doesn't delete its fridge; every fridge stays in the app's list of fridges. To show it again, or on another widget, add a new widget to the home screen and pick the existing fridge when the app asks. One fridge can also be shown on several widgets.
         uk: Ні, не зникли. Якщо прибрати віджет, його холодильник не видаляється; кожен холодильник лишається в списку холодильників у застосунку. Щоб знову показати його або показати на іншому віджеті, додайте новий віджет на головний екран і виберіть наявний холодильник, коли застосунок запитає. Один холодильник також можна показувати на кількох віджетах.
         de: Nein, sie sind nicht weg. Wenn du ein Widget entfernst, wird sein Kühlschrank nicht gelöscht; jeder Kühlschrank bleibt in der Liste der Kühlschränke in der App. Um ihn wieder oder auf einem anderen Widget zu zeigen, füge ein neues Widget zum Startbildschirm hinzu und wähle den vorhandenen Kühlschrank, wenn die App fragt. Ein Kühlschrank kann auch auf mehreren Widgets erscheinen.
         fr: "Non, ils n’ont pas disparu. Retirer un widget ne supprime pas son frigo ; chaque frigo reste dans la liste des frigos de l’app. Pour l’afficher à nouveau, ou sur un autre widget, ajoutez un nouveau widget à l’écran d’accueil et choisissez le frigo existant quand l’app le demande. Un même frigo peut aussi s’afficher sur plusieurs widgets."
         es: "No, no se han perdido. Quitar un widget no borra su nevera; cada nevera sigue en la lista de neveras de la app. Para mostrarla de nuevo, o en otro widget, añade un widget nuevo a la pantalla de inicio y elige la nevera existente cuando la app lo pregunte. Una misma nevera también puede mostrarse en varios widgets."
+        ru: "Нет, не пропали. Если убрать виджет, его холодильник не удаляется; каждый холодильник остаётся в списке холодильников в приложении. Чтобы снова показать его или показать на другом виджете, добавьте новый виджет на главный экран и выберите существующий холодильник, когда приложение спросит. Один холодильник также можно показывать на нескольких виджетах."
     - q:
         en: Can I sync my fridges with another phone?
         uk: Чи можна синхронізувати холодильники з іншим телефоном?
         de: Kann ich meine Kühlschränke mit einem anderen Telefon synchronisieren?
         fr: "Puis-je synchroniser mes frigos avec un autre téléphone ?"
         es: "¿Puedo sincronizar mis neveras con otro teléfono?"
+        ru: "Можно ли синхронизировать холодильники с другим телефоном?"
       a:
         en: Not in this version. There are no accounts and the app has no internet access, so your fridges stay on the phone where you made them. If backup is on for your phone, Android can bring them over when you set up a new phone from that backup.
         uk: У цій версії — ні. Облікових записів немає, і застосунок не має доступу до інтернету, тож ваші холодильники лишаються на телефоні, де ви їх створили. Якщо на телефоні ввімкнено резервне копіювання, Android може перенести їх, коли ви налаштовуватимете новий телефон із цієї копії.
         de: In dieser Version nicht. Es gibt keine Konten, und die App hat keinen Internetzugriff, daher bleiben deine Kühlschränke auf dem Telefon, auf dem du sie angelegt hast. Ist auf deinem Telefon die Sicherung aktiviert, kann Android sie übernehmen, wenn du ein neues Telefon aus dieser Sicherung einrichtest.
         fr: "Pas dans cette version. Il n’y a pas de compte et l’app n’a pas accès à Internet, donc vos frigos restent sur le téléphone où vous les avez créés. Si la sauvegarde est activée sur votre téléphone, Android peut les transférer quand vous configurez un nouveau téléphone à partir de cette sauvegarde."
         es: "En esta versión no. No hay cuentas y la app no tiene acceso a internet, así que tus neveras se quedan en el teléfono donde las creaste. Si la copia de seguridad está activada en tu teléfono, Android puede traerlas cuando configures un teléfono nuevo a partir de esa copia."
+        ru: "В этой версии — нет. Учётных записей нет, и у приложения нет доступа к интернету, поэтому ваши холодильники остаются на телефоне, где вы их создали. Если на телефоне включено резервное копирование, Android может перенести их, когда вы будете настраивать новый телефон из этой копии."
     - q:
         en: How do I delete my data?
         uk: Як видалити мої дані?
         de: Wie lösche ich meine Daten?
         fr: "Comment supprimer mes données ?"
         es: "¿Cómo borro mis datos?"
+        ru: "Как удалить мои данные?"
       a:
         en: There is no account and nothing is stored on a server, so all your data is on your phone. To remove a fridge with its stickers and labels, tap ⋮ next to it in the app's list of fridges, then **Delete**; removing a widget only takes it off the home screen. To erase everything the app has stored, uninstall the app or clear its storage in your phone's Settings → Apps. Copies in your phone's own Google backup are managed in your Google account.
         uk: Облікового запису немає, і на сервері нічого не зберігається, тож усі ваші дані — на вашому телефоні. Щоб прибрати холодильник з його стікерами й етикетками, торкніться ⋮ біля нього в списку холодильників у застосунку, а потім **Видалити**; якщо прибрати віджет, він лише зникне з головного екрана. Щоб стерти все, що зберігає застосунок, видаліть застосунок або очистьте його сховище в Налаштуваннях телефона → Застосунки. Копіями у власній резервній копії телефона в Google ви керуєте у своєму обліковому записі Google.
         de: Es gibt kein Konto, und nichts wird auf einem Server gespeichert, daher liegen alle deine Daten auf deinem Telefon. Um einen Kühlschrank mit seinen Stickern und Etiketten zu entfernen, tippe in der Liste der Kühlschränke in der App neben ihm auf ⋮ und dann auf **Delete**; ein Widget zu entfernen nimmt es nur vom Startbildschirm. Um alles zu löschen, was die App gespeichert hat, deinstalliere die App oder lösche ihren Speicher in den Einstellungen deines Telefons → Apps. Kopien in der eigenen Google-Sicherung deines Telefons verwaltest du in deinem Google-Konto.
         fr: "Il n’y a pas de compte et rien n’est stocké sur un serveur : toutes vos données sont sur votre téléphone. Pour retirer un frigo avec ses stickers et étiquettes, touchez ⋮ à côté de lui dans la liste des frigos de l’app, puis **Delete** ; retirer un widget ne fait que l’enlever de l’écran d’accueil. Pour effacer tout ce que l’app a enregistré, désinstallez l’app ou videz son stockage dans les Paramètres du téléphone → Applications. Les copies dans la sauvegarde Google de votre téléphone se gèrent dans votre compte Google."
         es: "No hay cuenta y no se guarda nada en un servidor, así que todos tus datos están en tu teléfono. Para quitar una nevera con sus pegatinas y etiquetas, toca ⋮ junto a ella en la lista de neveras de la app y luego **Delete**; quitar un widget solo lo saca de la pantalla de inicio. Para borrar todo lo que la app ha guardado, desinstala la app o borra su almacenamiento en Ajustes del teléfono → Aplicaciones. Las copias en la copia de seguridad de Google de tu teléfono se gestionan en tu cuenta de Google."
+        ru: "Учётной записи нет, и на сервере ничего не хранится, поэтому все ваши данные — на вашем телефоне. Чтобы убрать холодильник с его стикерами и этикетками, нажмите ⋮ рядом с ним в списке холодильников в приложении, а затем **Delete**; если убрать виджет, он лишь исчезнет с главного экрана. Чтобы стереть всё, что хранит приложение, удалите приложение или очистите его хранилище в Настройках телефона → Приложения. Копиями в собственной резервной копии телефона в Google вы управляете в своей учётной записи Google."
     - q:
         en: Where do I find the privacy policy, terms and support in the app?
         uk: Де в застосунку знайти політику конфіденційності, умови та підтримку?
         de: Wo finde ich in der App die Datenschutzerklärung, die Nutzungsbedingungen und den Support?
         fr: "Où trouver la politique de confidentialité, les conditions et le support dans l’app ?"
         es: "¿Dónde encuentro en la app la política de privacidad, los términos y el soporte?"
+        ru: "Где в приложении найти политику конфиденциальности, условия и поддержку?"
       a:
         en: "In the app's list of fridges, tap ⋮ at the top right, then **About**. From there you can also email us (the app version is already in the subject) and see the open-source licenses."
         uk: "У списку холодильників у застосунку торкніться ⋮ угорі праворуч, а потім **Про застосунок**. Звідти також можна написати нам (версія застосунку вже буде в темі листа) і переглянути ліцензії відкритого коду."
         de: "Tippe in der Liste der Kühlschränke in der App oben rechts auf ⋮ und dann auf **About**. Dort kannst du uns auch eine E-Mail schreiben (die App-Version steht schon im Betreff) und die Open-Source-Lizenzen ansehen."
         fr: "Dans la liste des frigos de l’app, touchez ⋮ en haut à droite, puis **About**. Vous pouvez aussi nous écrire depuis cet écran (la version de l’app est déjà dans l’objet) et consulter les licences open source."
         es: "En la lista de neveras de la app, toca ⋮ arriba a la derecha y luego **About**. Desde ahí también puedes escribirnos (la versión de la app ya va en el asunto) y ver las licencias de código abierto."
+        ru: "В списке холодильников в приложении нажмите ⋮ вверху справа, а затем **About**. Оттуда также можно написать нам (версия приложения уже будет в теме письма) и посмотреть лицензии открытого ПО."

@@ -69,3 +69,17 @@ es:
   get_ios: App Store
   get_android: Google Play
   mock_banner: Borrador — texto provisional, no la redacción legal definitiva.
+
+ru:
+  lang_name: Русский
+  privacy: Политика конфиденциальности
+  terms: Условия использования
+  support: Поддержка
+  legal_notice: Правовая информация
+  apps: Приложения
+  contact: Контакты
+  effective_date: Дата вступления в силу
+  email: Эл. почта
+  get_ios: App Store
+  get_android: Google Play
+  mock_banner: Черновик — временный текст, не окончательная юридическая формулировка.

@@ -1,6 +1,6 @@
 {% comment %}
 Support page template, English. One template per language; the {% raw %}{% if app.* %}{% endraw %}
-switches and _data/apps.yml fit it to each app. Keep the five languages in step. App-specific questions come from app.faq in _data/apps.yml.
+switches and _data/apps.yml fit it to each app. Keep the six languages in step. App-specific questions come from app.faq in _data/apps.yml.
 Do not indent lines (Markdown would turn them into code blocks).
 {% endcomment %}
 # {{ t.support }}

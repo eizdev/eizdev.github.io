@@ -13,7 +13,7 @@ Implements `drum-app/LEGAL_HOSTING_PLAN.md`.
 ## Layout
 
 ```
-_config.yml              site URL, languages (en/uk/de/fr/es), mock banner switch
+_config.yml              site URL, languages (en/uk/de/fr/es/ru), mock banner switch
 _data/studio.yml         developer facts: owner, support email, AdMob pub ID
 _data/apps.yml           one entry per app + flags (ads, iap, sdks, local data, FAQ)
 _data/i18n.yml           UI strings per language
@@ -33,9 +33,9 @@ URLs (default language has no prefix):
 | App list + contact | `/`                                                                    |
 | AdMob              | `/app-ads.txt`                                                         |
 | Legal notice       | `/legal-notice/`                                                       |
-| Privacy            | `/<app>/privacy/`, `/<app>/<lang>/privacy/` for `uk`, `de`, `fr`, `es` |
-| Terms              | `/<app>/terms/` (+ `/uk/`, `/de/`, `/fr/`, `/es/`)                     |
-| Support            | `/<app>/support/` (+ `/uk/`, `/de/`, `/fr/`, `/es/`)                   |
+| Privacy            | `/<app>/privacy/`, `/<app>/<lang>/privacy/` for `uk`, `de`, `fr`, `es`, `ru` |
+| Terms              | `/<app>/terms/` (+ `/uk/`, `/de/`, `/fr/`, `/es/`, `/ru/`)                   |
+| Support            | `/<app>/support/` (+ `/uk/`, `/de/`, `/fr/`, `/es/`, `/ru/`)                 |
 
 ## How the per-app documents work
 
@@ -60,7 +60,7 @@ to an app, add it to `sdks` in the same change.
 ## Adding an app
 
 1. Add an entry to `_data/apps.yml`. Copy `stick-and-kick` and adjust it.
-2. `ruby scripts/new_app.rb <slug>`: creates the 15 page stubs (3 documents × 5 languages).
+2. `ruby scripts/new_app.rb <slug>`: creates the 15 page stubs (3 documents × 6 languages).
 3. `ruby scripts/gmail_filters.rb`, then re-import `gmail/mailFilters.xml` (only if
    the support inbox is read in Gmail).
 4. `ruby scripts/legal_config.rb <slug>`: paste the output into the app's
@@ -88,7 +88,7 @@ features both versions support.
       `_includes/docs/*.md`, keeping the `{% if app.* %}` switches. Do not indent
       lines (Markdown would turn them into code blocks). Then set `mock_content: false`.
       Check `https://eizdev.com/app-ads.txt`.
-- [x] **Texts.** `_includes/docs/*.md` hold the live texts in five languages; `mock_content: false`.
+- [x] **Texts.** `_includes/docs/*.md` hold the live texts in six languages; `mock_content: false`.
       Keep the `{% if app.* %}` switches and don't indent lines (Markdown would turn
       them into code blocks).
 - [x] **Studio facts.** `owner_name`, `support.email` and `admob_publisher_id`

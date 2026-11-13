@@ -1,6 +1,6 @@
 {% comment %}
 Terms of use template, Ukrainian. One template per language; the {% raw %}{% if app.* %}{% endraw %}
-switches and _data/apps.yml fit it to each app. Keep the five languages in step.
+switches and _data/apps.yml fit it to each app. Keep the six languages in step.
 Do not indent lines (Markdown would turn them into code blocks).
 {% endcomment %}
 # {{ t.terms }}
